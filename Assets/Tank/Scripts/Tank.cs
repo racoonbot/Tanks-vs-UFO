@@ -6,7 +6,7 @@ public class Tank : MonoBehaviour
 {
     public float force = 500f;
     public float rotationSpeed = 5f;
-    private Rigidbody rb;
+    public Rigidbody rb;
     private bool isForwardDirection;
 
     void Start()
