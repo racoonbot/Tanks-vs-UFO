@@ -15,11 +15,9 @@ public class ShotCounter : MonoBehaviour
     void Update()
     {
         ShotInterval -= Time.deltaTime;
-
         if (ShotInterval <= 0)
         {
             isShooted = true;
-            Debug.Log("Выстрел выполнен!");
             ShotInterval = 2f; 
         }
     }
