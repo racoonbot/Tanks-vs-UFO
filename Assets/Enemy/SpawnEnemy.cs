@@ -1,5 +1,7 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class RandomSpawner : MonoBehaviour
 {
@@ -15,8 +17,15 @@ public class RandomSpawner : MonoBehaviour
 
     void Start()
     {
-        while (Enemies.Count < MaxCount && prefab != null)
+        
+    }
+
+    private void Update()
+    {
+        if (Count < MaxCount)
+        {
             EnemySpawned();
+        }
     }
 
     private void EnemySpawned()
