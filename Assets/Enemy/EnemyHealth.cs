@@ -7,17 +7,19 @@ using UnityEngine;
 public class EnemyHealth : MonoBehaviour
 {
     public int Health;
-
     public Action OnDeathEnemy;
-
+    private RandomSpawner spawner;
 
     private void Awake()
     {
+        spawner = FindObjectOfType<RandomSpawner>();
+        if (spawner == null) Debug.LogError("No RandomSpawner found");
     }
 
     private void OnEnable()
     {
         OnDeathEnemy += DestroyEnemy;
+      
     }
 
     private void OnDisable()
@@ -47,6 +49,7 @@ public class EnemyHealth : MonoBehaviour
 
     public void DestroyEnemy()
     {
-        gameObject.SetActive(false);
+        spawner.Enemies.Remove(gameObject);
+        Destroy(gameObject);
     }
 }

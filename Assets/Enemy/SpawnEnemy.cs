@@ -22,7 +22,7 @@ public class RandomSpawner : MonoBehaviour
 
     private void Update()
     {
-        if (Count < MaxCount)
+        if (Enemies.Count < MaxCount)
         {
             EnemySpawned();
         }
