@@ -22,10 +22,11 @@ public class RandomSpawner : MonoBehaviour
 
     private void Update()
     {
-        if (Enemies.Count < MaxCount)
-        {
+        // if (Enemies.Count < MaxCount) // РАзкомменторовать если нужен бесконечный респавн врагов
+        
+        // {
             EnemySpawned();
-        }
+        // }
     }
 
     private void EnemySpawned()
