@@ -300,6 +300,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!4 &902711382 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4724118487713174759, guid: 2c8466122dc2c5748899f46747870bfd, type: 3}
+  m_PrefabInstance: {fileID: 285831005221059571}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1164941824 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3293418876608020841, guid: 2c8466122dc2c5748899f46747870bfd, type: 3}
@@ -318,7 +323,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1229186005}
-  health: 2
+  health: 100
 --- !u!1 &1229186005 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6304043724242036057, guid: 2c8466122dc2c5748899f46747870bfd, type: 3}
@@ -460,6 +465,114 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1833428187
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1833428191}
+  - component: {fileID: 1833428190}
+  - component: {fileID: 1833428189}
+  - component: {fileID: 1833428188}
+  m_Layer: 0
+  m_Name: MainCamera
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1833428188
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1833428187}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2577d7858c42bec49b4a61c8ed21a314, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 902711382}
+  offset: {x: 0, y: 3.15, z: -5}
+  rotationOffset: {x: 19, y: 0, z: 0}
+--- !u!81 &1833428189
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1833428187}
+  m_Enabled: 1
+--- !u!20 &1833428190
+Camera:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1833428187}
+  m_Enabled: 1
+  serializedVersion: 2
+  m_ClearFlags: 1
+  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_projectionMatrixMode: 1
+  m_GateFitMode: 2
+  m_FOVAxisMode: 0
+  m_Iso: 200
+  m_ShutterSpeed: 0.005
+  m_Aperture: 16
+  m_FocusDistance: 10
+  m_FocalLength: 50
+  m_BladeCount: 5
+  m_Curvature: {x: 2, y: 11}
+  m_BarrelClipping: 0.25
+  m_Anamorphism: 0
+  m_SensorSize: {x: 36, y: 24}
+  m_LensShift: {x: 0, y: 0}
+  m_NormalizedViewPortRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
+  near clip plane: 0.3
+  far clip plane: 1000
+  field of view: 60
+  orthographic: 0
+  orthographic size: 5
+  m_Depth: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RenderingPath: -1
+  m_TargetTexture: {fileID: 0}
+  m_TargetDisplay: 0
+  m_TargetEye: 3
+  m_HDR: 1
+  m_AllowMSAA: 1
+  m_AllowDynamicResolution: 0
+  m_ForceIntoRT: 0
+  m_OcclusionCulling: 1
+  m_StereoConvergence: 10
+  m_StereoSeparation: 0.022
+--- !u!4 &1833428191
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1833428187}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.16803543, y: -0, z: -0, w: 0.98578095}
+  m_LocalPosition: {x: 0, y: 3.2, z: -5.1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 19.347, y: 0, z: 0}
 --- !u!1 &1943241784 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5921913738803147117, guid: 2c8466122dc2c5748899f46747870bfd, type: 3}
@@ -614,3 +727,4 @@ SceneRoots:
   - {fileID: 285831005221059571}
   - {fileID: 299733036}
   - {fileID: 1493030097}
+  - {fileID: 1833428191}
