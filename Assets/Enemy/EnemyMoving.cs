@@ -7,11 +7,13 @@ public class EnemyMoving : MonoBehaviour
     public float speed;
     public GameObject target;
     private Vector3 targetPos;
+    private float retreatDistance;
     private bool isAttacking;
 
     void Start()
     {
         target = FindObjectOfType<Tank>().gameObject;
+        retreatDistance = Random.Range(2f, 10f);
     }
 
     void Update()
@@ -40,7 +42,7 @@ public class EnemyMoving : MonoBehaviour
     {
         targetPos = target.transform.position;
         float distance = Vector3.Distance(transform.position, targetPos);
-        if (distance < 10f)
+        if (distance < retreatDistance)
         {
             isAttacking = false;
         }
