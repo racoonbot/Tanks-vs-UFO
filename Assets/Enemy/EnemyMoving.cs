@@ -17,41 +17,36 @@ public class EnemyMoving : MonoBehaviour
     void Update()
     {
         UpdateDistance();
-        if (isAttacking)
-        {
-            UpdateDirection();
-        }
+        UpdateDirection();
     }
 
     public void UpdateDirection()
     {
-        targetPos = target.transform.position;  // Получаем позицию цели
-        float distance = Vector3.Distance(transform.position, targetPos);  // Расчитываем расстояние
+        targetPos = target.transform.position;
+        float distance = Vector3.Distance(transform.position, targetPos);
 
         if (isAttacking)
         {
-            // Двигаемся к цели
             transform.position = Vector3.MoveTowards(transform.position, targetPos, speed * Time.deltaTime);
         }
         else
         {
-            // Двигаемся в обратном направлении от цели
-            Vector3 retreatDirection = (transform.position - targetPos).normalized;  // Направление от цели
-            transform.position += retreatDirection * speed * Time.deltaTime;  // Двигаемся назад
+            Vector3 retreatDirection = (transform.position - targetPos).normalized;
+            transform.position += retreatDirection * speed * Time.deltaTime;
         }
-       
     }
+
     public void UpdateDistance()
     {
         targetPos = target.transform.position;
         float distance = Vector3.Distance(transform.position, targetPos);
-        if (distance < 10f) 
+        if (distance < 10f)
         {
-            isAttacking = false; 
+            isAttacking = false;
         }
         else
         {
-            isAttacking = true; 
+            isAttacking = true;
         }
     }
 }
