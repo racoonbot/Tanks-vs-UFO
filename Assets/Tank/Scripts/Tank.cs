@@ -4,13 +4,20 @@ using UnityEngine;
 
 public class Tank : MonoBehaviour
 {
-    public float force = 500f;
+    [SerializeField]
+    private float force;
+    
+    private TankAttributes attributes;
+    
     public float rotationSpeed = 5f;
     public Rigidbody rb;
     private bool isForwardDirection;
+    
 
     void Start()
     {
+        attributes = FindObjectOfType<TankAttributes>();
+        force = attributes.maxSpeed;
         rb = GetComponent<Rigidbody>();
     }
 

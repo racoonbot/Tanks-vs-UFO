@@ -9,11 +9,19 @@ public class EnemyHealth : MonoBehaviour
     public int Health;
     public Action OnDeathEnemy;
     private RandomSpawner spawner;
+    [SerializeField]
+    
+    private int damage;
+    private TankAttributes attributes;
+    
+    
 
     private void Awake()
     {
         spawner = FindObjectOfType<RandomSpawner>();
         if (spawner == null) Debug.LogError("No RandomSpawner found");
+        attributes = FindObjectOfType<TankAttributes>();
+        damage =  attributes.damage;
     }
 
     private void OnEnable()
@@ -30,7 +38,7 @@ public class EnemyHealth : MonoBehaviour
     {
         if (other.GetComponent<Bullets>())
         {
-            TakeDamage();
+            TakeDamage(damage);
         }
     }
 
@@ -42,9 +50,9 @@ public class EnemyHealth : MonoBehaviour
         }
     }
 
-    public void TakeDamage()
+    public void TakeDamage(int damage)
     {
-        Health--;
+        Health -= damage;;
     }
 
     public void DestroyEnemy()

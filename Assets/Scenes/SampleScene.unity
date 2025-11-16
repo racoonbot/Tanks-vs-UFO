@@ -329,6 +329,21 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 6304043724242036057, guid: 2c8466122dc2c5748899f46747870bfd, type: 3}
   m_PrefabInstance: {fileID: 285831005221059571}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1229186006
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1229186005}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e74f78064368a14097b3b59d09511f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxSpeed: 100
+  maxHealth: 5
+  damage: 5
 --- !u!1 &1281647460
 GameObject:
   m_ObjectHideFlags: 0
@@ -705,6 +720,10 @@ PrefabInstance:
       propertyPath: rotationSpeed
       value: 40
       objectReference: {fileID: 0}
+    - target: {fileID: 7768333451857389558, guid: 2c8466122dc2c5748899f46747870bfd, type: 3}
+      propertyPath: force
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7947949512960542460, guid: 2c8466122dc2c5748899f46747870bfd, type: 3}
       propertyPath: m_LocalPosition.z
       value: 1.724
@@ -724,6 +743,9 @@ PrefabInstance:
       insertIndex: 0
       addedObject: {fileID: 1833428191}
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6304043724242036057, guid: 2c8466122dc2c5748899f46747870bfd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1229186006}
     - targetCorrespondingSourceObject: {fileID: 3293418876608020841, guid: 2c8466122dc2c5748899f46747870bfd, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1164941831}

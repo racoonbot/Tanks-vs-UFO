@@ -8,11 +8,15 @@ public class Tank_Turret : MonoBehaviour
     public float rotationSpeed = 20f;
     public Transform turretPivotPoint;
     private Rigidbody rb; 
-    
+    [SerializeField]
+    private int damage;
+    private TankAttributes attributes;
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        attributes = FindObjectOfType<TankAttributes>();
+        damage =  attributes.damage;
     }
 
     private void Update()

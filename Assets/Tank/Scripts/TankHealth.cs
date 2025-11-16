@@ -7,8 +7,15 @@ using UnityEngine;
 public class TankHealth : MonoBehaviour
 {
     public GameObject player;
-    public int health = 2;
+    [SerializeField]
+    private int health;
+    private TankAttributes attributes;
 
+    private void Start()
+    {
+        attributes = FindObjectOfType<TankAttributes>();
+        health = attributes.maxHealth;
+    }
 
     private void Update()
     {
