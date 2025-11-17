@@ -5,31 +5,27 @@ using Random = UnityEngine.Random;
 
 public abstract class EnemyBase : MonoBehaviour
 {
-    
     public int Health;
     public Action OnDeathEnemy;
     private RandomSpawner spawner;
-    
-    [SerializeField]
-    private int damage;
 
+
+    public int damage;
     private TankAttributes attributes;
-    
-    
-    
-    
+
+
     public GameObject bullet;
     public Transform bulletSpawn;
     public float bulletSpeed;
     public float shotPeriod;
-    public float currentShotPeriod = 3f;
+    public float currentShotPeriod;
 
 
     public float speed;
     public GameObject target;
-    private Vector3 targetPos;
-    private float retreatDistance;
-    private bool isAttacking;
+    public Vector3 targetPos;
+    public float retreatDistance;
+    public bool isAttacking;
 
     public bool canMove;
     public bool canShoot;
@@ -40,9 +36,10 @@ public abstract class EnemyBase : MonoBehaviour
         spawner = FindObjectOfType<RandomSpawner>();
         if (spawner == null) Debug.LogError("No RandomSpawner found");
         attributes = FindObjectOfType<TankAttributes>();
-        damage =  attributes.damage;
+        damage = attributes.damage;
+        OnDeathEnemy += DestroyEnemy;
     }
-    
+
     void Start()
     {
         target = FindObjectOfType<Tank>().gameObject;
@@ -65,24 +62,22 @@ public abstract class EnemyBase : MonoBehaviour
                 ShotTimer();
             }
         }
+        else
+        {
+            Debug.Log("target == null");
+        }
+
         if (Health <= 0)
         {
             OnDeathEnemy?.Invoke();
         }
-    }
-    
- 
-    private void OnEnable()
-    {
-        OnDeathEnemy += DestroyEnemy;
-      
     }
 
     private void OnDisable()
     {
         OnDeathEnemy -= DestroyEnemy;
     }
-    
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.GetComponent<Bullets>())
@@ -90,18 +85,23 @@ public abstract class EnemyBase : MonoBehaviour
             TakeDamage(damage);
         }
     }
-    
-    protected void Shooting()
+
+    public void Shooting()
     {
         Vector3 direction = (target.transform.position - bulletSpawn.position).normalized;
         GameObject newBullet = Instantiate(bullet, bulletSpawn.position, Quaternion.identity);
         Rigidbody rb = newBullet.GetComponent<Rigidbody>();
-        if (rb == null) { Debug.LogError("No Rigidbody on bullet prefab"); return; }
+        if (rb == null)
+        {
+            Debug.LogError("No Rigidbody on bullet prefab");
+            return;
+        }
+
         rb.isKinematic = false;
         rb.velocity = direction * bulletSpeed;
     }
 
-    protected void ShotTimer()
+    public void ShotTimer()
     {
         shotPeriod -= Time.deltaTime;
         if (shotPeriod <= 0f)
@@ -112,8 +112,9 @@ public abstract class EnemyBase : MonoBehaviour
     }
 
 
-    protected void UpdateDirection()
+    public void UpdateDirection()
     {
+        Debug.Log("Позиция цели " + target.transform.position);
         targetPos = target.transform.position;
         float distance = Vector3.Distance(transform.position, targetPos);
 
@@ -128,7 +129,7 @@ public abstract class EnemyBase : MonoBehaviour
         }
     }
 
-    protected void UpdateDistance()
+    public void UpdateDistance()
     {
         targetPos = target.transform.position;
         float distance = Vector3.Distance(transform.position, targetPos);
@@ -141,9 +142,12 @@ public abstract class EnemyBase : MonoBehaviour
             isAttacking = true;
         }
     }
+
     public void TakeDamage(int damage)
     {
-        Health -= damage;;
+        if (Health <= 0) return;
+        Health -= damage;
+        if (Health <= 0) OnDeathEnemy?.Invoke();
     }
 
     public void DestroyEnemy()
