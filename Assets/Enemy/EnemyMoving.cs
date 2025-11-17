@@ -18,8 +18,11 @@ public class EnemyMoving : MonoBehaviour
 
     void Update()
     {
-        UpdateDistance();
-        UpdateDirection();
+        if (target != null)
+        {
+            UpdateDirection();
+            UpdateDistance();
+        }
     }
 
     public void UpdateDirection()

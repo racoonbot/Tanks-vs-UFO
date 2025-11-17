@@ -17,13 +17,15 @@ public class EnemyShooting : MonoBehaviour
     private void Start()
     {
         target = FindObjectOfType<Tank>()?.transform;
-        if (target == null) Debug.LogError("No target found");
         shotPeriod = currentShotPeriod;
     }
 
     private void Update()
     {
-        ShotTimer();
+        if (target != null)
+        {
+            ShotTimer();
+        }
     }
 
     private void Shooting()
