@@ -17,15 +17,15 @@ public abstract class EnemyBase : MonoBehaviour
     public GameObject bullet;
     public Transform bulletSpawn;
     public float bulletSpeed;
-    public float shotPeriod;
+    private float shotPeriod;
     public float currentShotPeriod;
 
 
     public float speed;
     public GameObject target;
-    public Vector3 targetPos;
-    public float retreatDistance;
-    public bool isAttacking;
+    private Vector3 targetPos;
+    private float retreatDistance;
+    private bool isAttacking;
 
     public bool canMove;
     public bool canShoot;
