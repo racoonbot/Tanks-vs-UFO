@@ -72,6 +72,14 @@ PrefabInstance:
       propertyPath: canMove
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7622254166412969780, guid: 83e3403aa324cb24a8272a5339d4bf39, type: 3}
+      propertyPath: bulletSpeed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7622254166412969780, guid: 83e3403aa324cb24a8272a5339d4bf39, type: 3}
+      propertyPath: currentShotPeriod
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

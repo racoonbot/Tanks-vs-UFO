@@ -22,11 +22,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4551368640398239443, guid: b250c35e4c7b12740a26b8601ed4a087, type: 3}
       propertyPath: bulletSpeed
-      value: 5
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4551368640398239443, guid: b250c35e4c7b12740a26b8601ed4a087, type: 3}
       propertyPath: currentShotPeriod
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5497896092880371188, guid: b250c35e4c7b12740a26b8601ed4a087, type: 3}
       propertyPath: m_LocalPosition.x
@@ -111,12 +111,8 @@ MonoBehaviour:
   bullet: {fileID: 6946249191291192640, guid: 0aca4f16fc54d2a4a897500feb909954, type: 3}
   bulletSpawn: {fileID: 1201478304306723204}
   bulletSpeed: 2
-  shotPeriod: 0
   currentShotPeriod: 10
   speed: 0
   target: {fileID: 0}
-  targetPos: {x: 0, y: 0, z: 0}
-  retreatDistance: 0
-  isAttacking: 0
   canMove: 0
   canShoot: 0
