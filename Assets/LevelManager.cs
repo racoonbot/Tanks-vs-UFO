@@ -5,7 +5,7 @@ public class LevelManager : MonoBehaviour
 {
     private RandomSpawner spawner;
     public int level = 1;
-    public bool levelIncreased;
+    private bool levelIncreased;
 
     private void Start()
     {

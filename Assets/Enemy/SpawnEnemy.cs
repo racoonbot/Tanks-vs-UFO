@@ -4,9 +4,9 @@ using Random = UnityEngine.Random;
 
 public class RandomSpawner : MonoBehaviour
 {
-    public GameObject prefab;
-    public int Count;
+    public List<GameObject> prefabs = new List<GameObject>();
 
+    public int Count;
     public LevelManager levelManager;
 
     private int _maxCount;
@@ -14,10 +14,7 @@ public class RandomSpawner : MonoBehaviour
     public int MaxCount
     {
         get => _maxCount;
-        set
-        {
-            _maxCount = levelManager.level + 1;
-        }
+        set { _maxCount = levelManager.level + 1; }
     }
 
     public float MaxSpawnPointX = 28f;
@@ -30,13 +27,13 @@ public class RandomSpawner : MonoBehaviour
     void Start()
     {
         levelManager = FindObjectOfType<LevelManager>();
-        MaxCount = levelManager.level + 1; // Установите MaxCount в начале игры
+        MaxCount = levelManager.level + 1;
         Count = MaxCount;
     }
 
     private void Update()
     {
-        if (Enemies.Count < Count && prefab != null)
+        if (Enemies.Count < Count && GetEnemyPrefab() != null)
         {
             EnemySpawned();
             Count--;
@@ -47,7 +44,7 @@ public class RandomSpawner : MonoBehaviour
     {
         if (Enemies.Count < MaxCount)
         {
-            GameObject EnemyObject = Instantiate(prefab, GetRandomSpawnPosition(), Quaternion.identity);
+            GameObject EnemyObject = Instantiate(GetEnemyPrefab(), GetRandomSpawnPosition(), Quaternion.identity);
             Enemies.Add(EnemyObject);
             // Count = Enemies.Count;
         }
@@ -58,5 +55,29 @@ public class RandomSpawner : MonoBehaviour
         float x = Random.Range(MinSpawnPointX, MaxSpawnPointX);
         float z = Random.Range(MinSpawnPointZ, MaxSpawnPointZ);
         return new Vector3(x, 0, z);
+    }
+
+    private GameObject GetEnemyPrefab()
+    {
+        int simpleEnemyChance = levelManager.level + 1;
+        int attackEnemyChance = levelManager.level + 5;
+        int moveAttackEnemyChance = levelManager.level + 10;
+
+        int totalChance = simpleEnemyChance + attackEnemyChance + moveAttackEnemyChance;
+
+        int randomValue = Random.Range(0, totalChance);
+
+        if (randomValue < simpleEnemyChance)
+        {
+            return prefabs[0];
+        }
+        else if (randomValue < simpleEnemyChance + attackEnemyChance)
+        {
+            return prefabs[1];
+        }
+        else
+        {
+            return prefabs[2];
+        }
     }
 }

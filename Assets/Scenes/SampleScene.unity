@@ -151,7 +151,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b14eed367af26894781aa12a7d2cad3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab: {fileID: 598742650327631597, guid: 0740e65bd0389424da691a0a3977c47c, type: 3}
+  prefabs:
+  - {fileID: 7328638270888066001, guid: b250c35e4c7b12740a26b8601ed4a087, type: 3}
+  - {fileID: 3700436895056976438, guid: 83e3403aa324cb24a8272a5339d4bf39, type: 3}
+  - {fileID: 598742650327631597, guid: 0740e65bd0389424da691a0a3977c47c, type: 3}
   Count: 0
   levelManager: {fileID: 1493030098}
   MaxSpawnPointX: 28
@@ -506,8 +509,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 551153663d05b664cb7efde6134d295f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  level: 5
-  levelIncreased: 0
+  level: 2
 --- !u!1 &1833428187
 GameObject:
   m_ObjectHideFlags: 0
