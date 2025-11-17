@@ -10,15 +10,14 @@ public abstract class Loot : MonoBehaviour
 
     protected virtual void ActivateBust()
     {
-        Debug.Log("Activate Bust");
         isBoosted = true;
-        StartCoroutine(StartBust());
+        Tank tank = FindObjectOfType<Tank>();
+        if (tank != null)
+            tank.StartCoroutine(StartBust(tank));
     }
 
-    public IEnumerator StartBust()
+    public virtual IEnumerator StartBust(Tank tank)
     {
-        Debug.Log("IEnumerator");
-        isBoosted = false;
         yield return new WaitForSeconds(boostDuration);
     }
 
@@ -28,7 +27,8 @@ public abstract class Loot : MonoBehaviour
         if (other.GetComponent<TankHealth>())
         {
             ActivateBust();
-            Destroy(gameObject);
+            gameObject.SetActive(false);
+            Destroy(gameObject, 10f);
         }
     }
 }

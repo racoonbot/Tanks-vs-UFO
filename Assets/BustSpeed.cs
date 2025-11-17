@@ -2,17 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BustSpeed : MonoBehaviour
+public class BustSpeed : Loot
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public float speedMultiplayer;
 
-    // Update is called once per frame
-    void Update()
+    public override IEnumerator StartBust(Tank tank)
     {
-        
+        tank.force *= speedMultiplayer;
+        yield return new WaitForSeconds(boostDuration);
+        tank.force /= speedMultiplayer;
+        isBoosted = false;
     }
 }

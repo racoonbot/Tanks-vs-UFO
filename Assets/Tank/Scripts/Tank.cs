@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Tank : MonoBehaviour
 {
-    [SerializeField]
-    private float force;
+    
+    public float force;
     
     private TankAttributes attributes;
     
