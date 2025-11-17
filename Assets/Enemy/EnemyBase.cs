@@ -31,7 +31,7 @@ public abstract class EnemyBase : MonoBehaviour
     public bool canMove;
     public bool canShoot;
 
-    public float minDistanceToEnemy = 2.0f;
+    public float minDistanceToEnemy = 1.0f;
     private List<EnemyBase> allMobs;
 
     private void Awake()
@@ -143,7 +143,6 @@ public abstract class EnemyBase : MonoBehaviour
 
     public void UpdateDirection()
     {
-        Debug.Log("Позиция цели " + target.transform.position);
         targetPos = target.transform.position;
         float distance = Vector3.Distance(transform.position, targetPos);
 

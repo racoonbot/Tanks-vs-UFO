@@ -39,9 +39,9 @@ public class TankHealth : MonoBehaviour
         health--;
     }
 
-    public void Heal()
+    public void Heal(int healAmount)
     {
-        health++;
+        health +=  healAmount;
     }
 
     public void Die()
