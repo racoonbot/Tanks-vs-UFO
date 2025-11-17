@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using Unity.VisualScripting;
 using Random = UnityEngine.Random;
@@ -30,6 +31,8 @@ public abstract class EnemyBase : MonoBehaviour
     public bool canMove;
     public bool canShoot;
 
+    public float minDistanceToEnemy = 2.0f;
+    private List<EnemyBase> allMobs;
 
     private void Awake()
     {
@@ -45,10 +48,12 @@ public abstract class EnemyBase : MonoBehaviour
         target = FindObjectOfType<Tank>().gameObject;
         retreatDistance = Random.Range(2f, 12f);
         shotPeriod = currentShotPeriod;
+        allMobs = new List<EnemyBase>(FindObjectsOfType<EnemyBase>());
     }
 
     void Update()
     {
+        PreventOverlap();
         if (target != null)
         {
             if (canMove)
@@ -83,6 +88,30 @@ public abstract class EnemyBase : MonoBehaviour
         if (other.GetComponent<Bullets>())
         {
             TakeDamage(damage);
+        }
+    }
+
+    private void PreventOverlap()
+    {
+        foreach (var otherMob in allMobs)
+        {
+            if (otherMob != this) // Игнорируем самого себя
+            {
+                if (otherMob != null)
+                {
+                    float distance = Vector3.Distance(transform.position, otherMob.transform.position);
+
+                    // Если объекты слишком близко друг к другу
+                    if (distance < minDistanceToEnemy)
+                    {
+                        // Вычисляем вектор от этого мобы к другому
+                        Vector3 direction = (transform.position - otherMob.transform.position).normalized;
+                        Vector3 targetPosition = transform.position + direction;
+                        // Перемещаем этот моб в сторону от другого
+                        transform.position = Vector3.Lerp(transform.position, targetPosition, speed * Time.deltaTime);
+                    }
+                }
+            }
         }
     }
 
