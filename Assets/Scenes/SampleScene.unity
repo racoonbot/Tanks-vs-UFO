@@ -332,6 +332,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d343580209284d3479490ce995bcae13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LootAmount: 3
+  loot:
+  - {fileID: 5244224071313480534, guid: cdfef72ffee85d0438bf67fcd34d33ff, type: 3}
+  - {fileID: 8171016954129477501, guid: fa505ea45513511479bcf5d752b89218, type: 3}
+  - {fileID: 6140272010611956485, guid: c3f64cad1e93b0646909bdad22419753, type: 3}
+  - {fileID: 1316920995774653685, guid: 4ccf7f31025bc3e43a833d3d51cf5e6b, type: 3}
 --- !u!4 &849907228
 Transform:
   m_ObjectHideFlags: 0
@@ -553,7 +559,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 551153663d05b664cb7efde6134d295f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  level: 1
+  level: 5
 --- !u!1 &1833428187
 GameObject:
   m_ObjectHideFlags: 0

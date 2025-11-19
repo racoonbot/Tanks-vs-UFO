@@ -12,14 +12,14 @@ public abstract class EnemyBase : MonoBehaviour
     private RandomSpawner spawner;
 
 
-    public int damage;
+    private int TakeDamageAmount;
     private TankAttributes attributes;
 
 
     public GameObject bullet;
     public Transform bulletSpawn;
     public float bulletSpeed;
-    private float shotPeriod;
+    public float shotPeriod;
     public float currentShotPeriod;
 
 
@@ -41,7 +41,7 @@ public abstract class EnemyBase : MonoBehaviour
         spawner = FindObjectOfType<RandomSpawner>();
         if (spawner == null) Debug.LogError("No RandomSpawner found");
         attributes = FindObjectOfType<TankAttributes>();
-        damage = attributes.damage;
+        TakeDamageAmount = attributes.damage;
         OnDeathEnemy += DestroyEnemy;
     }
 
@@ -89,7 +89,7 @@ public abstract class EnemyBase : MonoBehaviour
     {
         if (other.GetComponent<Bullets>())
         {
-            TakeDamage(damage);
+            TakeDamage(TakeDamageAmount);
         }
     }
 
