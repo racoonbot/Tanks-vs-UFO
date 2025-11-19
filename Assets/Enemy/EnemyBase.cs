@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using Unity.VisualScripting;
+using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
 public abstract class EnemyBase : MonoBehaviour
@@ -22,7 +23,8 @@ public abstract class EnemyBase : MonoBehaviour
     public float currentShotPeriod;
 
 
-    public float speed;
+    public float MaxSpeed;
+    
     public GameObject target;
     private Vector3 targetPos;
     private float retreatDistance;
@@ -108,7 +110,7 @@ public abstract class EnemyBase : MonoBehaviour
                         Vector3 direction = (transform.position - otherMob.transform.position).normalized;
                         Vector3 targetPosition = transform.position + direction;
                         // Перемещаем этот моб в сторону от другого
-                        transform.position = Vector3.Lerp(transform.position, targetPosition, speed * Time.deltaTime);
+                        transform.position = Vector3.Lerp(transform.position, targetPosition, MaxSpeed * Time.deltaTime);
                     }
                 }
             }
@@ -148,12 +150,12 @@ public abstract class EnemyBase : MonoBehaviour
 
         if (isAttacking)
         {
-            transform.position = Vector3.MoveTowards(transform.position, targetPos, speed * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, targetPos, MaxSpeed * Time.deltaTime);
         }
         else
         {
             Vector3 retreatDirection = (transform.position - targetPos).normalized;
-            transform.position += retreatDirection * speed * Time.deltaTime;
+            transform.position += retreatDirection * MaxSpeed * Time.deltaTime;
         }
     }
 

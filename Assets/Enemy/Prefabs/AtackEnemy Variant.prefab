@@ -68,6 +68,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6741633854128791517, guid: b250c35e4c7b12740a26b8601ed4a087, type: 3}
+      propertyPath: m_Constraints
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 7328638270888066001, guid: b250c35e4c7b12740a26b8601ed4a087, type: 3}
       propertyPath: m_Name
       value: AtackEnemy Variant
@@ -112,7 +116,8 @@ MonoBehaviour:
   bulletSpawn: {fileID: 1201478304306723204}
   bulletSpeed: 2
   currentShotPeriod: 10
-  speed: 0
+  MaxSpeed: 0
   target: {fileID: 0}
   canMove: 0
   canShoot: 0
+  minDistanceToEnemy: 1

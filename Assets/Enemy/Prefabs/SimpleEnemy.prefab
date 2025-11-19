@@ -188,7 +188,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7328638270888066001}
   serializedVersion: 4
-  m_Mass: 1
+  m_Mass: 2
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -224,12 +224,9 @@ MonoBehaviour:
   bullet: {fileID: 6946249191291192640, guid: 0aca4f16fc54d2a4a897500feb909954, type: 3}
   bulletSpawn: {fileID: 5062776380241549411}
   bulletSpeed: 1
-  shotPeriod: 0
   currentShotPeriod: 2
-  speed: 5
+  MaxSpeed: 2
   target: {fileID: 0}
-  targetPos: {x: 0, y: 0, z: 0}
-  retreatDistance: 0
-  isAttacking: 0
   canMove: 1
   canShoot: 0
+  minDistanceToEnemy: 1
