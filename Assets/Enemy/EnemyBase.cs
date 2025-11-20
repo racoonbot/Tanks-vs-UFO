@@ -25,17 +25,17 @@ public abstract class EnemyBase : MonoBehaviour
 
     public float MaxSpeed;
     
-    public GameObject target;
+    public Tank target;
     private Vector3 targetPos;
     private float retreatDistance;
-    private bool isAttacking;
+    public bool isAttacking;
 
     public bool canMove;
     public bool canShoot;
 
     public float minDistanceToEnemy = 1.0f;
     private List<EnemyBase> allMobs;
-
+    
     private void Awake()
     {
         spawner = FindObjectOfType<RandomSpawner>();
@@ -47,7 +47,7 @@ public abstract class EnemyBase : MonoBehaviour
 
     void Start()
     {
-        target = FindObjectOfType<Tank>().gameObject;
+        target = FindObjectOfType<Tank>();
         retreatDistance = Random.Range(2f, 12f);
         shotPeriod = currentShotPeriod;
         allMobs = new List<EnemyBase>(FindObjectsOfType<EnemyBase>());
@@ -137,8 +137,8 @@ public abstract class EnemyBase : MonoBehaviour
         shotPeriod -= Time.deltaTime;
         if (shotPeriod <= 0f)
         {
-            Shooting();
             shotPeriod = currentShotPeriod;
+            Shooting();
         }
     }
 
@@ -154,8 +154,11 @@ public abstract class EnemyBase : MonoBehaviour
         }
         else
         {
-            Vector3 retreatDirection = (transform.position - targetPos).normalized;
-            transform.position += retreatDirection * MaxSpeed * Time.deltaTime;
+            if (target.rb.velocity.magnitude > 0.1)
+            {
+                Vector3 retreatDirection = (transform.position - targetPos).normalized;
+                transform.position += retreatDirection * MaxSpeed * Time.deltaTime;
+            }
         }
     }
 
