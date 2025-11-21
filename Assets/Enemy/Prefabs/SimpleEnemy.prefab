@@ -220,6 +220,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Health: 5
+  reward: 1
   bullet: {fileID: 6946249191291192640, guid: 0aca4f16fc54d2a4a897500feb909954, type: 3}
   bulletSpawn: {fileID: 5062776380241549411}
   bulletSpeed: 1
@@ -227,6 +228,7 @@ MonoBehaviour:
   currentShotPeriod: 2
   MaxSpeed: 2
   target: {fileID: 0}
+  isAttacking: 0
   canMove: 1
   canShoot: 0
   minDistanceToEnemy: 1

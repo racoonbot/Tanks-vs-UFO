@@ -126,9 +126,9 @@ GameObject:
   - component: {fileID: 6381903013962166172}
   - component: {fileID: 3740945062637938858}
   - component: {fileID: 2206752046131044427}
-  - component: {fileID: 3351029883429637870}
+  - component: {fileID: -9028564665015168757}
   m_Layer: 3
-  m_Name: MovingAtackEnemy Variant
+  m_Name: MovingAtackEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -207,7 +207,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 4
   m_CollisionDetection: 0
---- !u!114 &3351029883429637870
+--- !u!114 &-9028564665015168757
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -216,17 +216,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 8677670258200281300}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ac7327afc591d3418222aa971829ae0, type: 3}
+  m_Script: {fileID: 11500000, guid: d19275b9cfa2cee4681094a4b3dadb03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Health: 5
+  reward: 3
   bullet: {fileID: 6946249191291192640, guid: 0aca4f16fc54d2a4a897500feb909954, type: 3}
   bulletSpawn: {fileID: 8966261598603905342}
-  bulletSpeed: 10
+  bulletSpeed: 12
   shotPeriod: 0
-  currentShotPeriod: 10
-  MaxSpeed: 4
+  currentShotPeriod: 4
+  MaxSpeed: 2
   target: {fileID: 0}
+  isAttacking: 0
   canMove: 1
   canShoot: 1
   minDistanceToEnemy: 1

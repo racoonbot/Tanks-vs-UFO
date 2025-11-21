@@ -11,6 +11,7 @@ public abstract class EnemyBase : MonoBehaviour
     public Action OnDeathEnemy;
     private RandomSpawner spawner;
 
+    public int reward;
 
     private int TakeDamageAmount;
     private TankAttributes attributes;

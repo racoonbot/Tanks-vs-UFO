@@ -9,6 +9,8 @@ public class RandomSpawner : MonoBehaviour
     public int Count;
     public LevelManager levelManager;
 
+    public Wallet wallet;
+
     private int _maxCount;
 
     public int MaxCount
@@ -40,13 +42,18 @@ public class RandomSpawner : MonoBehaviour
         }
     }
 
-    private void EnemySpawned()
+    private void EnemySpawned() 
     {
         if (Enemies.Count < MaxCount)
         {
             GameObject EnemyObject = Instantiate(GetEnemyPrefab(), GetRandomSpawnPosition(), Quaternion.identity);
             Enemies.Add(EnemyObject);
-            // Count = Enemies.Count;
+            EnemyBase e = EnemyObject.GetComponent<EnemyBase>();//я не понял эту муть с подспиской)))
+            if (e != null && wallet != null)
+            {
+                int rewardCopy = e.reward;
+                e.OnDeathEnemy += () => wallet.AddMoney(rewardCopy);
+            }
         }
     }
 
