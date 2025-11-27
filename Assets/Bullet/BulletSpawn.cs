@@ -11,7 +11,6 @@ public class BulletSpawn : MonoBehaviour
     void Start()
     {
         shotCounter = FindObjectOfType<ShotCounter>();
-        Debug.Log("ShotCounter найден: " + (shotCounter != null));
     }
 
     void Update()

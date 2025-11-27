@@ -35,7 +35,7 @@ public class TankHealth : MonoBehaviour
 
     public void TakeDamage()
     {
-        Debug.Log("Taking damage");
+
         health--;
     }
 

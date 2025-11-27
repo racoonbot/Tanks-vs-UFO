@@ -35,14 +35,14 @@ public class RandomSpawner : MonoBehaviour
 
     private void Update()
     {
-        if (Enemies.Count < Count && GetEnemyPrefab() != null)
+        if (Enemies.Count < Count && levelManager.levelIncreased == false)
         {
             EnemySpawned();
             Count--;
         }
     }
 
-    private void EnemySpawned() 
+    public void EnemySpawned() 
     {
         if (Enemies.Count < MaxCount)
         {

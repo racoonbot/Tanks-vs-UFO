@@ -9,7 +9,7 @@ public class ShotCounter : MonoBehaviour
 
     void Start()
     {
-        Debug.Log("ShotCounter запущен. Интервал между выстрелами: " + ShotInterval + " секунд.");
+
     }
 
     void Update()

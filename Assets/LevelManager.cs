@@ -5,7 +5,7 @@ public class LevelManager : MonoBehaviour
 {
     private RandomSpawner spawner;
     public int level = 1;
-    private bool levelIncreased;
+    public bool levelIncreased;
     private ShowMoney showMoney;
 
     public event Action OnLevelIncreased;
@@ -53,6 +53,22 @@ public class LevelManager : MonoBehaviour
         }
     }
 
+    // public void RestartLevel() пока не придумал
+    // {
+    //     canvas.DeactivateCanvas();
+    //     Debug.Log("Restarting level");
+    //     level--; 
+    //     levelIncreased = false;
+    //     // spawner.ResetSpawner(); // Предполагается, что вы добавите этот метод в класс RandomSpawner
+    //     UpdateSpawnerMaxCount(); // Обновляем максимальное количество врагов
+    // }
+
+    public void NextLevel()
+    {
+        canvas.DeactivateCanvas();
+        UpdateSpawnerMaxCount();
+        spawner.EnemySpawned();
+    }
 
     private void UpdateSpawnerMaxCount()
     {

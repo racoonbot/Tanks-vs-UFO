@@ -15,7 +15,7 @@ public class ShowMoney : MonoBehaviour
     {
         if (wallet != null)
         {
-            text.text = $"Заработано за уровень: {wallet.LevelMoney}\nВсего денег: {wallet.TotalMoney}";
+            text.text = $"Монеты : {wallet.LevelMoney}\n";
         }
         else
         {

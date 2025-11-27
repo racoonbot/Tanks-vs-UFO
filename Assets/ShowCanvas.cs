@@ -7,17 +7,19 @@ public class ShowCanvas : MonoBehaviour
 {
     public GameObject canvas;
 
-    private void Start()
-    {
-        // if (canvas != null)
-        //     canvas.SetActive(false);
-    }
-
     public void ActivateCanvas()
     {
-        Debug.Log("ShowCanvas");
         if (canvas != null)
-        
-        canvas.SetActive(true);
+
+            canvas.SetActive(true);
+    }
+
+    public void DeactivateCanvas()
+    {
+        if (canvas != null)
+        {
+            Debug.Log("Deactivate canvas");
+            canvas.SetActive(false);
+        }
     }
 }
