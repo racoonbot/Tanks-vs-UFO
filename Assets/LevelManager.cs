@@ -6,6 +6,7 @@ public class LevelManager : MonoBehaviour
     private RandomSpawner spawner;
     public int level = 1;
     private bool levelIncreased;
+    private ShowMoney showMoney;
 
     public event Action OnLevelIncreased;
     private ShowCanvas canvas;
@@ -13,10 +14,18 @@ public class LevelManager : MonoBehaviour
 
     private void Start()
     {
+        showMoney = FindObjectOfType<ShowMoney>();
         spawner = FindObjectOfType<RandomSpawner>();
         canvas = FindObjectOfType<ShowCanvas>();
-        if (canvas != null)
+        if (canvas != null && showMoney != null)
+        {
             OnLevelIncreased += canvas.ActivateCanvas;
+            OnLevelIncreased += showMoney.UpdateText;
+        }
+        else
+        {
+            Debug.Log("canvas == null || showMoney == null");
+        }
     }
 
     private void Update()
@@ -37,8 +46,11 @@ public class LevelManager : MonoBehaviour
 
     private void OnDisable()
     {
-        if (canvas != null)
+        if (canvas != null && showMoney != null)
+        {
             OnLevelIncreased -= canvas.ActivateCanvas;
+            OnLevelIncreased -= showMoney.UpdateText;
+        }
     }
 
 
@@ -47,6 +59,10 @@ public class LevelManager : MonoBehaviour
         if (spawner != null)
         {
             spawner.MaxCount = level + 1;
+        }
+        else
+        {
+            Debug.Log("canvas == null || showMoney == null");
         }
     }
 }
