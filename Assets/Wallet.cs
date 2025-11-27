@@ -14,10 +14,10 @@ public class Wallet : MonoBehaviour
         LevelMoney += reward;
     }
 
-    public void AddTotalMoney(int levelMoney) // В конце уровня добавляет деньги за уровень в общему кошельку
-    {
-        TotalMoney += levelMoney;
-    }
+    // public void AddTotalMoney(int levelMoney) // В конце уровня добавляет деньги за уровень в общему кошельку
+    // {
+    //     TotalMoney += levelMoney;
+    // }
 
     public void RemoveMoney(int salePrice ) // для покупок
     {

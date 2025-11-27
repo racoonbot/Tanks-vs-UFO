@@ -7,6 +7,7 @@ public class LevelManager : MonoBehaviour
     public int level = 1;
     public bool levelIncreased;
     private ShowMoney showMoney;
+  
 
     public event Action OnLevelIncreased;
     private ShowCanvas canvas;
@@ -21,6 +22,7 @@ public class LevelManager : MonoBehaviour
         {
             OnLevelIncreased += canvas.ActivateCanvas;
             OnLevelIncreased += showMoney.UpdateText;
+           
         }
         else
         {
@@ -50,6 +52,7 @@ public class LevelManager : MonoBehaviour
         {
             OnLevelIncreased -= canvas.ActivateCanvas;
             OnLevelIncreased -= showMoney.UpdateText;
+         
         }
     }
 
