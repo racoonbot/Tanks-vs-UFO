@@ -14,7 +14,7 @@ public class Wallet : MonoBehaviour
     public int LevelMoney
     {
         get { return levelMoney; }
-        private set
+        set
         {
             levelMoney = value;
             OnLevelMoneyChange?.Invoke(levelMoney);
