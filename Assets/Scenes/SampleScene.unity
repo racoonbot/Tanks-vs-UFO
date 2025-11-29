@@ -1148,7 +1148,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TotalMoney: 0
-  LevelMoney: 0
 --- !u!1 &738382093
 GameObject:
   m_ObjectHideFlags: 0
@@ -2261,7 +2260,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 551153663d05b664cb7efde6134d295f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  level: 5
+  level: 1
   levelIncreased: 0
 --- !u!1 &1523177025
 GameObject:

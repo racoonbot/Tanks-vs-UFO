@@ -6,8 +6,27 @@ using UnityEngine;
 public class Wallet : MonoBehaviour
 {
     public int TotalMoney;
-    public int LevelMoney;
 
+    public event Action<int> OnLevelMoneyChange;
+    
+    
+    private int levelMoney;
+    public int LevelMoney
+    {
+        get { return levelMoney; }
+        private set
+        {
+            levelMoney = value;
+            OnLevelMoneyChange?.Invoke(levelMoney);
+   
+        }
+    }
+
+
+    private void Start()
+    {
+        LevelMoney = 0;
+    }
 
     public void AddMoney(int reward) //добавляет деньги за врага в течении уровня
     {
@@ -19,8 +38,8 @@ public class Wallet : MonoBehaviour
     //     TotalMoney += levelMoney;
     // }
 
-    public void RemoveMoney(int salePrice ) // для покупок
+    public void RemoveMoney(int salePrice) // для покупок
     {
-        TotalMoney -= salePrice ;
+        TotalMoney -= salePrice;
     }
 }

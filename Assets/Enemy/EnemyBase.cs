@@ -11,8 +11,6 @@ public abstract class EnemyBase : MonoBehaviour
     public Action OnDeathEnemy;
     private RandomSpawner spawner;
 
-    private ShowPoints showPoints;
-
     public int reward;
 
     private int TakeDamageAmount;
@@ -44,16 +42,11 @@ public abstract class EnemyBase : MonoBehaviour
         spawner = FindObjectOfType<RandomSpawner>();
         if (spawner == null) Debug.LogError("No RandomSpawner found");
 
-        showPoints = FindObjectOfType<ShowPoints>();
-        if (showPoints == null) Debug.LogError("No ShowPoints found");
-
         attributes = FindObjectOfType<TankAttributes>();
         if (attributes == null) Debug.LogError("No TankAttributes found");
 
         TakeDamageAmount = attributes.damage;
         OnDeathEnemy += DestroyEnemy;
-        OnDeathEnemy += showPoints.UpdateInGamePoints;
-        
     }
 
     void Start()
@@ -89,7 +82,6 @@ public abstract class EnemyBase : MonoBehaviour
     private void OnDisable()
     {
         OnDeathEnemy -= DestroyEnemy;
-        OnDeathEnemy -= showPoints.UpdateInGamePoints;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -187,13 +179,11 @@ public abstract class EnemyBase : MonoBehaviour
     public void TakeDamage(int damage)
     {
         Health -= damage;
-        Health -= damage;
         if (Health <= 0) OnDeathEnemy?.Invoke();
     }
 
     public void DestroyEnemy()
     {
-        
         spawner.Enemies.Remove(gameObject);
         Destroy(gameObject);
     }

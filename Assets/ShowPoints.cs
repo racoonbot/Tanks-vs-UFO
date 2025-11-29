@@ -3,25 +3,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using Unity.VisualScripting;
+
 public class ShowPoints : MonoBehaviour
 {
     public Wallet wallet;
     public TextMeshProUGUI text;
 
-    private void Start()
+    private void Awake()
     {
-        UpdateInGamePoints();
+        if (wallet != null) 
+        wallet.OnLevelMoneyChange += UpdateInGamePoints;
     }
 
-    public void UpdateInGamePoints()
+    private void OnDisable()
     {
-        if (wallet != null)
-        {
-            text.text = $"{wallet.LevelMoney}\n";
-        }
-        else
-        {
-            Debug.LogError("Wallet не назначен!");
-        }
+        wallet.OnLevelMoneyChange -= UpdateInGamePoints;
+    }
+
+    public void UpdateInGamePoints(int levelMoney)
+    {
+        text.text = $"{levelMoney}\n";
     }
 }

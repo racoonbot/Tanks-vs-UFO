@@ -7,7 +7,7 @@ public class LevelManager : MonoBehaviour
     public int level = 1;
     public bool levelIncreased;
     private ShowMoney showMoney;
-  
+
 
     public event Action OnLevelIncreased;
     private ShowCanvas canvas;
@@ -22,7 +22,6 @@ public class LevelManager : MonoBehaviour
         {
             OnLevelIncreased += canvas.ActivateCanvas;
             OnLevelIncreased += showMoney.UpdateText;
-           
         }
         else
         {
@@ -37,7 +36,6 @@ public class LevelManager : MonoBehaviour
             level++;
             levelIncreased = true;
             OnLevelIncreased?.Invoke();
-            UpdateSpawnerMaxCount();
         }
         else if (spawner.Enemies.Count > 0)
         {
@@ -52,7 +50,6 @@ public class LevelManager : MonoBehaviour
         {
             OnLevelIncreased -= canvas.ActivateCanvas;
             OnLevelIncreased -= showMoney.UpdateText;
-         
         }
     }
 
@@ -69,19 +66,7 @@ public class LevelManager : MonoBehaviour
     public void NextLevel()
     {
         canvas.DeactivateCanvas();
-        UpdateSpawnerMaxCount();
+        spawner.IncreaseMaxCount();
         spawner.EnemySpawned();
-    }
-
-    private void UpdateSpawnerMaxCount()
-    {
-        if (spawner != null)
-        {
-            spawner.MaxCount = level + 1;
-        }
-        else
-        {
-            Debug.Log("canvas == null || showMoney == null");
-        }
     }
 }

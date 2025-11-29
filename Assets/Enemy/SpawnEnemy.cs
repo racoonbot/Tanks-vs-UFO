@@ -16,7 +16,11 @@ public class RandomSpawner : MonoBehaviour
     public int MaxCount
     {
         get => _maxCount;
-        set { _maxCount = levelManager.level + 1; }
+        set
+        {
+            _maxCount = value;
+            Count = _maxCount;
+        }
     }
 
     public float MaxSpawnPointX = 28f;
@@ -29,8 +33,8 @@ public class RandomSpawner : MonoBehaviour
     void Start()
     {
         levelManager = FindObjectOfType<LevelManager>();
-        MaxCount = levelManager.level + 1;
-        Count = MaxCount;
+        IncreaseMaxCount();
+
     }
 
     private void Update()
@@ -42,13 +46,13 @@ public class RandomSpawner : MonoBehaviour
         }
     }
 
-    public void EnemySpawned() 
+    public void EnemySpawned()
     {
         if (Enemies.Count < MaxCount)
         {
             GameObject EnemyObject = Instantiate(GetEnemyPrefab(), GetRandomSpawnPosition(), Quaternion.identity);
             Enemies.Add(EnemyObject);
-            EnemyBase e = EnemyObject.GetComponent<EnemyBase>();//я не понял эту муть с подспиской)))
+            EnemyBase e = EnemyObject.GetComponent<EnemyBase>(); //я не понял эту муть с подспиской)))
             if (e != null && wallet != null)
             {
                 int rewardCopy = e.reward;
@@ -87,4 +91,11 @@ public class RandomSpawner : MonoBehaviour
             return prefabs[2];
         }
     }
+
+    public void IncreaseMaxCount()
+    {
+        MaxCount = levelManager.level + 1;
+    }
+
+    
 }
