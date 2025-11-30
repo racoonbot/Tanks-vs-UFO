@@ -65,7 +65,7 @@ public class RandomSpawner : MonoBehaviour
     {
         float x = Random.Range(MinSpawnPointX, MaxSpawnPointX);
         float z = Random.Range(MinSpawnPointZ, MaxSpawnPointZ);
-        return new Vector3(x, 0, z);
+        return new Vector3(x, 1f, z);
     }
 
     private GameObject GetEnemyPrefab()
