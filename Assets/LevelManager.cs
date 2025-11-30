@@ -47,6 +47,9 @@ public class LevelManager : MonoBehaviour
             level++;
             levelIncreased = true;
             OnLevelIncreased?.Invoke();
+
+            // Здесь можно добавить вызов обновления максимального количества врагов
+            // spawner.IncreaseMaxCount();
         }
         else if (spawner.Enemies.Count > 0)
         {
@@ -80,8 +83,8 @@ public class LevelManager : MonoBehaviour
     {
         OnLevelStarted?.Invoke();
         canvas.DeactivateCanvas();
-        spawner.IncreaseMaxCount();
-        spawner.EnemySpawned();
+        // level++; // Увеличьте уровень здесь
+        spawner.IncreaseMaxCount(); // Здесь обновляется максимальное количество врагов
     }
 
     public void ResetLevel()

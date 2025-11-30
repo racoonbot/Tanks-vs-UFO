@@ -39,7 +39,7 @@ public class RandomSpawner : MonoBehaviour
 
     private void Update()
     {
-        if (Enemies.Count < Count && levelManager.levelIncreased == false)
+        if (Enemies.Count < Count )
         {
             EnemySpawned();
             Count--;
@@ -52,7 +52,7 @@ public class RandomSpawner : MonoBehaviour
         {
             GameObject EnemyObject = Instantiate(GetEnemyPrefab(), GetRandomSpawnPosition(), Quaternion.identity);
             Enemies.Add(EnemyObject);
-            EnemyBase e = EnemyObject.GetComponent<EnemyBase>(); //я не понял эту муть с подспиской)))
+            EnemyBase e = EnemyObject.GetComponent<EnemyBase>(); 
             if (e != null && wallet != null)
             {
                 int rewardCopy = e.reward;
