@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Tank_Turret : MonoBehaviour
 {
-    public float rotationSpeed = 20f;
+    // public float rotationSpeed = 20f;
     public Transform turretPivotPoint;
     private Rigidbody rb; 
     [SerializeField]
@@ -31,7 +31,7 @@ public class Tank_Turret : MonoBehaviour
 
         if (mouseInput != 0)
         {
-            float rotationAmount = mouseInput * rotationSpeed * Time.fixedDeltaTime;
+            float rotationAmount = mouseInput * attributes.turretRotationSpeed * Time.fixedDeltaTime;
             rb.MoveRotation(rb.rotation * Quaternion.Euler(0f, rotationAmount, 0f)); // Применяем вращение
         }
     }
