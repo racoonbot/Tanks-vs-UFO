@@ -37,6 +37,8 @@ public abstract class EnemyBase : MonoBehaviour
     public float minDistanceToEnemy = 1.0f;
     private List<EnemyBase> allMobs;
 
+    private Rigidbody rb;
+
     private void Awake()
     {
         spawner = FindObjectOfType<RandomSpawner>();
@@ -51,8 +53,9 @@ public abstract class EnemyBase : MonoBehaviour
 
     void Start()
     {
+        rb = GetComponent<Rigidbody>();
         target = FindObjectOfType<Tank>();
-        retreatDistance = Random.Range(2f, 12f);
+        retreatDistance = Random.Range(3f, 10f);
         shotPeriod = currentShotPeriod;
         allMobs = new List<EnemyBase>(FindObjectsOfType<EnemyBase>());
     }
@@ -178,13 +181,17 @@ public abstract class EnemyBase : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
+
         Health -= damage;
         if (Health <= 0) OnDeathEnemy?.Invoke();
     }
+    
+
 
     public void DestroyEnemy()
     {
         spawner.Enemies.Remove(gameObject);
         Destroy(gameObject);
     }
+    
 }

@@ -223,6 +223,7 @@ GameObject:
   - component: {fileID: 7039866954919992020}
   - component: {fileID: 3423381314751822237}
   - component: {fileID: 6227966113509722227}
+  - component: {fileID: 47734772066206503}
   m_Layer: 3
   m_Name: UFO_Color1
   m_TagString: Untagged
@@ -311,7 +312,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ac7327afc591d3418222aa971829ae0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Health: 1
+  Health: 2
   reward: 1
   bullet: {fileID: 6946249191291192640, guid: 0aca4f16fc54d2a4a897500feb909954, type: 3}
   bulletSpawn: {fileID: 4393977661490780854}
@@ -323,7 +324,7 @@ MonoBehaviour:
   isAttacking: 0
   canMove: 1
   canShoot: 1
-  minDistanceToEnemy: 1
+  minDistanceToEnemy: 2
 --- !u!54 &3423381314751822237
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -372,6 +373,18 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 5.2828026
   m_Center: {x: 0, y: 0.29690337, z: 0}
+--- !u!114 &47734772066206503
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5903451119183343922}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5acbc90945251a438954e35dbc47083, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7682087588696066077
 GameObject:
   m_ObjectHideFlags: 0

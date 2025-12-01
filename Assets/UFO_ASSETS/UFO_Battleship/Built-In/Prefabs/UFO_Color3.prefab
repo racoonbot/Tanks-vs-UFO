@@ -45,6 +45,7 @@ GameObject:
   - component: {fileID: 1917334885947734945}
   - component: {fileID: 1658324546296194935}
   - component: {fileID: 4723668156014806148}
+  - component: {fileID: 282695470676448284}
   m_Layer: 3
   m_Name: UFO_Color3
   m_TagString: Untagged
@@ -132,7 +133,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d19275b9cfa2cee4681094a4b3dadb03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Health: 3
+  Health: 4
   reward: 3
   bullet: {fileID: 6946249191291192640, guid: 0aca4f16fc54d2a4a897500feb909954, type: 3}
   bulletSpawn: {fileID: 3303205024995717208}
@@ -193,6 +194,18 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 5.2828026
   m_Center: {x: 0, y: 0.29690337, z: 0}
+--- !u!114 &282695470676448284
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1039668780847461915}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5acbc90945251a438954e35dbc47083, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3827111119673970484
 GameObject:
   m_ObjectHideFlags: 0
