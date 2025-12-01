@@ -7,8 +7,7 @@ using UnityEngine;
 public class TankHealth : MonoBehaviour
 {
     public GameObject player;
-    [SerializeField]
-    private int health;
+    public int health;
     private TankAttributes attributes;
 
     private void Start()
@@ -27,6 +26,7 @@ public class TankHealth : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+    
         if (other.GetComponent<Bullets>())
         {
             TakeDamage();
@@ -35,8 +35,8 @@ public class TankHealth : MonoBehaviour
 
     public void TakeDamage()
     {
-
-        health--;
+        health --;
+        Debug.Log("TakeDamage");
     }
 
     public void Heal(int healAmount)
