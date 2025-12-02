@@ -23,6 +23,7 @@ public abstract class EnemyBase : MonoBehaviour
     public float shotPeriod;
     public float currentShotPeriod;
 
+    public BlinkEnemy blink;
 
     public float MaxSpeed;
 
@@ -46,6 +47,9 @@ public abstract class EnemyBase : MonoBehaviour
 
         attributes = FindObjectOfType<TankAttributes>();
         if (attributes == null) Debug.LogError("No TankAttributes found");
+
+        blink = FindObjectOfType<BlinkEnemy>();
+        if (blink == null) Debug.LogError("No BlinkEnemy found");
 
         TakeDamageAmount = attributes.damage;
         OnDeathEnemy += DestroyEnemy;
@@ -181,7 +185,7 @@ public abstract class EnemyBase : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-
+        blink.StartBlinking();
         Health -= damage;
         if (Health <= 0) OnDeathEnemy?.Invoke();
     }
