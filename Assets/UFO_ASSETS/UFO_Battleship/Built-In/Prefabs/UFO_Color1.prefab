@@ -224,6 +224,7 @@ GameObject:
   - component: {fileID: 3423381314751822237}
   - component: {fileID: 6227966113509722227}
   - component: {fileID: 47734772066206503}
+  - component: {fileID: 976467956498957199}
   m_Layer: 3
   m_Name: UFO_Color1
   m_TagString: Untagged
@@ -319,6 +320,7 @@ MonoBehaviour:
   bulletSpeed: 2
   shotPeriod: 0
   currentShotPeriod: 1
+  blink: {fileID: 0}
   MaxSpeed: 5
   target: {fileID: 0}
   isAttacking: 0
@@ -383,6 +385,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e5acbc90945251a438954e35dbc47083, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &976467956498957199
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5903451119183343922}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d414f9f8d9375214e8b7ff8fe4c05bf5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &7682087588696066077
