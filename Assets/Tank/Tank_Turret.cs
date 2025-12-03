@@ -27,12 +27,26 @@ public class Tank_Turret : MonoBehaviour
     void FixedUpdate() 
     {
         
-        float mouseInput = Input.GetAxis("Mouse X");
 
+        float mouseInput = Input.GetAxis("Mouse X");
+        
+        
         if (mouseInput != 0)
         {
             float rotationAmount = mouseInput * attributes.turretRotationSpeed * Time.fixedDeltaTime;
-            rb.MoveRotation(rb.rotation * Quaternion.Euler(0f, rotationAmount, 0f)); // Применяем вращение
+            rb.MoveRotation(rb.rotation * Quaternion.Euler(0f, rotationAmount, 0f)); 
+        }
+
+        if (Input.GetKey(KeyCode.Q))
+        {
+            float rotationAmount = -attributes.turretRotationSpeed * Time.fixedDeltaTime; 
+            rb.MoveRotation(rb.rotation * Quaternion.Euler(0f, rotationAmount, 0f));
+        }
+    
+        if (Input.GetKey(KeyCode.E))
+        {
+            float rotationAmount = attributes.turretRotationSpeed * Time.fixedDeltaTime; 
+            rb.MoveRotation(rb.rotation * Quaternion.Euler(0f, rotationAmount, 0f));
         }
     }
 }
