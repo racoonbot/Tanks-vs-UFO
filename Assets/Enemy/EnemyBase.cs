@@ -23,9 +23,15 @@ public abstract class EnemyBase : MonoBehaviour
     public float shotPeriod;
     public float currentShotPeriod;
 
+    public AudioSource audioSource1;
+    public AudioSource audioSource2;
+    public AudioSource audioSource3;
+
     public BlinkEnemy blink;
 
     public float MaxSpeed;
+
+    public Sounds audioSource;
 
     public Tank target;
     private Vector3 targetPos;
@@ -50,6 +56,9 @@ public abstract class EnemyBase : MonoBehaviour
 
         blink = FindObjectOfType<BlinkEnemy>();
         if (blink == null) Debug.LogError("No BlinkEnemy found");
+
+        audioSource = FindObjectOfType<Sounds>();
+        if (audioSource == null) Debug.LogError("No Sounds found");
 
         TakeDamageAmount = attributes.damage;
         OnDeathEnemy += DestroyEnemy;
@@ -187,15 +196,20 @@ public abstract class EnemyBase : MonoBehaviour
     {
         blink.StartBlinking();
         Health -= damage;
+        if (Health > 0)
+        {
+            audioSource.source[1].Play();
+        }
+
         if (Health <= 0) OnDeathEnemy?.Invoke();
+      
     }
-    
 
 
     public void DestroyEnemy()
     {
+        audioSource.source[2].Play();
         spawner.Enemies.Remove(gameObject);
         Destroy(gameObject);
     }
-    
 }
