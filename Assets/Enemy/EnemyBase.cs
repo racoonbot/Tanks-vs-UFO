@@ -1,8 +1,6 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-using Unity.VisualScripting;
-using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
 public abstract class EnemyBase : MonoBehaviour
@@ -23,9 +21,7 @@ public abstract class EnemyBase : MonoBehaviour
     public float shotPeriod;
     public float currentShotPeriod;
 
-    public AudioSource audioSource1;
-    public AudioSource audioSource2;
-    public AudioSource audioSource3;
+    public Radar radar;
 
     public BlinkEnemy blink;
 
@@ -59,6 +55,8 @@ public abstract class EnemyBase : MonoBehaviour
 
         audioSource = FindObjectOfType<Sounds>();
         if (audioSource == null) Debug.LogError("No Sounds found");
+        
+       
 
         TakeDamageAmount = attributes.damage;
         OnDeathEnemy += DestroyEnemy;
@@ -66,9 +64,11 @@ public abstract class EnemyBase : MonoBehaviour
 
     void Start()
     {
+        
         rb = GetComponent<Rigidbody>();
         target = FindObjectOfType<Tank>();
         retreatDistance = Random.Range(3f, 10f);
+        
         shotPeriod = currentShotPeriod;
         allMobs = new List<EnemyBase>(FindObjectsOfType<EnemyBase>());
     }
@@ -78,7 +78,7 @@ public abstract class EnemyBase : MonoBehaviour
         PreventOverlap();
         if (target != null)
         {
-            if (canMove)
+            if (canMove && !radar.isDodging) // Триггер Радара вырубает движение
             {
                 UpdateDirection();
                 UpdateDistance();
@@ -202,7 +202,6 @@ public abstract class EnemyBase : MonoBehaviour
         }
 
         if (Health <= 0) OnDeathEnemy?.Invoke();
-      
     }
 
 
