@@ -27,17 +27,12 @@ public class BlinkEnemy : MonoBehaviour
 
     public IEnumerator BlinkEffect()
     {
-        Debug.Log("Blinking effect");
 
-        // Запускаем эффект отталкивания
-        Shake();
-
-        // Мигание
         for (float t = 0f; t < 1; t += Time.deltaTime)
         {
             Color blinkColor = new Color(Mathf.Sin(t * 40), 0f, 0f, t);
 
-            // Устанавливаем цвет эмиссии для каждого материала
+
             foreach (Material material in materials)
             {
                 material.SetColor("_EmissionColor", blinkColor);
@@ -46,13 +41,12 @@ public class BlinkEnemy : MonoBehaviour
             yield return null;
         }
 
-        // Возвращаемся к начальному цвету
+
         for (int i = 0; i < materials.Length; i++)
         {
             materials[i].SetColor("_Color", initialColors[i]);
         }
 
-        // Дополнительно сбрасываем эмиссионный цвет
         foreach (Material material in materials)
         {
             material.SetColor("_EmissionColor", Color.black);
@@ -67,7 +61,7 @@ public class BlinkEnemy : MonoBehaviour
     private IEnumerator ShakeEffect()
     {
         Vector3 originalPosition = transform.localPosition; 
-        Vector3 randomDirection = Random.insideUnitSphere * 0.2f; // Случайное направление  пределах сферы
+        Vector3 randomDirection = Random.insideUnitSphere * 0.2f; 
 
         float duration = 0.2f; 
         float elapsed = 0f;

@@ -5,6 +5,8 @@ using Random = UnityEngine.Random;
 public class RandomSpawner : MonoBehaviour
 {
     public List<GameObject> prefabs = new List<GameObject>();
+    
+    
 
     public int Count;
     public LevelManager levelManager;
@@ -58,6 +60,7 @@ public class RandomSpawner : MonoBehaviour
                 int rewardCopy = e.reward;
                 e.OnDeathEnemy += () => wallet.AddMoney(rewardCopy);
             }
+            Debug.Log(Enemies.Count);
         }
     }
 

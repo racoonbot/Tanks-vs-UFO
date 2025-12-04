@@ -208,7 +208,18 @@ public abstract class EnemyBase : MonoBehaviour
     public void DestroyEnemy()
     {
         audioSource.source[2].Play();
-        spawner.Enemies.Remove(gameObject);
-        Destroy(gameObject);
+
+        // Получаем родительский объект
+        GameObject parent = transform.parent.gameObject;
+
+        // Убираем родительский объект из списка
+        if (spawner.Enemies.Contains(parent))
+        {
+            spawner.Enemies.Remove(parent);
+        }
+
+        // Уничтожаем родительский объект
+        Destroy(parent);
     }
+
 }

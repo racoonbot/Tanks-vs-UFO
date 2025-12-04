@@ -33,16 +33,11 @@ public class Radar : MonoBehaviour
 
                 isDodging = true;
             }
-            else
-            {
-                Debug.Log("Уклонение не удалось!");
-            }
         }
     }
 
     private void ChangePosition()
     {
-        Debug.Log("ChangePosition()");
         enemy.position = Vector3.Lerp(enemy.position, targetPosition, Time.deltaTime * GetRandomDodgeSpeed());
 
         if (Vector3.Distance(enemy.position, targetPosition) < 0.1f)
@@ -64,30 +59,35 @@ public class Radar : MonoBehaviour
 
     private float DodgeChance()
     {
-        float distance = Vector3.Distance(enemy.position, targetPosition);
-        float baseChance = Random.Range(0f, 100f);
-        if (distance >= 5 && distance < 10)
+        if (enemy != null)
         {
-            baseChance += 5;
-        }
-        else if (distance >= 10 && distance < 15)
-        {
-            baseChance += 10;
-        }
-        else if (distance >= 15 && distance < 20)
-        {
-            baseChance += 15;
-        }
-        else if (distance >= 20 && distance < 25)
-        {
-            baseChance += 20;
-        }
-        else if (distance >= 25)
-        {
-            baseChance += 25;
+            float distance = Vector3.Distance(enemy.position, targetPosition);
+            float baseChance = Random.Range(0f, 100f);
+            if (distance >= 5 && distance < 10)
+            {
+                baseChance += 5;
+            }
+            else if (distance >= 10 && distance < 15)
+            {
+                baseChance += 10;
+            }
+            else if (distance >= 15 && distance < 20)
+            {
+                baseChance += 15;
+            }
+            else if (distance >= 20 && distance < 25)
+            {
+                baseChance += 20;
+            }
+            else if (distance >= 25)
+            {
+                baseChance += 25;
+            }
+
+            baseChance = Mathf.Clamp(baseChance, 0f, 100f);
+            return baseChance;
         }
 
-        baseChance = Mathf.Clamp(baseChance, 0f, 100f);
-        return baseChance;
+        return 0;
     }
 }
