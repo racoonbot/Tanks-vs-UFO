@@ -11,6 +11,7 @@ public class Bullets : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if(other.GetComponent<EnemyBase>())
         Destroy(gameObject);
     }
 }
