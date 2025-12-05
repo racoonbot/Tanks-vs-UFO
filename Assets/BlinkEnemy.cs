@@ -5,7 +5,7 @@ public class BlinkEnemy : MonoBehaviour
 {
     private MeshRenderer meshRenderer;
     private Material[] materials;
-    private Color[] initialColors; // Массив для хранения начальных цветов
+    private Color[] initialColors; // Массив для хранения начальных цветов тарелок
 
     private void Start()
     {
