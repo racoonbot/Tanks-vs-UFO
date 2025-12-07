@@ -4,7 +4,7 @@ public class GameData : MonoBehaviour
 {
     public Wallet wallet;
     public LevelManager levelManager;
-    public RandomSpawner spawner;
+    public SpawnEnemy spawner;
 
     private const string KEY_MONEY = "Money";
     private const string KEY_LEVEL = "Level";

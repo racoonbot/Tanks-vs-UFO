@@ -18,7 +18,6 @@ public class ShowCanvas : MonoBehaviour
     {
         if (canvas != null)
         {
-            Debug.Log("Deactivate canvas");
             canvas.SetActive(false);
         }
     }

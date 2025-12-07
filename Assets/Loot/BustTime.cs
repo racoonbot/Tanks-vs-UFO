@@ -8,7 +8,7 @@ public class BustTime : Loot
     {
         if (tank == null) yield break;
 
-        RandomSpawner spawner = FindObjectOfType<RandomSpawner>();
+        SpawnEnemy spawner = FindObjectOfType<SpawnEnemy>();
         if (spawner != null)
         {
             foreach (GameObject enemyObj in spawner.Enemies)

@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class LevelManager : MonoBehaviour
 {
-    private RandomSpawner spawner;
+    private SpawnEnemy spawner;
 
     public int level = 1;
     public bool levelIncreased;
@@ -22,7 +22,7 @@ public class LevelManager : MonoBehaviour
     private void Start()
     {
         showMoney = FindObjectOfType<ShowMoney>();
-        spawner = FindObjectOfType<RandomSpawner>();
+        spawner = FindObjectOfType<SpawnEnemy>();
         canvas = FindObjectOfType<ShowCanvas>();
         gameData = FindObjectOfType<GameData>();
 
