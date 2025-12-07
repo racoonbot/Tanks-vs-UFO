@@ -7,7 +7,7 @@ public abstract class EnemyBase : MonoBehaviour
 {
     public int Health;
     public Action OnDeathEnemy;
-    private RandomSpawner spawner;
+    private SpawnEnemy spawner;
 
     public int reward;
 
@@ -44,7 +44,7 @@ public abstract class EnemyBase : MonoBehaviour
 
     private void Awake()
     {
-        spawner = FindObjectOfType<RandomSpawner>();
+        spawner = FindObjectOfType<SpawnEnemy>();
         if (spawner == null) Debug.LogError("No RandomSpawner found");
 
         attributes = FindObjectOfType<TankAttributes>();
@@ -78,7 +78,7 @@ public abstract class EnemyBase : MonoBehaviour
         PreventOverlap();
         if (target != null)
         {
-            if (canMove && !radar.isDodging) // Триггер Радара вырубает движение
+            if (canMove && !radar.isDodging) 
             {
                 UpdateDirection();
                 UpdateDistance();

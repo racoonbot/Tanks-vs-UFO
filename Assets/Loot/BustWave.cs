@@ -16,7 +16,6 @@ public class BustWave : Loot
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log(other.gameObject.name);
         if (other.GetComponent<Tank>())
         {
             WaveShot();

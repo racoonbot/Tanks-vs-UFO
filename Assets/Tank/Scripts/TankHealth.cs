@@ -36,7 +36,7 @@ public class TankHealth : MonoBehaviour
     public void TakeDamage()
     {
         health --;
-        Debug.Log("TakeDamage");
+
     }
 
     public void Heal(int healAmount)

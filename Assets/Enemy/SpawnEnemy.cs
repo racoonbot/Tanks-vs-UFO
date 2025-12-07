@@ -2,11 +2,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class RandomSpawner : MonoBehaviour
+public class SpawnEnemy : MonoBehaviour
 {
     public List<GameObject> prefabs = new List<GameObject>();
-    
-    
+
 
     public int Count;
     public LevelManager levelManager;
@@ -36,12 +35,11 @@ public class RandomSpawner : MonoBehaviour
     {
         levelManager = FindObjectOfType<LevelManager>();
         IncreaseMaxCount();
-
     }
 
     private void Update()
     {
-        if (Enemies.Count < Count )
+        if (Enemies.Count < Count)
         {
             EnemySpawned();
             Count--;
@@ -54,13 +52,14 @@ public class RandomSpawner : MonoBehaviour
         {
             GameObject EnemyObject = Instantiate(GetEnemyPrefab(), GetRandomSpawnPosition(), Quaternion.identity);
             Enemies.Add(EnemyObject);
-            EnemyBase e = EnemyObject.GetComponent<EnemyBase>(); 
+            EnemyBase
+                e = EnemyObject.GetComponentInChildren<EnemyBase>(); ///////////////////////////////////////////////
+            /// 
             if (e != null && wallet != null)
             {
                 int rewardCopy = e.reward;
                 e.OnDeathEnemy += () => wallet.AddMoney(rewardCopy);
             }
-            Debug.Log(Enemies.Count);
         }
     }
 
@@ -99,6 +98,4 @@ public class RandomSpawner : MonoBehaviour
     {
         MaxCount = levelManager.level + 1;
     }
-
-    
 }

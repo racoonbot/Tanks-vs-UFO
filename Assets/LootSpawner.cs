@@ -33,7 +33,7 @@ public class LootSpawner : MonoBehaviour
 
     private Vector3 RandomSpawnPoint()
     {
-        return new Vector3(Random.Range(MinSpawnPointX, MaxSpawnPointX), 0f,
+        return new Vector3(Random.Range(MinSpawnPointX, MaxSpawnPointX), 0.5f,
             Random.Range(MinSpawnPointZ, MaxSpawnPointZ));
     }
 }

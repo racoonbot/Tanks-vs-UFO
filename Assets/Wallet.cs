@@ -30,6 +30,7 @@ public class Wallet : MonoBehaviour
 
     public void AddMoney(int reward) //добавляет деньги за врага в течении уровня
     {
+        Debug.Log("reward");
         LevelMoney += reward;
     }
 
