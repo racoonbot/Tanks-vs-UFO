@@ -7,7 +7,7 @@ using UnityEngine;
 public class TankHealth : MonoBehaviour
 {
     public GameObject player;
-    public int health;
+    public float health;
     private TankAttributes attributes;
 
     private void Start()
