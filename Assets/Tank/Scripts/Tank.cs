@@ -12,7 +12,7 @@ public class Tank : MonoBehaviour
     public float rotationSpeed = 5f;
     public Rigidbody rb;
     private bool isForwardDirection;
-    
+    public float currentSpeed;
 
     void Start()
     {
@@ -59,5 +59,7 @@ public class Tank : MonoBehaviour
                 rb.MoveRotation(Quaternion.Euler(0f, rotationSpeed * Time.fixedDeltaTime, 0f) * rb.rotation);
             }
         }
+        currentSpeed = rb.velocity.magnitude;
     }
+    
 }

@@ -56,8 +56,6 @@ public abstract class EnemyBase : MonoBehaviour
         audioSource = FindObjectOfType<Sounds>();
         if (audioSource == null) Debug.LogError("No Sounds found");
         
-       
-
         TakeDamageAmount = attributes.damage;
         OnDeathEnemy += DestroyEnemy;
     }

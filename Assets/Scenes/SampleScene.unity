@@ -3030,7 +3030,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &50112234
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3943,9 +3943,9 @@ RectTransform:
   - {fileID: 1523177026}
   m_Father: {fileID: 131457175}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 228.46, y: -15}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &64598620
@@ -4870,6 +4870,7 @@ GameObject:
   - component: {fileID: 88654626}
   - component: {fileID: 88654625}
   - component: {fileID: 88654624}
+  - component: {fileID: 88654627}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -4939,7 +4940,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 88654625}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 88654627}
+        m_TargetAssemblyTypeName: ShopSlot, Assembly-CSharp
+        m_MethodName: BuyItem
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &88654625
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4978,6 +4991,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 88654622}
   m_CullTransparentMesh: 1
+--- !u!114 &88654627
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 88654622}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2dc3542adcf1361438e4a1958a3e7e01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item: {fileID: 11400000, guid: 8e3292d9422e8fc4fba717febd8caf18, type: 2}
+  player: {fileID: 1229186006}
+  wallet: {fileID: 737112323}
+  text: {fileID: 520564159}
 --- !u!4 &92528008 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1356381714199472493, guid: a5344b98eb8749b48bd7eff8a8c3adae, type: 3}
@@ -13066,11 +13095,11 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
+  m_fontSize: 44.75
   m_fontSizeBase: 36
   m_fontWeight: 400
-  m_enableAutoSizing: 0
-  m_fontSizeMin: 18
+  m_enableAutoSizing: 1
+  m_fontSizeMin: 5
   m_fontSizeMax: 72
   m_fontStyle: 0
   m_HorizontalAlignment: 2
@@ -14682,9 +14711,9 @@ RectTransform:
   - {fileID: 88654623}
   m_Father: {fileID: 1672244125}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 243.03105, y: -89.4}
   m_SizeDelta: {x: 103.1, y: 178.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &385288800
@@ -20314,11 +20343,11 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
+  m_fontSize: 44.75
   m_fontSizeBase: 36
   m_fontWeight: 400
-  m_enableAutoSizing: 0
-  m_fontSizeMin: 18
+  m_enableAutoSizing: 1
+  m_fontSizeMin: 5
   m_fontSizeMax: 72
   m_fontStyle: 0
   m_HorizontalAlignment: 2
@@ -29739,7 +29768,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 550f32f7bbfdfc948879668f62c35c7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TotalMoney: 0
 --- !u!1 &737302236
 GameObject:
   m_ObjectHideFlags: 0
@@ -31598,9 +31626,9 @@ RectTransform:
   - {fileID: 738382094}
   m_Father: {fileID: 131457175}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 707.04004, y: -15}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &771655398
@@ -33284,6 +33312,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3221976788240441153, guid: c67ed6360e72a9848a4bc876f41e5c51, type: 3}
   m_PrefabInstance: {fileID: 1338694984}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &833718233 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4229387607868218993, guid: 399ef0805a16bc54faa75a5a49f7d8de, type: 3}
+  m_PrefabInstance: {fileID: 1248465586}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &834194436
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -34773,6 +34812,7 @@ MonoBehaviour:
   force: 0
   rotationSpeed: 50
   rb: {fileID: 872686887}
+  currentSpeed: 0
 --- !u!1001 &875188755
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -35112,6 +35152,7 @@ GameObject:
   - component: {fileID: 888101737}
   - component: {fileID: 888101736}
   - component: {fileID: 888101735}
+  - component: {fileID: 888101738}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -35181,7 +35222,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 888101736}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 888101738}
+        m_TargetAssemblyTypeName: ShopSlot, Assembly-CSharp
+        m_MethodName: BuyItem
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &888101736
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -35220,6 +35273,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 888101733}
   m_CullTransparentMesh: 1
+--- !u!114 &888101738
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 888101733}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2dc3542adcf1361438e4a1958a3e7e01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item: {fileID: 11400000, guid: 28ab92f03b933d44ca827707db8175d9, type: 2}
+  player: {fileID: 1229186006}
+  wallet: {fileID: 737112323}
+  text: {fileID: 347608775}
 --- !u!1 &888238050
 GameObject:
   m_ObjectHideFlags: 0
@@ -47413,11 +47482,11 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
+  m_fontSize: 44.75
   m_fontSizeBase: 36
   m_fontWeight: 400
-  m_enableAutoSizing: 0
-  m_fontSizeMin: 18
+  m_enableAutoSizing: 1
+  m_fontSizeMin: 5
   m_fontSizeMax: 72
   m_fontStyle: 0
   m_HorizontalAlignment: 2
@@ -51565,9 +51634,9 @@ RectTransform:
   - {fileID: 1796572955}
   m_Father: {fileID: 1672244125}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 395.13104, y: -89.4}
   m_SizeDelta: {x: 103.1, y: 178.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1294417310
@@ -63688,9 +63757,9 @@ RectTransform:
   - {fileID: 1421535378}
   m_Father: {fileID: 131457175}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 467.75, y: -15}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1618602492
@@ -69578,9 +69647,9 @@ RectTransform:
   - {fileID: 888101734}
   m_Father: {fileID: 1672244125}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 90.931046, y: -89.4}
   m_SizeDelta: {x: 103.1, y: 178.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1774641638
@@ -70759,6 +70828,7 @@ GameObject:
   - component: {fileID: 1796572958}
   - component: {fileID: 1796572957}
   - component: {fileID: 1796572956}
+  - component: {fileID: 1796572959}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -70828,7 +70898,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1796572957}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1796572959}
+        m_TargetAssemblyTypeName: ShopSlot, Assembly-CSharp
+        m_MethodName: BuyItem
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1796572957
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -70867,6 +70949,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1796572954}
   m_CullTransparentMesh: 1
+--- !u!114 &1796572959
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1796572954}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2dc3542adcf1361438e4a1958a3e7e01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item: {fileID: 11400000, guid: 1df8f7eff84dabe46881ba2c76ed5be0, type: 2}
+  player: {fileID: 1229186006}
+  wallet: {fileID: 737112323}
+  text: {fileID: 1214255271}
 --- !u!1 &1800512202
 GameObject:
   m_ObjectHideFlags: 0
@@ -80373,6 +80471,7 @@ GameObject:
   - component: {fileID: 2040766791}
   - component: {fileID: 2040766792}
   - component: {fileID: 2040766793}
+  - component: {fileID: 2040766794}
   m_Layer: 5
   m_Name: InGameUi
   m_TagString: Untagged
@@ -80519,6 +80618,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tankHealth: {fileID: 872686888}
   text: {fileID: 1859630984}
+--- !u!114 &2040766794
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2040766785}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc1f26afd2d2e8741af0e79ce76d1dd4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tank: {fileID: 872686889}
+  text: {fileID: 833718233}
 --- !u!1 &2040990530
 GameObject:
   m_ObjectHideFlags: 0

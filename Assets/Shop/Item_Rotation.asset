@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53c61069b82aa6f48aa6219c785d61fc, type: 3}
   m_Name: Item_Rotation
   m_EditorClassIdentifier: 
-  title: 
-  price: 0
+  title: RotationSpeed
+  price: 21
   type: 0
-  amount: 0
+  amount: 2
