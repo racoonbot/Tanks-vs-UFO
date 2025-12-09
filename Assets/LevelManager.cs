@@ -24,20 +24,20 @@ public class LevelManager : MonoBehaviour
         showMoney = FindObjectOfType<ShowMoney>();
         spawner = FindObjectOfType<SpawnEnemy>();
         canvas = FindObjectOfType<ShowCanvas>();
-        // gameData = FindObjectOfType<GameData>();
+        gameData = FindObjectOfType<GameData>();
 
-        if (canvas != null && showMoney != null)
+        if (canvas != null && showMoney != null && gameData != null)
         {
             OnLevelIncreased += canvas.ActivateCanvas;
             OnLevelIncreased += showMoney.UpdateText;
             OnLevelStarted += showLevel.UpdateText;
+            OnLevelStarted += gameData.SaveData;
         }
         else
         {
             Debug.Log("canvas == null || showMoney == null");
         }
 
-        // gameData.SaveData(); // сохраняем данные первого уровня при старте
     }
 
     private void Update()
@@ -48,8 +48,6 @@ public class LevelManager : MonoBehaviour
             levelIncreased = true;
             OnLevelIncreased?.Invoke();
 
-            // Здесь можно добавить вызов обновления максимального количества врагов
-            // spawner.IncreaseMaxCount();
         }
         else if (spawner.Enemies.Count > 0)
         {
@@ -65,29 +63,22 @@ public class LevelManager : MonoBehaviour
             OnLevelIncreased -= canvas.ActivateCanvas;
             OnLevelIncreased -= showMoney.UpdateText;
             OnLevelStarted -= showLevel.UpdateText;
+            OnLevelStarted -= gameData.SaveData;
         }
     }
 
-    // public void RestartLevel() пока не придумал
-    // {
-    //     canvas.DeactivateCanvas();
-    //     Debug.Log("Restarting level");
-    //     level--; 
-    //     levelIncreased = false;
-    //     // spawner.ResetSpawner(); // Предполагается, что вы добавите этот метод в класс RandomSpawner
-    //     UpdateSpawnerMaxCount(); // Обновляем максимальное количество врагов
-    // }
+  
 
     public void NextLevel()
     {
         OnLevelStarted?.Invoke();
         canvas.DeactivateCanvas();
-        // level++; // Увеличьте уровень здесь
-        spawner.IncreaseMaxCount(); // Здесь обновляется максимальное количество врагов
+        spawner.IncreaseMaxCount(); 
     }
 
     public void ResetLevel()
     {
+        gameData.LoadData();
         canvas.DeactivateCanvas();
         spawner.IncreaseMaxCount();
         spawner.EnemySpawned();
