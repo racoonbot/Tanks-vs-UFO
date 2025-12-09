@@ -9,14 +9,14 @@ public class LevelManager : MonoBehaviour
     public bool levelIncreased;
 
     private ShowMoney showMoney;
+    public ShowNumLevel showLevel;
 
-
-    private GameData gameData; // Для сохранения данных при старте уровня!
+    private GameData gameData; // Для сохранения данных при старте уровня! Возможно уже не нужно )))). Переделывал
+    private ShowCanvas canvas;
 
 
     public event Action OnLevelIncreased;
     public event Action OnLevelStarted;
-    private ShowCanvas canvas;
 
 
     private void Start()
@@ -30,7 +30,7 @@ public class LevelManager : MonoBehaviour
         {
             OnLevelIncreased += canvas.ActivateCanvas;
             OnLevelIncreased += showMoney.UpdateText;
-            // OnLevelStarted += gameData.SaveData;
+            OnLevelStarted += showLevel.UpdateText;
         }
         else
         {
@@ -64,8 +64,7 @@ public class LevelManager : MonoBehaviour
         {
             OnLevelIncreased -= canvas.ActivateCanvas;
             OnLevelIncreased -= showMoney.UpdateText;
-
-            // OnLevelStarted -= gameData.SaveData;
+            OnLevelStarted -= showLevel.UpdateText;
         }
     }
 
