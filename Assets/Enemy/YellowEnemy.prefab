@@ -289,16 +289,16 @@ MonoBehaviour:
   reward: 2
   bullet: {fileID: 6946249191291192640, guid: 0aca4f16fc54d2a4a897500feb909954, type: 3}
   bulletSpawn: {fileID: 2139061069447598166}
-  bulletSpeed: 4
+  bulletSpeed: 8
   shotPeriod: 0
   currentShotPeriod: 2
   radar: {fileID: 7914898596418116984}
   blink: {fileID: 0}
-  MaxSpeed: 2
+  MaxSpeed: 1
   audioSource: {fileID: 0}
   target: {fileID: 0}
   isAttacking: 0
-  canMove: 1
+  canMove: 0
   canShoot: 1
   minDistanceToEnemy: 2
   particles: {fileID: 4358913821432351266}

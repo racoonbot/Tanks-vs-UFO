@@ -409,12 +409,12 @@ MonoBehaviour:
   reward: 3
   bullet: {fileID: 6946249191291192640, guid: 0aca4f16fc54d2a4a897500feb909954, type: 3}
   bulletSpawn: {fileID: 3263541543847338002}
-  bulletSpeed: 3
+  bulletSpeed: 6
   shotPeriod: 0
-  currentShotPeriod: 3
+  currentShotPeriod: 2
   radar: {fileID: 8177319417097481681}
   blink: {fileID: 0}
-  MaxSpeed: 4
+  MaxSpeed: 2
   audioSource: {fileID: 0}
   target: {fileID: 0}
   isAttacking: 0

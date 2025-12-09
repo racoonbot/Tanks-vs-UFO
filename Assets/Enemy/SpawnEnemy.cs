@@ -5,61 +5,70 @@ using Random = UnityEngine.Random;
 public class SpawnEnemy : MonoBehaviour
 {
     public List<GameObject> prefabs = new List<GameObject>();
-
-
-    public int Count;
+    public List<GameObject> Enemies = new List<GameObject>(); 
+    
     public LevelManager levelManager;
-
     public Wallet wallet;
 
-    private int _maxCount;
 
-    public int MaxCount
-    {
-        get => _maxCount;
-        set
-        {
-            _maxCount = value;
-            Count = _maxCount;
-        }
-    }
+    public int MaxCount; 
 
     public float MaxSpawnPointX = 28f;
     public float MaxSpawnPointZ = 28f;
     public float MinSpawnPointX = -28f;
     public float MinSpawnPointZ = -28f;
 
-    public List<GameObject> Enemies = new List<GameObject>();
-
     void Start()
     {
         levelManager = FindObjectOfType<LevelManager>();
-        IncreaseMaxCount();
+
+        StartWave();
     }
 
-    private void Update()
+
+    public void StartWave()
     {
-        if (Enemies.Count < Count)
+        CalculateEnemyCount();
+        SpawnAllEnemies();
+    }
+
+    private void CalculateEnemyCount()
+    {
+        MaxCount = levelManager.level + 1;
+    }
+
+    private void SpawnAllEnemies()
+    {
+
+        Enemies.RemoveAll(item => item == null); 
+
+        for (int i = 0; i < MaxCount; i++)
         {
-            EnemySpawned();
-            Count--;
+            CreateEnemy();
         }
     }
 
-    public void EnemySpawned()
+    private void CreateEnemy()
     {
-        if (Enemies.Count < MaxCount)
+        GameObject newEnemy = Instantiate(GetEnemyPrefab(), GetRandomSpawnPosition(), Quaternion.identity);
+        Enemies.Add(newEnemy);
+        EnemyBase e = newEnemy.GetComponentInChildren<EnemyBase>();
+        if (e != null && wallet != null)
         {
-            GameObject EnemyObject = Instantiate(GetEnemyPrefab(), GetRandomSpawnPosition(), Quaternion.identity);
-            Enemies.Add(EnemyObject);
-            EnemyBase
-                e = EnemyObject.GetComponentInChildren<EnemyBase>(); ///////////////////////////////////////////////
-            /// 
-            if (e != null && wallet != null)
+            int rewardCopy = e.reward + levelManager.level;
+            e.OnDeathEnemy += () => 
             {
-                int rewardCopy = e.reward + levelManager.level; //Установил вознграждение + номер уровня
-                e.OnDeathEnemy += () => wallet.AddMoney(rewardCopy);
-            }
+                wallet.AddMoney(rewardCopy);
+                RemoveEnemyFromList(newEnemy);
+            };
+        }
+    }
+
+    public void RemoveEnemyFromList(GameObject enemy)
+    {
+        if(Enemies.Contains(enemy))
+        {
+            Enemies.Remove(enemy);
         }
     }
 
@@ -75,27 +84,11 @@ public class SpawnEnemy : MonoBehaviour
         int simpleEnemyChance = levelManager.level + 1;
         int attackEnemyChance = levelManager.level + 5;
         int moveAttackEnemyChance = levelManager.level + 10;
-
         int totalChance = simpleEnemyChance + attackEnemyChance + moveAttackEnemyChance;
-
         int randomValue = Random.Range(0, totalChance);
 
-        if (randomValue < simpleEnemyChance)
-        {
-            return prefabs[0];
-        }
-        else if (randomValue < simpleEnemyChance + attackEnemyChance)
-        {
-            return prefabs[1];
-        }
-        else
-        {
-            return prefabs[2];
-        }
-    }
-
-    public void IncreaseMaxCount()
-    {
-        MaxCount = levelManager.level + 1;
+        if (randomValue < simpleEnemyChance) return prefabs[0];
+        else if (randomValue < simpleEnemyChance + attackEnemyChance) return prefabs[1];
+        else return prefabs[2];
     }
 }
