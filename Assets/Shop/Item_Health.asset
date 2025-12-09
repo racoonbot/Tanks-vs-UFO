@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Item_Health
   m_EditorClassIdentifier: 
   title: MaxHealth
-  price: 12
+  price: 5
   type: 1
   amount: 5

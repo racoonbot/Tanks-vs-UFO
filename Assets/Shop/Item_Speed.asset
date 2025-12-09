@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Item_Speed
   m_EditorClassIdentifier: 
   title: MaxSpeed
-  price: 44
+  price: 6
   type: 2
   amount: 50

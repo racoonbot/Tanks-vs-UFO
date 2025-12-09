@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Item_Rotation
   m_EditorClassIdentifier: 
   title: RotationSpeed
-  price: 21
+  price: 4
   type: 0
   amount: 2
