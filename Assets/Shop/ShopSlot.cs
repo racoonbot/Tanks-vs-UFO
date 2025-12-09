@@ -45,7 +45,7 @@ public class ShopSlot : MonoBehaviour
     public void UpdateText()
     {
         // В тексте тоже показываем не базовую, а актуальную (вычисленную) цену
-        text.text = $"{item.type}: {GetCurrentPrice()}";
+        text.text = $"{GetCurrentPrice()}";
     }
 
     // Вспомогательный метод, чтобы считать цену в одном месте
