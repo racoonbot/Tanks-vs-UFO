@@ -57,7 +57,7 @@ public class SpawnEnemy : MonoBehaviour
             /// 
             if (e != null && wallet != null)
             {
-                int rewardCopy = e.reward;
+                int rewardCopy = e.reward + levelManager.level; //Установил вознграждение + номер уровня
                 e.OnDeathEnemy += () => wallet.AddMoney(rewardCopy);
             }
         }

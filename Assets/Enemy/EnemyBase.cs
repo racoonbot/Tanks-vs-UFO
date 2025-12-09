@@ -10,9 +10,12 @@ public abstract class EnemyBase : MonoBehaviour
     private SpawnEnemy spawner;
 
     public int reward;
+    
 
     private int TakeDamageAmount;
     private TankAttributes attributes;
+    
+   
 
 
     public GameObject bullet;

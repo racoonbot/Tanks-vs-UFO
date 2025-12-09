@@ -24,20 +24,20 @@ public class LevelManager : MonoBehaviour
         showMoney = FindObjectOfType<ShowMoney>();
         spawner = FindObjectOfType<SpawnEnemy>();
         canvas = FindObjectOfType<ShowCanvas>();
-        gameData = FindObjectOfType<GameData>();
+        // gameData = FindObjectOfType<GameData>();
 
         if (canvas != null && showMoney != null)
         {
             OnLevelIncreased += canvas.ActivateCanvas;
             OnLevelIncreased += showMoney.UpdateText;
-            OnLevelStarted += gameData.SaveData;
+            // OnLevelStarted += gameData.SaveData;
         }
         else
         {
             Debug.Log("canvas == null || showMoney == null");
         }
 
-        gameData.SaveData(); // сохраняем данные первого уровня при старте
+        // gameData.SaveData(); // сохраняем данные первого уровня при старте
     }
 
     private void Update()
@@ -65,7 +65,7 @@ public class LevelManager : MonoBehaviour
             OnLevelIncreased -= canvas.ActivateCanvas;
             OnLevelIncreased -= showMoney.UpdateText;
 
-            OnLevelStarted -= gameData.SaveData;
+            // OnLevelStarted -= gameData.SaveData;
         }
     }
 
