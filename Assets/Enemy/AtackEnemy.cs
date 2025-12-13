@@ -7,7 +7,8 @@ public class AtackEnemy : EnemyBase
     public ParticleSystem particles;
     public Transform SpawnPoint;
 
-    
+    public override string NickName => "Желтый";
+    public override Color MyColor => Color.yellow;
     
     private void OnDestroy()
     {
