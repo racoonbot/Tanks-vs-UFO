@@ -27,15 +27,10 @@ public class ChatController : MonoBehaviour
     // Теперь метод знает, что он должен получить эти данные при вызове.
     public void ShowEnemyHitMessage(string nickName, Color color)
     {
-        // Теперь переменные nickName и color существуют, и мы передаем их в генератор
-        // Убедитесь, что в скрипте ChatMessageGenerator метод называется Generate (или Generator) 
-        // и тоже принимает (string, Color)
-        string text = generator.Generate(nickName, color); 
-        
+        string text = generator.Generate(nickName, color);
+        if (string.IsNullOrEmpty(text)) return;
         AddMessageToChat(text);
     }
-    // -------------------------
-
     private void AddMessageToChat(string text)
     {
         GameObject newMsg = Instantiate(messagePrefab, contentContainer);
