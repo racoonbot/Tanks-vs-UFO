@@ -48,7 +48,11 @@ public class ChatController : MonoBehaviour
 
     System.Collections.IEnumerator AutoScroll()
     {
-        yield return new WaitForEndOfFrame();
-        scrollRect.verticalNormalizedPosition = 0f;
+        yield return new WaitForEndOfFrame(); 
+        Canvas.ForceUpdateCanvases(); 
+        scrollRect.verticalNormalizedPosition = 0f; 
+            //Дополнительно
+        yield return new WaitForEndOfFrame(); 
+        scrollRect.verticalNormalizedPosition = 0f; 
     }
 }
