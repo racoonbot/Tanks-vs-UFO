@@ -13,7 +13,7 @@ public class BustTime : Loot
         {
             foreach (GameObject enemyObj in spawner.Enemies)
             {
-                EnemyBase enemy = enemyObj.GetComponent<EnemyBase>();
+                EnemyBase enemy = enemyObj.GetComponentInChildren<EnemyBase>();
                 if (enemy != null) enemy.MaxSpeed = 0f;
             }
         }
@@ -22,7 +22,7 @@ public class BustTime : Loot
         {
             foreach (GameObject enemyObj in spawner.Enemies)
             {
-                EnemyBase enemy = enemyObj.GetComponent<EnemyBase>();
+                EnemyBase enemy = enemyObj.GetComponentInChildren<EnemyBase>();
                 if (enemy != null) enemy.MaxSpeed = 3f;
             }
         }
