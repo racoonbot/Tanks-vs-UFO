@@ -5,10 +5,10 @@ using TMPro;
 
 public class ChatController : MonoBehaviour
 {
-    public static ChatController Instance; // 1. Делаем доступ глобальным
+    public static ChatController Instance;
 
     [Header("Ссылки")]
-    public ChatMessageGenerator generator; // Ссылка на ваш генератор
+    public ChatMessageGenerator generator;
     public Transform contentContainer;
     public GameObject messagePrefab;
     public ScrollRect scrollRect;
@@ -22,14 +22,19 @@ public class ChatController : MonoBehaviour
         else Destroy(gameObject);
     }
 
-    public void ShowEnemyHitMessage()
+    // --- ИСПРАВЛЕНИЕ ЗДЕСЬ ---
+    // Добавляем (string nickName, Color color) в скобки.
+    // Теперь метод знает, что он должен получить эти данные при вызове.
+    public void ShowEnemyHitMessage(string nickName, Color color)
     {
-        // 1. Просим генератор дать нам фразу
-        string text = generator.Generate(); 
+        // Теперь переменные nickName и color существуют, и мы передаем их в генератор
+        // Убедитесь, что в скрипте ChatMessageGenerator метод называется Generate (или Generator) 
+        // и тоже принимает (string, Color)
+        string text = generator.Generate(nickName, color); 
         
-        // 2. Выводим её в чат
         AddMessageToChat(text);
     }
+    // -------------------------
 
     private void AddMessageToChat(string text)
     {
@@ -51,7 +56,7 @@ public class ChatController : MonoBehaviour
         yield return new WaitForEndOfFrame(); 
         Canvas.ForceUpdateCanvases(); 
         scrollRect.verticalNormalizedPosition = 0f; 
-            //Дополнительно
+        
         yield return new WaitForEndOfFrame(); 
         scrollRect.verticalNormalizedPosition = 0f; 
     }

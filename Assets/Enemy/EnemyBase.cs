@@ -9,6 +9,15 @@ public abstract class EnemyBase : MonoBehaviour
     public Action OnDeathEnemy;
     private SpawnEnemy spawner;
 
+    
+    
+    
+    public virtual string NickName => "Неизвестный";
+    public virtual Color MyColor => Color.white;
+    
+    
+    
+    
     public int reward;
 
 
@@ -238,7 +247,7 @@ public abstract class EnemyBase : MonoBehaviour
     {
         if (ChatController.Instance != null)
         {
-            ChatController.Instance.ShowEnemyHitMessage();
+            ChatController.Instance.ShowEnemyHitMessage(NickName, MyColor);
         }
         
         blink.StartBlinking();

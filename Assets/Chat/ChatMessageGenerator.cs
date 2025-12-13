@@ -1,5 +1,4 @@
 using UnityEngine;
-using System.Collections.Generic;
 
 public class ChatMessageGenerator : MonoBehaviour
 {
@@ -12,18 +11,16 @@ public class ChatMessageGenerator : MonoBehaviour
         "AFK 5 мин",
         "Куплю меч +10",
         "Кто в пати?",
-        "GG WP"
+        "GG WP",
+        "Ай, больно!",
+        "Это был мисклик!",
+        "Лаги!"
     };
 
-    private string[] nicknames = new string[] { "Зеленый", "Желтый", "Красный"};
-
-    public string Generate()
+    public string Generate(string nick, Color color)
     {
-        string nick = nicknames[Random.Range(0, nicknames.Length)];
         string msg = phrases[Random.Range(0, phrases.Length)];
-        string colorHex = ColorUtility.ToHtmlStringRGB(Random.ColorHSV(0f, 1f, 1f, 1f, 0.5f, 1f));
-
-        // Возвращаем строку с раскрашенным ником (TMP поддерживает HTML теги)
+        string colorHex = ColorUtility.ToHtmlStringRGB(color);
         return $"<color=#{colorHex}><b>{nick}:</b></color> {msg}";
     }
 }

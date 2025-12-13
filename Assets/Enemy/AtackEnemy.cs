@@ -7,6 +7,8 @@ public class AtackEnemy : EnemyBase
     public ParticleSystem particles;
     public Transform SpawnPoint;
 
+    
+    
     private void OnDestroy()
     {
         ParticleSystem particleInstance = Instantiate(particles, SpawnPoint.position, Quaternion.identity);

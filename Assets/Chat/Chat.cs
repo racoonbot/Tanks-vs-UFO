@@ -22,6 +22,6 @@ public class Chat : MonoBehaviour
 
     public void SendMessages()
     {
-        chatText.text = MessageGenerator.Generate();
+        // chatText.text = MessageGenerator.Generate();
     }
 }
