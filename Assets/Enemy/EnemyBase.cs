@@ -10,12 +10,10 @@ public abstract class EnemyBase : MonoBehaviour
     private SpawnEnemy spawner;
 
     public int reward;
-    
+
 
     private int TakeDamageAmount;
     private TankAttributes attributes;
-    
-   
 
 
     public GameObject bullet;
@@ -58,18 +56,17 @@ public abstract class EnemyBase : MonoBehaviour
 
         audioSource = FindObjectOfType<Sounds>();
         if (audioSource == null) Debug.LogError("No Sounds found");
-        
+
         TakeDamageAmount = attributes.damage;
         OnDeathEnemy += DestroyEnemy;
     }
 
     void Start()
     {
-        
         rb = GetComponent<Rigidbody>();
         target = FindObjectOfType<Tank>();
         retreatDistance = Random.Range(3f, 10f);
-        
+
         shotPeriod = currentShotPeriod;
         allMobs = new List<EnemyBase>(FindObjectsOfType<EnemyBase>());
     }
@@ -79,7 +76,7 @@ public abstract class EnemyBase : MonoBehaviour
         PreventOverlap();
         if (target != null)
         {
-            if (canMove && !radar.isDodging) 
+            if (canMove && !radar.isDodging)
             {
                 UpdateDirection();
                 UpdateDistance();
@@ -109,7 +106,8 @@ public abstract class EnemyBase : MonoBehaviour
         }
     }
 
-    private void PreventOverlap()
+
+    private void PreventOverlap() // чтобы мобы отталкивались друг от друга
     {
         foreach (var otherMob in allMobs)
         {
@@ -131,6 +129,44 @@ public abstract class EnemyBase : MonoBehaviour
                     }
                 }
             }
+        }
+    }
+
+    //Отталкивание от забора
+    private void OnTriggerStay(Collider other)
+    {
+        // Проверяем, что это именно стена (по вашему тегу)
+        if (other.CompareTag("Wall"))
+        {
+            // 1. Ищем ближайшую точку на поверхности стены
+            Vector3 closestPoint = other.ClosestPoint(transform.position);
+
+            // 2. Вычисляем вектор отталкивания (ОТ стены К врагу)
+            Vector3 pushDirection = transform.position - closestPoint;
+
+            // ЗАЩИТА: Если враг уже глубоко внутри стены, closestPoint может заглючить.
+            // В этом случае толкаем его просто от центра стены.
+            if (pushDirection.sqrMagnitude < 0.001f)
+            {
+                pushDirection = transform.position - other.transform.position;
+            }
+
+            // Убираем высоту (Y), чтобы враг не взлетал в небо
+            pushDirection.y = 0;
+            pushDirection.Normalize();
+
+            // 3. Применяем отталкивание
+            // Используем ту же логику Lerp, что и у вас, но с множителем силы
+            float wallRepelForce = 3.0f; // Стена должна отталкивать сильнее, чем другие мобы!
+
+            Vector3 targetPosition = transform.position + pushDirection * wallRepelForce;
+
+            // Плавное, но сильное перемещение
+            transform.position = Vector3.Lerp(
+                transform.position,
+                targetPosition,
+                MaxSpeed * 2 * Time.deltaTime // Умножаем скорость на 2 для резкости
+            );
         }
     }
 
@@ -179,6 +215,11 @@ public abstract class EnemyBase : MonoBehaviour
         }
     }
 
+    // public Vector3 GetRandomTargetPosition()
+    // {
+    //     return new Vector3(Random.Range(-5f, 5f), 0f, Random.Range(-5f, 5f));
+    // }
+
     public void UpdateDistance()
     {
         targetPos = target.transform.position;
@@ -209,18 +250,12 @@ public abstract class EnemyBase : MonoBehaviour
     public void DestroyEnemy()
     {
         audioSource.source[2].Play();
-
-        // Получаем родительский объект
         GameObject parent = transform.parent.gameObject;
-
-        // Убираем родительский объект из списка
         if (spawner.Enemies.Contains(parent))
         {
             spawner.Enemies.Remove(parent);
         }
 
-        // Уничтожаем родительский объект
         Destroy(parent);
     }
-
 }

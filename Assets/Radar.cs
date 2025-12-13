@@ -34,6 +34,7 @@ public class Radar : MonoBehaviour
                 isDodging = true;
             }
         }
+       
     }
 
     private void ChangePosition()

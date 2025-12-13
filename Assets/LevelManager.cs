@@ -4,7 +4,7 @@ using UnityEngine;
 public class LevelManager : MonoBehaviour
 {
     private SpawnEnemy spawner;
-
+    private LootSpawner lootSpawner;
     public int level = 1;
     public bool levelIncreased; 
 
@@ -22,13 +22,15 @@ public class LevelManager : MonoBehaviour
         spawner = FindObjectOfType<SpawnEnemy>();
         canvas = FindObjectOfType<ShowCanvas>();
         gameData = FindObjectOfType<GameData>();
+        lootSpawner =  FindObjectOfType<LootSpawner>();
 
-        if (canvas != null && showMoney != null && gameData != null)
+        if (canvas != null && showMoney != null && gameData != null && lootSpawner != null)
         {
             OnLevelIncreased += canvas.ActivateCanvas;
             OnLevelIncreased += showMoney.UpdateText;
             OnLevelStarted += showLevel.UpdateText;
             OnLevelStarted += gameData.SaveData;
+            OnLevelStarted += lootSpawner.LootSpawn;
         }
     }
 
@@ -59,6 +61,7 @@ public class LevelManager : MonoBehaviour
             OnLevelIncreased -= showMoney.UpdateText;
             OnLevelStarted -= showLevel.UpdateText;
             OnLevelStarted -= gameData.SaveData;
+            OnLevelStarted -= lootSpawner.LootSpawn;
         }
     }
     public void NextLevel()
