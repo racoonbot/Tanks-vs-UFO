@@ -236,6 +236,11 @@ public abstract class EnemyBase : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
+        if (ChatController.Instance != null)
+        {
+            ChatController.Instance.ShowEnemyHitMessage();
+        }
+        
         blink.StartBlinking();
         Health -= damage;
         if (Health > 0)
@@ -258,4 +263,8 @@ public abstract class EnemyBase : MonoBehaviour
 
         Destroy(parent);
     }
+
+    public virtual void SendMessages()  {}
+  
+
 }
