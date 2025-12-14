@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Wallet : MonoBehaviour
 {
-    // public int TotalMoney;
+    public int totalMoney;
 
     public event Action<int> OnLevelMoneyChange;
     
@@ -31,6 +31,7 @@ public class Wallet : MonoBehaviour
     public void AddMoney(int reward) 
     {
         LevelMoney += reward;
+        totalMoney  += reward;
     }
 
 }

@@ -10,7 +10,7 @@ public class TankHealth : MonoBehaviour
     public float health;
     private TankAttributes attributes;
     
-    public event Action OnDeathPlayer;
+    public Action OnDeathPlayer;
 
     private void Start()
     {
@@ -48,6 +48,7 @@ public class TankHealth : MonoBehaviour
 
     public void Die()
     {
+        Debug.Log("Die method called!"); 
         OnDeathPlayer?.Invoke();
         Destroy(player.gameObject);
     }

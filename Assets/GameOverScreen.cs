@@ -2,12 +2,14 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class GameOverScreen : MonoBehaviour
 {
     private TankHealth _tankHealth;
     public GameObject gameOverScreen;
-    // Start is called before the first frame update
+    public GameObject inGameUi;
+
     void Start()
     {
         gameOverScreen.gameObject.SetActive(false);
@@ -24,5 +26,6 @@ public class GameOverScreen : MonoBehaviour
     private void ShowGameOverScreen()
     {
         gameOverScreen.gameObject.SetActive(true);
+        inGameUi.gameObject.SetActive(false);
     }
 }

@@ -98,7 +98,7 @@ public abstract class EnemyBase : MonoBehaviour
         }
         else
         {
-            Debug.Log("target == null");
+            return;
         }
     }
 

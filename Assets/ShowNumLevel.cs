@@ -9,6 +9,8 @@ public class ShowNumLevel : MonoBehaviour
     private void Start()
     {
         levelManager = FindObjectOfType<LevelManager>();
+        if (levelManager == null)
+            Debug.Log("levelManager == null");
         UpdateText();
     }
 
