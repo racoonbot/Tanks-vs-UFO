@@ -48,7 +48,6 @@ public class TankHealth : MonoBehaviour
 
     public void Die()
     {
-        Debug.Log("Die method called!"); 
         OnDeathPlayer?.Invoke();
         Destroy(player.gameObject);
     }

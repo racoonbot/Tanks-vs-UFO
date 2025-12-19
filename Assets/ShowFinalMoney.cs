@@ -22,19 +22,17 @@ public class ShowFinalMoney : MonoBehaviour
         {
             Debug.Log("No tank health");
         }
-
-        Debug.Log("Awake");
     }
 
     private void OnDisable()
     {
         _tankHealth.OnDeathPlayer -= UpdateText;
-        Debug.Log("OnDisable");
+
     }
 
     private void UpdateText()
     {
-        Debug.Log("UpdateText method called!");
+
         finalMoneyText.text = $"Монет заработано:" + wallet.totalMoney.ToString();
     }
 }

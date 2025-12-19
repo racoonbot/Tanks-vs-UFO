@@ -9,7 +9,6 @@ public class TankAttributes : MonoBehaviour
 
     private void Start()
     {
-        Debug.Log("🏁 СТАРТ: Пытаюсь загрузить сохранения...");
         LoadStats();
     }
 
@@ -41,7 +40,7 @@ public class TankAttributes : MonoBehaviour
 
     private void LoadStats()
     {
-        // Проверяем, есть ли вообще сохранения
+
         if (PlayerPrefs.HasKey("Value_MaxHealth"))
         {
             float savedHealth = PlayerPrefs.GetFloat("Value_MaxHealth");
@@ -50,7 +49,7 @@ public class TankAttributes : MonoBehaviour
         }
         else
         {
-            Debug.Log("❌ Нет сохранения для Здоровья. Использую стандартное.");
+            return;
         }
 
         if (PlayerPrefs.HasKey("Value_MaxSpeed"))

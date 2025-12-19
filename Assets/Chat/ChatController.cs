@@ -22,9 +22,6 @@ public class ChatController : MonoBehaviour
         else Destroy(gameObject);
     }
 
-    // --- ИСПРАВЛЕНИЕ ЗДЕСЬ ---
-    // Добавляем (string nickName, Color color) в скобки.
-    // Теперь метод знает, что он должен получить эти данные при вызове.
     public void ShowEnemyHitMessage(string nickName, Color color)
     {
         string text = generator.Generate(nickName, color);
