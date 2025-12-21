@@ -412,10 +412,10 @@ MonoBehaviour:
   bulletSpawn: {fileID: 3263541543847338002}
   bulletSpeed: 6
   shotPeriod: 0
-  currentShotPeriod: 2
+  currentShotPeriod: 1.5
   radar: {fileID: 8177319417097481681}
   blink: {fileID: 0}
-  MaxSpeed: 2
+  MaxSpeed: 2.5
   audioSource: {fileID: 0}
   target: {fileID: 0}
   isAttacking: 0

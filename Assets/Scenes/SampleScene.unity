@@ -32067,7 +32067,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d343580209284d3479490ce995bcae13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LootAmount: 3
+  amountPerLevel: 3
   loot:
   - {fileID: 5244224071313480534, guid: cdfef72ffee85d0438bf67fcd34d33ff, type: 3}
   - {fileID: 8171016954129477501, guid: fa505ea45513511479bcf5d752b89218, type: 3}
@@ -32634,7 +32634,7 @@ Rigidbody:
   m_GameObject: {fileID: 872686882}
   serializedVersion: 4
   m_Mass: 1
-  m_Drag: 5
+  m_Drag: 2
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
@@ -44407,8 +44407,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e74f78064368a14097b3b59d09511f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxSpeed: 500
-  maxHealth: 100
+  maxSpeed: 250
+  maxHealth: 12
   turretRotationSpeed: 20
   damage: 1
 --- !u!114 &1229186007

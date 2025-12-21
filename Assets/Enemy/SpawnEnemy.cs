@@ -81,14 +81,22 @@ public class SpawnEnemy : MonoBehaviour
 
     private GameObject GetEnemyPrefab()
     {
-        int simpleEnemyChance = levelManager.level + 1;
-        int attackEnemyChance = levelManager.level + 5;
-        int moveAttackEnemyChance = levelManager.level + 10;
-        int totalChance = simpleEnemyChance + attackEnemyChance + moveAttackEnemyChance;
+        int level = levelManager.level;
+
+        // Веса вероятностей (настроены для плавного роста сложности)
+        int simpleChance = Mathf.Max(100 - (level * 7), 20);              // Зеленый: много в начале, минимум 20% в конце
+        int attackChance = Mathf.Clamp(level * 5, 0, 50);                // Желтый: начинает расти сразу, кап на 50%
+        int moveAttackChance = level < 4 ? 0 : Mathf.Clamp((level - 3) * 10, 0, 60); // Красный: появляется с 4 уровня
+
+        int totalChance = simpleChance + attackChance + moveAttackChance;
         int randomValue = Random.Range(0, totalChance);
 
-        if (randomValue < simpleEnemyChance) return prefabs[0];
-        else if (randomValue < simpleEnemyChance + attackEnemyChance) return prefabs[1];
-        else return prefabs[2];
+        if (randomValue < simpleChance) 
+            return prefabs[0]; // Зеленый
+    
+        if (randomValue < simpleChance + attackChance) 
+            return prefabs[1]; // Желтый
+        
+        return prefabs[2]; // Красный
     }
 }

@@ -519,7 +519,7 @@ MonoBehaviour:
   currentShotPeriod: 2
   radar: {fileID: 4830103650679094384}
   blink: {fileID: 0}
-  MaxSpeed: 2
+  MaxSpeed: 3.5
   audioSource: {fileID: 0}
   target: {fileID: 0}
   isAttacking: 0
