@@ -12,7 +12,7 @@ public class LootSpawner : MonoBehaviour
     private float MinSpawnPointX = -28f;
     private float MinSpawnPointZ = -28f;
 
-    public int amountPerLevel = 3;
+    public int amountPerLevel = 4;
 
     public List<GameObject> loot = new List<GameObject>();
 
@@ -23,26 +23,27 @@ public class LootSpawner : MonoBehaviour
 
     public void LootSpawn()
     {
-         // Оптимальное количество
-
         for (int i = 0; i < amountPerLevel; i++)
         {
             int roll = Random.Range(0, 100);
             GameObject selectedLoot;
 
-            if (roll < 70) // 70% шанс на здоровье
+            if (roll < 60) 
             {
-                selectedLoot = loot[0]; // Предположим, здоровье — первый элемент в списке
+                selectedLoot = loot[0];
             }
-            else if (roll < 85) // 15% шанс на заморозку
+            else if (roll < 75) 
             {
                 selectedLoot = loot[1];
             }
-            else // 15% шанс на взрыв
+            else if (roll < 88) 
             {
                 selectedLoot = loot[2];
             }
-
+            else 
+            {
+                selectedLoot = loot[3];
+            }
             Vector3 spawnPosition = RandomSpawnPoint();
             Instantiate(selectedLoot, spawnPosition, Quaternion.identity);
         }

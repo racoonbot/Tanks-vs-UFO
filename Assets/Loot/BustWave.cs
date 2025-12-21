@@ -23,37 +23,23 @@ public class BustWave : Loot
         }
     }
 
-
     private void WaveShot()
     {
-        float force = 220f; 
+        int bulletsCount = 8;
+        float angleStep = 360f / bulletsCount;
+        float explosionBulletSpeed = 15f;
 
-        // center forward (forward XZ)
-        Rigidbody b0 = Instantiate(bulletPrefab, bulletSpawn).GetComponent<Rigidbody>();
-        b0.AddForce(Vector3.Scale(transform.forward, new Vector3(1f, 0f, 1f)).normalized * force);
-
-        // right
-        Rigidbody b1 = Instantiate(bulletPrefab).GetComponent<Rigidbody>();
-        b1.AddForce(Vector3.Scale(transform.right, new Vector3(1f, 0f, 1f)).normalized * force);
-
-        // left
-        Rigidbody b2 = Instantiate(bulletPrefab, bulletSpawn).GetComponent<Rigidbody>();
-        b2.AddForce(Vector3.Scale(-transform.right, new Vector3(1f, 0f, 1f)).normalized * force);
-
-        // back
-        Rigidbody b3 = Instantiate(bulletPrefab, bulletSpawn).GetComponent<Rigidbody>();
-        b3.AddForce(Vector3.Scale(-transform.forward, new Vector3(1f, 0f, 1f)).normalized * force);
-
-        Rigidbody b4 = Instantiate(bulletPrefab, bulletSpawn).GetComponent<Rigidbody>();
-        b4.AddForce(new Vector3(1f, 0f, 1f).normalized * force);
-
-        Rigidbody b5 = Instantiate(bulletPrefab, bulletSpawn).GetComponent<Rigidbody>();
-        b5.AddForce(new Vector3(-1f, 0f, 1f).normalized * force);
-
-        Rigidbody b6 = Instantiate(bulletPrefab, bulletSpawn).GetComponent<Rigidbody>();
-        b6.AddForce(new Vector3(1f, 0f, -1f).normalized * force);
-
-        Rigidbody b7 = Instantiate(bulletPrefab, bulletSpawn).GetComponent<Rigidbody>();
-        b7.AddForce(new Vector3(-1f, 0f, -1f).normalized * force);
+        for (int i = 0; i < bulletsCount; i++)
+        {
+            float angle = i * angleStep;
+            Vector3 direction = Quaternion.Euler(0, angle, 0) * Vector3.forward;
+            GameObject newBullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
+            Rigidbody rbBullet = newBullet.GetComponent<Rigidbody>();
+            if (rbBullet != null)
+            {
+                rbBullet.isKinematic = false;
+                rbBullet.velocity = direction * explosionBulletSpeed;
+            }
+        }
     }
 }
