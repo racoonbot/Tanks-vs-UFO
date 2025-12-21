@@ -10,6 +10,9 @@ public class TankHealth : MonoBehaviour
     public float health;
     private TankAttributes attributes;
     
+    private float lastDamageTime;
+    public float damageCooldown = 0.4f;
+    
     public Action OnDeathPlayer;
 
     private void Start()
@@ -37,8 +40,10 @@ public class TankHealth : MonoBehaviour
 
     public void TakeDamage()
     {
-        health --;
-
+        if (Time.time > lastDamageTime + damageCooldown) {
+            health --;
+            lastDamageTime = Time.time;
+        }
     }
 
     public void Heal(int healAmount)

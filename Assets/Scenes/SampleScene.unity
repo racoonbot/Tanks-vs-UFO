@@ -32666,6 +32666,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1229186005}
   health: 100
+  damageCooldown: 0.4
 --- !u!114 &872686889
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -44408,7 +44409,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxSpeed: 250
-  maxHealth: 12
+  maxHealth: 30
   turretRotationSpeed: 20
   damage: 1
 --- !u!114 &1229186007

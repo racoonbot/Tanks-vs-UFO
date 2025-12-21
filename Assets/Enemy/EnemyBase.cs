@@ -74,9 +74,18 @@ public abstract class EnemyBase : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         target = FindObjectOfType<Tank>();
-        retreatDistance = Random.Range(3f, 10f);
+        int level = FindObjectOfType<LevelManager>().level;
 
-        shotPeriod = currentShotPeriod;
+        // Смягченное масштабирование
+        bulletSpeed += level * 0.3f; 
+        MaxSpeed += level * 0.1f;
+    
+        // Замедляем темп стрельбы всей толпы, чтобы не было стены пуль
+        
+        currentShotPeriod += level * 0.1f; 
+        shotPeriod = Random.Range(0f, currentShotPeriod);
+
+        retreatDistance = Random.Range(3f, 10f);
         allMobs = new List<EnemyBase>(FindObjectsOfType<EnemyBase>());
     }
 
@@ -181,17 +190,32 @@ public abstract class EnemyBase : MonoBehaviour
 
     public void Shooting()
     {
-        Vector3 direction = (target.transform.position - bulletSpawn.position).normalized;
-        GameObject newBullet = Instantiate(bullet, bulletSpawn.position, Quaternion.identity);
-        Rigidbody rb = newBullet.GetComponent<Rigidbody>();
-        if (rb == null)
-        {
-            Debug.LogError("No Rigidbody on bullet prefab");
-            return;
-        }
+        if (target == null || target.rb == null) return;
 
-        rb.isKinematic = false;
-        rb.velocity = direction * bulletSpeed;
+        // 1. Рассчитываем расстояние и время полета пули
+        float distance = Vector3.Distance(bulletSpawn.position, target.transform.position);
+        float travelTime = distance / bulletSpeed;
+
+        // 2. Вычисляем точку упреждения: Позиция + (Скорость игрока * Время полета пули)
+        // Мы берем velocity у Rigidbody игрока
+        Vector3 leadPosition = target.transform.position + (target.rb.velocity * travelTime);
+
+        // Чтобы пуля не летела в землю или в небо, выравниваем по высоте спавна
+        leadPosition.y = bulletSpawn.position.y;
+
+        // 3. Поворачиваем врага лицом к точке выстрела
+        transform.LookAt(leadPosition);
+
+        // 4. Создаем пулю и задаем направление
+        Vector3 direction = (leadPosition - bulletSpawn.position).normalized;
+        GameObject newBullet = Instantiate(bullet, bulletSpawn.position, Quaternion.identity);
+    
+        Rigidbody bulletRb = newBullet.GetComponent<Rigidbody>();
+        if (bulletRb != null)
+        {
+            bulletRb.isKinematic = false;
+            bulletRb.velocity = direction * bulletSpeed;
+        }
     }
 
     public void ShotTimer()
@@ -199,8 +223,9 @@ public abstract class EnemyBase : MonoBehaviour
         shotPeriod -= Time.deltaTime;
         if (shotPeriod <= 0f)
         {
-            shotPeriod = currentShotPeriod;
             Shooting();
+            float jitter = currentShotPeriod * 0.2f; 
+            shotPeriod = currentShotPeriod + Random.Range(-jitter, jitter);
         }
     }
 
@@ -209,7 +234,6 @@ public abstract class EnemyBase : MonoBehaviour
     {
         targetPos = target.transform.position;
         float distance = Vector3.Distance(transform.position, targetPos);
-
         if (isAttacking)
         {
             transform.position = Vector3.MoveTowards(transform.position, targetPos, MaxSpeed * Time.deltaTime);
@@ -223,11 +247,6 @@ public abstract class EnemyBase : MonoBehaviour
             }
         }
     }
-
-    // public Vector3 GetRandomTargetPosition()
-    // {
-    //     return new Vector3(Random.Range(-5f, 5f), 0f, Random.Range(-5f, 5f));
-    // }
 
     public void UpdateDistance()
     {
