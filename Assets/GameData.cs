@@ -13,10 +13,10 @@ public class GameData : MonoBehaviour
     private const int DEFAULT_LEVEL = 1;
     private const int DEFAULT_MAXENEMYS = 1;
 
-    private void Start()
-    {
-        PlayerPrefs.DeleteAll();
-    }
+    // private void Start()
+    // {
+    //     PlayerPrefs.DeleteAll();
+    // }
 
     public void SaveData()
     {

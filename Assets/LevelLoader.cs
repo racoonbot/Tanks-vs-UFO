@@ -16,7 +16,10 @@ public class LevelLoader : MonoBehaviour
 
     public void StartNewGame()
     {
-        PlayerPrefs.DeleteAll();
+        PlayerPrefs.DeleteKey("Value_MaxHealth");
+        PlayerPrefs.DeleteKey("Value_MaxSpeed");
+        PlayerPrefs.DeleteKey("Value_TowerRotation");
+
         SceneManager.LoadScene(1);
     }
 }
