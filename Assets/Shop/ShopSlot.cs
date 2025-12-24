@@ -24,9 +24,6 @@ public class ShopSlot : MonoBehaviour
             wallet.LevelMoney -= price;
             
             player.ApplyUpgrade(item.type, item.amount);
-
-            // БАЛАНС: Восполняем здоровье при покупке MaxHealth
-            // (Предполагается наличие переменной currentHealth в TankAttributes)
             if (item.type.ToString().Contains("Health"))
             {
                 _tankHealth.health = player.maxHealth;
@@ -48,9 +45,6 @@ public class ShopSlot : MonoBehaviour
     private int GetCurrentPrice()
     {
         int currentLevel = PlayerPrefs.GetInt(item.type.ToString(), 0);
-    
-        // Вместо (level * 5), используем квадрат уровня. 
-        // На 1-й покупке: 5. На 5-й: 50. На 10-й: 200.
         int exponentialGrowth = currentLevel * currentLevel * 2; 
     
         return item.price + exponentialGrowth;
