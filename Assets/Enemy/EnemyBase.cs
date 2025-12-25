@@ -198,7 +198,7 @@ public abstract class EnemyBase : MonoBehaviour
 
         // 2. Вычисляем точку упреждения: Позиция + (Скорость игрока * Время полета пули)
         // Мы берем velocity у Rigidbody игрока
-        Vector3 leadPosition = target.transform.position + (target.rb.velocity * travelTime);
+        Vector3 leadPosition = target.transform.position + RandomDirection() + (target.rb.velocity * travelTime);
 
         // Чтобы пуля не летела в землю или в небо, выравниваем по высоте спавна
         leadPosition.y = bulletSpawn.position.y;
@@ -216,6 +216,11 @@ public abstract class EnemyBase : MonoBehaviour
             bulletRb.isKinematic = false;
             bulletRb.velocity = direction * bulletSpeed;
         }
+    }
+
+    private Vector3 RandomDirection()
+    {
+        return new Vector3(Random.Range(-2f, 2f), 0f, Random.Range(-2f, 2f));
     }
 
     public void ShotTimer()

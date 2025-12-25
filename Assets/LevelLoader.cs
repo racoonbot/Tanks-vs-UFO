@@ -6,19 +6,19 @@ using SceneManager = UnityEngine.SceneManagement.SceneManager;
 
 public class LevelLoader : MonoBehaviour
 {
-    public GameData gameData;
+   
 
-    public void LoadLevel()
+    public void LoadLevel() // рестарт уровня 
     {
         SceneManager.LoadScene(1);
     }
 
-    public void LoadStartScene()
+    public void LoadStartScene() //Запускает главное меню (стартовое)
     {
         SceneManager.LoadScene(0);
     }
 
-    public void StartNewGame()
+    public void StartNewGame() // Запускает гигру с начала
     {
         Debug.Log("Начинаем сброс данных...");
 
