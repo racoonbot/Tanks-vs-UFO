@@ -20,43 +20,24 @@ public class LevelLoader : MonoBehaviour
 
     public void StartNewGame()
     {
-        // PlayerPrefs.DeleteAll(); // Стирает всё: уровни, деньги и апгрейды
-        // PlayerPrefs.Save();      // Принудительно записывает "пустоту" на диск
-    
-        // Удаляем только игровые данные
+        Debug.Log("Начинаем сброс данных...");
+
         PlayerPrefs.DeleteKey("Level");
-        PlayerPrefs.DeleteKey("Money");
+        PlayerPrefs.DeleteKey("LevelMoney"); 
         PlayerPrefs.DeleteKey("MaxCount");
 
-        // Удаляем апгрейды (имена из твоего Enum)
-        PlayerPrefs.DeleteKey("Health"); 
-        PlayerPrefs.DeleteKey("Speed");
-        PlayerPrefs.DeleteKey("TowerRotation");
-        
-        //Удаляем прокачку
+        foreach (UpgradeType type in Enum.GetValues(typeof(UpgradeType)))
+        {
+            PlayerPrefs.DeleteKey(type.ToString()); 
+        }
+
         PlayerPrefs.DeleteKey("Value_MaxHealth");
         PlayerPrefs.DeleteKey("Value_MaxSpeed");
         PlayerPrefs.DeleteKey("Value_TowerRotation");
-        
-        
-        Debug.Log("Данные полностью стерты. Загрузка сцены...");
-        PlayerPrefs.Save();
-        SceneManager.LoadScene(1);
-        // gameData.ResetAllProgress(); // Вызываем очистку
-        // SceneManager.LoadScene(1);   // Запускаем игру
-        //
-        // PlayerPrefs.DeleteKey("Value_MaxHealth");
-        // PlayerPrefs.DeleteKey("Value_MaxSpeed");
-        // PlayerPrefs.DeleteKey("Value_TowerRotation");
-        
-        // // PlayerPrefs.DeleteKey(gameData.KEY_LEVEL);
-        //
-        // PlayerPrefs.DeleteKey("Health");
-        // PlayerPrefs.DeleteKey("Speed");
-        // PlayerPrefs.DeleteKey("Rotation");
-        //
-        // PlayerPrefs.DeleteKey("Money");
 
+        PlayerPrefs.Save();
         
+        Debug.Log("Данные стерты. Загрузка уровня...");
+        SceneManager.LoadScene(1);
     }
 }

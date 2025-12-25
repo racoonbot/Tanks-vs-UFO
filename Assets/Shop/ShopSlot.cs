@@ -11,8 +11,8 @@ public class ShopSlot : MonoBehaviour
 
     private void Start()
     {
-        UpdateText();
         _tankHealth = FindObjectOfType<TankHealth>();
+        UpdateText();
     }
 
     public void BuyItem()
@@ -49,4 +49,21 @@ public class ShopSlot : MonoBehaviour
     
         return item.price + exponentialGrowth;
     }
+    
+    
+    public void ResetItemLevel()
+    {
+        // Удаляем ключ конкретно для этого типа предмета
+        PlayerPrefs.DeleteKey(item.type.ToString());
+    
+        // Обязательно сохраняем изменения на диск
+        PlayerPrefs.Save(); 
+
+        // Обновляем текст цены, чтобы он вернулся к базовому значению
+        UpdateText();
+    
+        Debug.Log($"Прогресс для {item.type} был сброшен.");
+    }
+    
+    
 }
