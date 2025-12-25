@@ -8,6 +8,7 @@ public class ShopSlot : MonoBehaviour
     public Wallet wallet;
     public TextMeshProUGUI text;
     private TankHealth _tankHealth;
+    public AudioSource audioSource;
 
     private void Start()
     {
@@ -17,12 +18,13 @@ public class ShopSlot : MonoBehaviour
 
     public void BuyItem()
     {
+     
         int price = GetCurrentPrice();
 
         if (wallet.LevelMoney >= price)
         {
             wallet.LevelMoney -= price;
-            
+            audioSource.Play();
             player.ApplyUpgrade(item.type, item.amount);
             if (item.type.ToString().Contains("Health"))
             {
