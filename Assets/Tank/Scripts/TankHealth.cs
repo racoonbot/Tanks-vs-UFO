@@ -9,6 +9,7 @@ public class TankHealth : MonoBehaviour
     public GameObject player;
     public float health;
     private TankAttributes attributes;
+    public AudioSource audioSource;
     
     private float lastDamageTime;
     public float damageCooldown = 0.4f;
@@ -41,6 +42,7 @@ public class TankHealth : MonoBehaviour
     public void TakeDamage()
     {
         if (Time.time > lastDamageTime + damageCooldown) {
+            audioSource.Play();
             health --;
             lastDamageTime = Time.time;
         }
