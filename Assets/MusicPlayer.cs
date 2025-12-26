@@ -30,12 +30,12 @@ public class MusicPlayer : MonoBehaviour
     {
         if (scene.name == "StartScene")
         {
-            Debug.Log("Music StartScene");
+
             PlayMusicSafe(0);
         }
         else if (scene.name == "SampleScene")
         {
-            Debug.Log("Music SampleScene");
+
             PlayMusicSafe(1);
         }
     }
