@@ -1,6 +1,13 @@
 using UnityEngine;
 using System;
 
+public enum StatType
+{
+    Health,
+    Speed,
+    Rotation
+}
+
 public class TankAttributes : MonoBehaviour
 {
     public float speedLimit;
@@ -8,7 +15,7 @@ public class TankAttributes : MonoBehaviour
     public float turretRotationSpeedLimit;
 
 
-    public Action OnMaximumLevelReached; //Доделать
+    public Action<StatType> OnMaximumLevelReached; //Доделать
 
 
     public float maxSpeed;
@@ -34,10 +41,10 @@ public class TankAttributes : MonoBehaviour
                 }
                 else
                 {
-                    OnMaximumLevelReached.Invoke();
+                    OnMaximumLevelReached?.Invoke(StatType.Health);
                 }
 
-                
+
                 break;
 
             case UpgradeType.TowerRotation:
@@ -49,7 +56,7 @@ public class TankAttributes : MonoBehaviour
                 }
                 else
                 {
-                    OnMaximumLevelReached.Invoke();
+                    OnMaximumLevelReached?.Invoke(StatType.Rotation);
                 }
 
                 break;
@@ -63,7 +70,7 @@ public class TankAttributes : MonoBehaviour
                 }
                 else
                 {
-                    OnMaximumLevelReached.Invoke();
+                    OnMaximumLevelReached?.Invoke(StatType.Speed);
                 }
 
                 break;
