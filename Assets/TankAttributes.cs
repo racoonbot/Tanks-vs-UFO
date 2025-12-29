@@ -1,7 +1,16 @@
 using UnityEngine;
+using System;
 
 public class TankAttributes : MonoBehaviour
 {
+    public float speedLimit;
+    public float healthLimit;
+    public float turretRotationSpeedLimit;
+
+
+    public Action OnMaximumLevelReached; //Доделать
+
+
     public float maxSpeed;
     public float maxHealth;
     public float turretRotationSpeed;
@@ -17,21 +26,46 @@ public class TankAttributes : MonoBehaviour
         switch (type)
         {
             case UpgradeType.MaxHealth:
-                maxHealth += amount;
-                PlayerPrefs.SetFloat("Value_MaxHealth", maxHealth);
-                Debug.Log($"💾 СОХРАНЯЮ Здоровье: {maxHealth}");
+                if (maxHealth < healthLimit)
+                {
+                    maxHealth += amount;
+                    PlayerPrefs.SetFloat("Value_MaxHealth", maxHealth);
+                    Debug.Log($"💾 СОХРАНЯЮ Здоровье: {maxHealth}");
+                }
+                else
+                {
+                    OnMaximumLevelReached.Invoke();
+                }
+
+                
                 break;
 
             case UpgradeType.TowerRotation:
-                turretRotationSpeed += amount;
-                PlayerPrefs.SetFloat("Value_TowerRotation", turretRotationSpeed);
-                Debug.Log($"💾 СОХРАНЯЮ Поворот: {turretRotationSpeed}");
+                if (turretRotationSpeed < turretRotationSpeedLimit)
+                {
+                    turretRotationSpeed += amount;
+                    PlayerPrefs.SetFloat("Value_TowerRotation", turretRotationSpeed);
+                    Debug.Log($"💾 СОХРАНЯЮ Поворот: {turretRotationSpeed}");
+                }
+                else
+                {
+                    OnMaximumLevelReached.Invoke();
+                }
+
                 break;
 
             case UpgradeType.MaxSpeed:
-                maxSpeed += amount;
-                PlayerPrefs.SetFloat("Value_MaxSpeed", maxSpeed);
-                Debug.Log($"💾 СОХРАНЯЮ Скорость: {maxSpeed}");
+                if (maxSpeed < speedLimit)
+                {
+                    maxSpeed += amount;
+                    PlayerPrefs.SetFloat("Value_MaxSpeed", maxSpeed);
+                    Debug.Log($"💾 СОХРАНЯЮ Скорость: {maxSpeed}");
+                }
+                else
+                {
+                    OnMaximumLevelReached.Invoke();
+                }
+
                 break;
         }
 
@@ -40,7 +74,6 @@ public class TankAttributes : MonoBehaviour
 
     private void LoadStats()
     {
-
         if (PlayerPrefs.HasKey("Value_MaxHealth"))
         {
             float savedHealth = PlayerPrefs.GetFloat("Value_MaxHealth");
