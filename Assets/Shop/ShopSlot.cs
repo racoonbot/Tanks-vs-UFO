@@ -37,6 +37,16 @@ public class ShopSlot : MonoBehaviour
 
             UpdateText();
         }
+        else
+        {
+            StatType currentStat = StatType.Health;
+            if (item.type.ToString().Contains("Speed")) currentStat = StatType.Speed;
+            else if (item.type.ToString().Contains("Rotation")) currentStat = StatType.Rotation;
+            else if (item.type.ToString().Contains("Health")) currentStat = StatType.Health;
+
+            player.OnMaximumLevelReached?.Invoke(currentStat);
+            Debug.Log($"<color=red>Недостаточно денег!</color> Требуется: {price}");
+        }
     }
 
     public void UpdateText()
