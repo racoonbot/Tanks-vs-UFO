@@ -7,7 +7,7 @@ public class BustTime : Loot
     public override IEnumerator StartBust(Tank tank)
     {
         if (tank == null) yield break;
-
+        FreezeBullet.OnGlobalFreeze?.Invoke();
         SpawnEnemy spawner = FindObjectOfType<SpawnEnemy>();
         if (spawner != null)
         {
