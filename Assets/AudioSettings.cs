@@ -4,40 +4,67 @@ using UnityEngine.UI;
 
 public class AudioSettings : MonoBehaviour
 {
-    [Header("Настройки")]
-    public AudioMixer masterMixer; // Сюда перетащить Mixer
-    public Slider slider;          // Сюда перетащить Слайдер (только в Меню)
+    [Header("--- МУЗЫКА (Слайдер 1) ---")]
+    public AudioMixer musicMixer;   // Сюда перетащить MainMixer (или тот, где музыка)
+    public Slider musicSlider;      // Сюда перетащить Слайдер музыки
+    private string musicParam = "MasterVolume"; // Имя Exposed параметра музыки
+
+    [Header("--- ЗВУКИ (Слайдер 2) ---")]
+    public AudioMixer soundsMixer;  // Сюда перетащить микшер Sounds
+    public Slider soundsSlider;     // Сюда перетащить Слайдер звуков
+    private string soundsParam = "SoundsMaster"; // Имя Exposed параметра звуков (который мы создавали)
 
     private void Start()
     {
-        // 1. Загружаем сохраненное значение
-        float savedValue = PlayerPrefs.GetFloat("MasterVolume", 1f);
+        // === НАСТРОЙКА МУЗЫКИ ===
+        float savedMusic = PlayerPrefs.GetFloat("MasterVolume", 1f);
+        SetMusicVolume(savedMusic); // Применяем громкость
 
-        // 2. Сначала выставляем звук в Микшере (чтобы сразу было тихо)
-        SetMixerVolume(savedValue);
-
-        // 3. Если мы привязали слайдер (мы в Меню), настраиваем его визуал
-        if (slider != null)
+        if (musicSlider != null)
         {
-            // Двигаем ручку на нужную позицию БЕЗ вызова звука
-            slider.SetValueWithoutNotify(savedValue);
+            musicSlider.SetValueWithoutNotify(savedMusic); // Ставим ползунок
+            musicSlider.onValueChanged.RemoveAllListeners();
+            musicSlider.onValueChanged.AddListener(OnMusicSliderChanged); // Подписываемся
+        }
 
-            // Теперь подписываемся на изменения игрока
-            slider.onValueChanged.RemoveAllListeners();
-            slider.onValueChanged.AddListener(OnSliderValueChanged);
+        // === НАСТРОЙКА ЗВУКОВ ===
+        float savedSounds = PlayerPrefs.GetFloat("SoundsVolume", 1f);
+        SetSoundsVolume(savedSounds); // Применяем громкость
+
+        if (soundsSlider != null)
+        {
+            soundsSlider.SetValueWithoutNotify(savedSounds); // Ставим ползунок
+            soundsSlider.onValueChanged.RemoveAllListeners();
+            soundsSlider.onValueChanged.AddListener(OnSoundsSliderChanged); // Подписываемся
         }
     }
 
-    public void OnSliderValueChanged(float value)
+    // --- МЕТОДЫ ДЛЯ МУЗЫКИ ---
+    public void OnMusicSliderChanged(float value)
     {
-        SetMixerVolume(value);
+        SetMusicVolume(value);
         PlayerPrefs.SetFloat("MasterVolume", value);
         PlayerPrefs.Save();
     }
 
-    private void SetMixerVolume(float sliderValue)
+    private void SetMusicVolume(float sliderValue)
     {
         float volume = Mathf.Log10(Mathf.Clamp(sliderValue, 0.0001f, 1f)) * 20;
-        masterMixer.SetFloat("MasterVolume", volume);
+        musicMixer.SetFloat(musicParam, volume);
+    }
+
+    // --- МЕТОДЫ ДЛЯ ЗВУКОВ ---
+    public void OnSoundsSliderChanged(float value)
+    {
+        SetSoundsVolume(value);
+        PlayerPrefs.SetFloat("SoundsVolume", value);
+        PlayerPrefs.Save();
+    }
+
+    private void SetSoundsVolume(float sliderValue)
+    {
+        float volume = Mathf.Log10(Mathf.Clamp(sliderValue, 0.0001f, 1f)) * 20;
+        // Здесь используем soundsMixer и параметр SoundsMaster
+        soundsMixer.SetFloat(soundsParam, volume);
     }
 }
