@@ -8,6 +8,8 @@ public class Tank : MonoBehaviour
     
     private TankAttributes attributes; 
     
+   
+    
     public float rotationSpeed = 5f;
     public Rigidbody rb;
     private bool isForwardDirection;
@@ -15,8 +17,10 @@ public class Tank : MonoBehaviour
 
     void Awake()
     {
+      
         attributes = FindObjectOfType<TankAttributes>();
         rb = GetComponent<Rigidbody>();
+        
     }
 
     void FixedUpdate()
@@ -60,5 +64,6 @@ public class Tank : MonoBehaviour
             }
         }
         currentSpeed = rb.velocity.magnitude;
+      
     }
 }
