@@ -7,13 +7,13 @@ public class HelpScreen : MonoBehaviour
    public GameObject HelpScreenUI;
    public void ShowHelp()
    {
-      gameObject.SetActive(true);
+      HelpScreenUI.SetActive(true);
       Debug.Log(HelpScreenUI.active);
    }
 
    public void HideHelp()
    {
-      gameObject.SetActive(false);
+      HelpScreenUI.SetActive(false);
       Debug.Log(HelpScreenUI.active);
    }
 }
