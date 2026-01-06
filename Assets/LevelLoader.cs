@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using YG;
 using SceneManager = UnityEngine.SceneManagement.SceneManager;
 
 public class LevelLoader : MonoBehaviour
@@ -20,6 +21,7 @@ public class LevelLoader : MonoBehaviour
 
     public void StartNewGame() // Запускает гигру с начала
     {
+       YG2.MetricaSend("StartNewGame");
         Debug.Log("Начинаем сброс данных...");
 
         PlayerPrefs.DeleteKey("Level");
