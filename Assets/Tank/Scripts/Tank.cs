@@ -22,6 +22,11 @@ public class Tank : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         
     }
+    void Start()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+    }
 
     void FixedUpdate()
     {
