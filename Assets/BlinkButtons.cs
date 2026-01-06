@@ -42,7 +42,6 @@ public class BlinkButtons : MonoBehaviour
         // Если танк прислал "Health", а я "Speed" — я молчу.
         if (incomingStat == myStatType) 
         {
-            Debug.Log($"[Blink] Мигаю, потому что я: {myStatType}");
             StopAllCoroutines(); 
             StartCoroutine(BlinkCoroutine());
         }

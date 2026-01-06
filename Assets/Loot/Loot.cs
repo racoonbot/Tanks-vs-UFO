@@ -31,8 +31,8 @@ public abstract class Loot : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("OnTriggerEnter");
-        Debug.Log(other.gameObject.name);
+       
+     
         if (other.GetComponent<TankHealth>())
         {
             sounds.source[0].Play();

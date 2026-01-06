@@ -17,11 +17,8 @@ public class BustHeal : Loot
         if (tankHealth != null)
         {
             tankHealth.Heal(healAmount);
-            Debug.Log($"Health increased by {healAmount}.");
+  
         }
-        else
-        {
-            Debug.LogWarning("TankHealth component not found!");
-        }
+       
     }
 }

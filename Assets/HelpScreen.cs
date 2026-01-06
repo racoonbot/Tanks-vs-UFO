@@ -8,12 +8,12 @@ public class HelpScreen : MonoBehaviour
    public void ShowHelp()
    {
       HelpScreenUI.SetActive(true);
-      Debug.Log(HelpScreenUI.active);
+   
    }
 
    public void HideHelp()
    {
       HelpScreenUI.SetActive(false);
-      Debug.Log(HelpScreenUI.active);
+      
    }
 }

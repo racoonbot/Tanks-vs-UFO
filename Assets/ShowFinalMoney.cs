@@ -18,10 +18,7 @@ public class ShowFinalMoney : MonoBehaviour
         {
             _tankHealth.OnDeathPlayer += UpdateText;
         }
-        else
-        {
-            Debug.Log("No tank health");
-        }
+       
     }
 
     private void OnDisable()

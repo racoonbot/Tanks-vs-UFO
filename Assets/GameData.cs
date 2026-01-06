@@ -30,7 +30,6 @@ public class GameData : MonoBehaviour
             PlayerPrefs.SetInt(KEY_MAXENEMYS, spawner.MaxCount);
 
         PlayerPrefs.Save();
-        Debug.Log("Preffs Save)");
     }
 
     public void LoadData()
@@ -44,7 +43,7 @@ public class GameData : MonoBehaviour
             levelManager.level = lvl;
         if (spawner != null)
             spawner.MaxCount = maxCount;
-        Debug.Log("Load Data. Level: " + lvl);
+       
     }
     
     public void ResetAllProgress()
@@ -62,7 +61,7 @@ public class GameData : MonoBehaviour
         // Добавь сюда остальные типы, если они есть
 
         PlayerPrefs.Save();
-        Debug.Log("Все данные стерты!");
+        
     }
     
 }

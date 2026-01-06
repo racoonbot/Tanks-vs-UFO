@@ -22,7 +22,7 @@ public class LevelLoader : MonoBehaviour
     public void StartNewGame() // Запускает гигру с начала
     {
        YG2.MetricaSend("StartNewGame");
-        Debug.Log("Начинаем сброс данных...");
+        
 
         PlayerPrefs.DeleteKey("Level");
         PlayerPrefs.DeleteKey("LevelMoney"); 
@@ -39,7 +39,7 @@ public class LevelLoader : MonoBehaviour
 
         PlayerPrefs.Save();
         
-        Debug.Log("Данные стерты. Загрузка уровня...");
+       
         SceneManager.LoadScene(1);
     }
 }

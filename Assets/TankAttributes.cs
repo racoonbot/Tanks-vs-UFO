@@ -52,7 +52,7 @@ public class TankAttributes : MonoBehaviour
                 {
                     turretRotationSpeed += amount;
                     PlayerPrefs.SetFloat("Value_TowerRotation", turretRotationSpeed);
-                    Debug.Log($"💾 СОХРАНЯЮ Поворот: {turretRotationSpeed}");
+                    
                 }
                 else
                 {
@@ -66,7 +66,7 @@ public class TankAttributes : MonoBehaviour
                 {
                     maxSpeed += amount;
                     PlayerPrefs.SetFloat("Value_MaxSpeed", maxSpeed);
-                    Debug.Log($"💾 СОХРАНЯЮ Скорость: {maxSpeed}");
+                   
                 }
                 else
                 {
@@ -84,7 +84,7 @@ public class TankAttributes : MonoBehaviour
         if (PlayerPrefs.HasKey("Value_MaxHealth"))
         {
             float savedHealth = PlayerPrefs.GetFloat("Value_MaxHealth");
-            Debug.Log($"📂 НАШЕЛ сохранение Здоровья: {savedHealth}. Было: {maxHealth}");
+           
             maxHealth = savedHealth;
         }
         else

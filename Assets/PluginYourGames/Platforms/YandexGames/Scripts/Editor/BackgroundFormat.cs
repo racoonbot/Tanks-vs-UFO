@@ -12,7 +12,7 @@ namespace YG.EditorScr.BuildModify
 
             if (!indexFile.Contains(searchCode))
             {
-                Debug.LogWarning("Search string not found in index.html");
+         
                 return;
             }
 

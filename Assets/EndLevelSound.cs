@@ -14,7 +14,7 @@ public class EndLevelSound : MonoBehaviour
         
         if (_tankHealth == null)
         {
-            Debug.LogError("_tankHealth not found.");
+           
             return; // Выйти из метода, если _tankHealth не найден
         }
 
@@ -25,16 +25,13 @@ public class EndLevelSound : MonoBehaviour
     {
         if (!soundPlayed) // Проверка, было ли уже воспроизведение
         {
-            Debug.Log("Playing sound");
+           
             if (source != null)
             {
                 source.Play();
                 soundPlayed = true; // Установка флага после воспроизведения
             }
-            else
-            {
-                Debug.LogError("AudioSource not assigned in " + gameObject.name);
-            }
+           
         }
     }
 }

@@ -23,10 +23,7 @@ public class BulletSpawn : MonoBehaviour
             {
                 bulletRb.velocity = bulletSpawnPoint.forward * 20f;
             }
-            else
-            {
-                Debug.LogError("Ошибка: Rigidbody не найден на пуле!");
-            }
+           
 
             shotCounter.isShooted = false;
         }
