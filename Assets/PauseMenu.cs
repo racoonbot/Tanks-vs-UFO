@@ -20,13 +20,25 @@ public class PauseMenu : MonoBehaviour
             {
                 Time.timeScale = 0;
                 pauseMenuUI.active = true;
+                UnlockCursor();
             }
             else
             {
                 Time.timeScale = 1;
                 pauseMenuUI.active = false;
+                LockCursor();
             }
         }
+    }
+    private void UnlockCursor() // Разблокируем мыша
+    {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;                  
+    }
+    private void LockCursor() // Блокируем мыша
+    {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;                  
     }
    
 }

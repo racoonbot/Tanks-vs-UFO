@@ -23,12 +23,12 @@ public class ShowCanvas : MonoBehaviour
             canvas.SetActive(false);
         }
     }
-    public void UnlockCursor() // Разблокируем мыша
+    private void UnlockCursor() // Разблокируем мыша
     {
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;                  
     }
-    public void LockCursor() // Блокируем мыша
+    private void LockCursor() // Блокируем мыша
     {
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;                  
