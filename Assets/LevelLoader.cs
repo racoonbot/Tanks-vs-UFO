@@ -7,8 +7,6 @@ using SceneManager = UnityEngine.SceneManagement.SceneManager;
 
 public class LevelLoader : MonoBehaviour
 {
-   
-
     public void LoadLevel() // рестарт уровня 
     {
         SceneManager.LoadScene(1);
@@ -17,24 +15,24 @@ public class LevelLoader : MonoBehaviour
 
     public void LoadStartScene() //Запускает главное меню (стартовое)
     {
-        
         SceneManager.LoadScene(0);
-        LockCursor();
+        UnlockCursor();
     }
 
     public void StartNewGame() // Запускает гигру с начала
     {
-       YG2.MetricaSend("StartNewGame");
+        Debug.Log("Кнопка нажата! Метод работает.");
+        YG2.MetricaSend("StartNewGame");
 
-       LockCursor();
+        LockCursor();
 
         PlayerPrefs.DeleteKey("Level");
-        PlayerPrefs.DeleteKey("LevelMoney"); 
+        PlayerPrefs.DeleteKey("LevelMoney");
         PlayerPrefs.DeleteKey("MaxCount");
 
         foreach (UpgradeType type in Enum.GetValues(typeof(UpgradeType)))
         {
-            PlayerPrefs.DeleteKey(type.ToString()); 
+            PlayerPrefs.DeleteKey(type.ToString());
         }
 
         PlayerPrefs.DeleteKey("Value_MaxHealth");
@@ -42,19 +40,20 @@ public class LevelLoader : MonoBehaviour
         PlayerPrefs.DeleteKey("Value_TowerRotation");
 
         PlayerPrefs.Save();
-        
-       
+
+
         SceneManager.LoadScene(1);
     }
-    
+
     private void UnlockCursor() // Разблокируем мыша
     {
         Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;                  
+        Cursor.visible = true;
     }
+
     private void LockCursor() // Блокируем мыша
     {
         Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;                  
+        Cursor.visible = true;
     }
 }

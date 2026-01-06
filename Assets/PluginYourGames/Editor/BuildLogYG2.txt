@@ -1,3 +1,0 @@
-﻿Build path: D:/UNITY/Tanks-vs-UFO/Builds/MetricTest
-Build number: 2
-PluginYG version: 2.007

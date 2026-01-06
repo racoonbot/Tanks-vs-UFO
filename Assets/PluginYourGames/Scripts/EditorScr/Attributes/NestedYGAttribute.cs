@@ -117,7 +117,7 @@ namespace YG
 
                 if (dependentProp == null)
                 {
-              
+                    Debug.LogError($"[{nameof(NestedYGAttribute)}] {property.name};  Field '{propName}' not foud!");
                     return true;
                 }
 
