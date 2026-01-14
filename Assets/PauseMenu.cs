@@ -19,13 +19,13 @@ public class PauseMenu : MonoBehaviour
             if (Time.timeScale == 1)
             {
                 Time.timeScale = 0;
-                pauseMenuUI.active = true;
+                pauseMenuUI.SetActive(true);
                 UnlockCursor();
             }
             else
             {
                 Time.timeScale = 1;
-                pauseMenuUI.active = false;
+                pauseMenuUI.SetActive(false);
                 LockCursor();
             }
         }
