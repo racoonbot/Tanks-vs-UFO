@@ -1,5 +1,6 @@
 using UnityEngine;
 using System;
+using YG;
 
 public enum StatType
 {
@@ -15,16 +16,20 @@ public class TankAttributes : MonoBehaviour
     public float turretRotationSpeedLimit;
 
 
-    public Action<StatType> OnMaximumLevelReached; //Доделать
+    public Action<StatType> OnMaximumLevelReached;
 
 
     public float maxSpeed;
     public float maxHealth;
+    private string flagMaxHealth = YG2.GetFlag("PlayerMaxHealth"); /// <summary>
+                                                                   /// Flag
+                                                                   /// </summary>
     public float turretRotationSpeed;
     public int damage;
 
     private void Start()
     {
+        ApplyFlagsSettings(); //TODO флаг макс здоровья нужно тестить
         LoadStats();
     }
 
@@ -100,6 +105,18 @@ public class TankAttributes : MonoBehaviour
         if (PlayerPrefs.HasKey("Value_TowerRotation"))
         {
             turretRotationSpeed = PlayerPrefs.GetFloat("Value_TowerRotation");
+        }
+    }
+    private void ApplyFlagsSettings()
+    {
+        string valueStr = YG2.GetFlag("PlayerMaxHealth");
+    
+        if (!string.IsNullOrEmpty(valueStr))
+        {
+            if (int.TryParse(valueStr, out int result)) 
+            {
+                maxHealth = result;
+            }
         }
     }
 }
