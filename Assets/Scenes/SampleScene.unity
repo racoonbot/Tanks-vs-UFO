@@ -5319,6 +5319,50 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 114311759}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &114523633
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 114523635}
+  - component: {fileID: 114523634}
+  m_Layer: 0
+  m_Name: ADS
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &114523634
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 114523633}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b95883c09b3c5ca419049f1120d72432, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &114523635
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 114523633}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 216.05188, y: 168.29227, z: 0.45710135}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &114968133 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1356381714199472493, guid: a5344b98eb8749b48bd7eff8a8c3adae, type: 3}
@@ -78755,6 +78799,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2251023548389368436, guid: aefdd84922c460d41943035644424427, type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: 73ebb186aacef0a40bd1aab07b87b53f, type: 3}
+    - target: {fileID: 2251023548389368436, guid: aefdd84922c460d41943035644424427, type: 3}
       propertyPath: m_FontData.m_MaxSize
       value: 300
       objectReference: {fileID: 0}
@@ -78764,7 +78812,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2251023548389368436, guid: aefdd84922c460d41943035644424427, type: 3}
       propertyPath: m_FontData.m_FontSize
-      value: 29
+      value: 22
       objectReference: {fileID: 0}
     - target: {fileID: 2251023548998694644, guid: aefdd84922c460d41943035644424427, type: 3}
       propertyPath: quantityAround
@@ -78912,3 +78960,4 @@ SceneRoots:
   - {fileID: 1900946347}
   - {fileID: 750748822}
   - {fileID: 1978635183}
+  - {fileID: 114523635}
