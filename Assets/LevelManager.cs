@@ -66,10 +66,10 @@ public class LevelManager : MonoBehaviour
     }
     public void NextLevel()
     {
-        LockCursor();
         OnLevelStarted?.Invoke(); 
         canvas.DeactivateCanvas();
         spawner.StartWave(); 
+        LockCursor();
     }
 
     public void ResetLevel()
@@ -79,9 +79,9 @@ public class LevelManager : MonoBehaviour
         canvas.DeactivateCanvas();
         spawner.StartWave();
     }
-    private void LockCursor() // Блокируем мыша
+    private void LockCursor() 
     {
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.Locked; 
+        Cursor.visible = false; 
     }
 }
