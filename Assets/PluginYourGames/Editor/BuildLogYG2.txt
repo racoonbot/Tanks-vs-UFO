@@ -1,3 +1,3 @@
-﻿Build path: D:/UNITY/Tanks-vs-UFO/Builds/TestLb
-Build number: 1
+﻿Build path: D:/UNITY/Tanks-vs-UFO/Builds/Andr
+Build number: 2
 PluginYG version: 2.007
