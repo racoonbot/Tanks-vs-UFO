@@ -17,10 +17,7 @@ public class LocalizeButtons : MonoBehaviour
 
     private void OnEnable()
     {
-        // В YG2 событие коррекции языка называется именно так
         YG2.onCorrectLang += ApplyLanguage;
-
-        // ИСПРАВЛЕНО: SDKEnabled заменен на isSDKEnabled
         if (YG2.isSDKEnabled)
         {
             ApplyLanguage(YG2.lang);
