@@ -182,6 +182,8 @@ MonoBehaviour:
         rank: 5
         score: 127000
         extraData: 
+  Localization:
+    setLanguageMod: 1
   Metrica:
     enable: 1
     metricaCounterID: 106159433
@@ -243,6 +245,7 @@ MonoBehaviour:
     showFirstAdv: 0
     interAdvInterval: 0
     postponeCallByFail: 0
+    setLanguageMod: 0
     useYandexMetrica: 0
     metricaCounterID: 0
     autoPauseGame: 0
