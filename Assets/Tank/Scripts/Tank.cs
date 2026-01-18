@@ -30,7 +30,6 @@ public class Tank : MonoBehaviour
     {
         float currentForce = attributes.maxSpeed; 
 
-        // 1. ПОЛУЧАЕМ ВВОД (Клавиатура по умолчанию)
         float v = Input.GetAxis("Vertical");
         float h = Input.GetAxis("Horizontal");
         float tH = Input.GetAxis("Mouse X");
