@@ -5798,8 +5798,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 296f5f99a28d3c54ba2a4e6276fc71db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ruSprite: {fileID: 0}
-  enSprite: {fileID: 0}
+  ruSprite: {fileID: -1412643824, guid: 3e55b6aca97f59a4fbcffd931ca9c9e0, type: 3}
+  enSprite: {fileID: 1041006362, guid: 9def2aac2707e294abb486c46f1b6c30, type: 3}
 --- !u!114 &2009422425
 MonoBehaviour:
   m_ObjectHideFlags: 0
