@@ -83,20 +83,35 @@ public class SpawnEnemy : MonoBehaviour
     {
         int level = levelManager.level;
 
-        // Веса вероятностей (настроены для плавного роста сложности)
-        int simpleChance = Mathf.Max(100 - (level * 7), 20);              // Зеленый: много в начале, минимум 20% в конце
-        int attackChance = Mathf.Clamp(level * 5, 0, 50);                // Желтый: начинает расти сразу, кап на 50%
-        int moveAttackChance = level < 4 ? 0 : Mathf.Clamp((level - 3) * 10, 0, 60); // Красный: появляется с 4 уровня
+        // 1. Зеленый (с 1 уровня): Плавно падает со 100 до 20 к 20-му уровню.
+        // Коэффициент 4.2 примерно дает 20 на 20-м уровне.
+        int simpleChance = Mathf.Max(100 - (level * 4), 20); 
+
+        // 2. Желтый (с 4 уровня): Растет с 0 до 40 к 20-му уровню.
+        int attackChance = 0;
+        if (level >= 4)
+        {
+            // Шаг 2.5 дает 40 очков за 16 уровней (с 4 по 20)
+            attackChance = Mathf.Min((level - 3) * 3, 40);
+        }
+
+        // 3. Красный (с 8 уровня): Растет с 0 до 40 к 20-му уровню.
+        int moveAttackChance = 0;
+        if (level >= 8)
+        {
+            // Шаг 3.3 дает 40 очков за 12 уровней (с 8 по 20)
+            moveAttackChance = Mathf.Min((level - 7) * 4, 40);
+        }
 
         int totalChance = simpleChance + attackChance + moveAttackChance;
-        int randomValue = Random.Range(0, totalChance);
+        int randomValue = UnityEngine.Random.Range(0, totalChance);
 
         if (randomValue < simpleChance) 
-            return prefabs[0]; // Зеленый
-    
+            return prefabs[0];
+
         if (randomValue < simpleChance + attackChance) 
-            return prefabs[1]; // Желтый
-        
-        return prefabs[2]; // Красный
+            return prefabs[1];
+    
+        return prefabs[2];
     }
 }

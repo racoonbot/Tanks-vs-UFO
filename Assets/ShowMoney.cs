@@ -15,7 +15,7 @@ public class ShowMoney : MonoBehaviour
     {
         if (wallet != null)
         {
-            text.text = $"{wallet.LevelMoney}";
+            text.text = $"{wallet.totalMoney}";
         }
         else
         {

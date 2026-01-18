@@ -5,8 +5,17 @@ using YG;
 
 public class MyMetricsTest : MonoBehaviour
 {
-    public void TutorMetrica()
+    public void RotateMetrica()
     {
-        YG2.MetricaSend("Tutorial");
+        YG2.MetricaSend("RotateUpgrade");
+    }
+    public void MaxHealthMetrica()
+    {
+        YG2.MetricaSend("MaxHealthUpgrade");
+    }
+ 
+    public void SpeedMetrica()
+    {
+        YG2.MetricaSend("SpeedUpgrade");
     }
 }

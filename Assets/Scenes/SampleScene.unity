@@ -2999,7 +2999,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &50112234
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4864,6 +4864,18 @@ MonoBehaviour:
       - m_Target: {fileID: 88654627}
         m_TargetAssemblyTypeName: ShopSlot, Assembly-CSharp
         m_MethodName: BuyItem
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 218696919}
+        m_TargetAssemblyTypeName: MyMetricsTest, Assembly-CSharp
+        m_MethodName: MaxHealthMetrica
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -8758,6 +8770,50 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 215528056}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &218696918
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 218696920}
+  - component: {fileID: 218696919}
+  m_Layer: 0
+  m_Name: Ya
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &218696919
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 218696918}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 819af9758c9fb844da776957d2677803, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &218696920
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 218696918}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 585.0912, y: 231.9628, z: 105.007324}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &218793947
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14261,9 +14317,9 @@ RectTransform:
   - {fileID: 1264393895}
   m_Father: {fileID: 1672244125}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 243.03105, y: -44.1}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 74.699, y: 88.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &385288800
@@ -19242,11 +19298,11 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 50112237}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.000022888, y: 379}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 0, y: -64.2}
   m_SizeDelta: {x: 381.887, y: 50}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &509145004
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25350,10 +25406,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1031301189}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 1}
-  m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: 17.5}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchorMin: {x: 0.3604375, y: 0.86200005}
+  m_AnchorMax: {x: 0.63756263, y: 0.9760001}
+  m_AnchoredPosition: {x: 0.000030517578, y: -63.815613}
+  m_SizeDelta: {x: -0.0001, y: -15.0717}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &658277433
 MonoBehaviour:
@@ -25402,7 +25458,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 39.05
+  m_fontSize: 72
   m_fontSizeBase: 21.8
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -25438,7 +25494,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -41.760117, y: 51.21751, z: -42.533073, w: -44.445045}
+  m_margin: {x: -0.75167847, y: -2.6576872, z: -6.6557617, w: 10.188614}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -30643,9 +30699,9 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 131457175}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 647.2175, y: -15}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &771655398
@@ -33838,6 +33894,18 @@ MonoBehaviour:
       - m_Target: {fileID: 888101738}
         m_TargetAssemblyTypeName: ShopSlot, Assembly-CSharp
         m_MethodName: BuyItem
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 218696919}
+        m_TargetAssemblyTypeName: MyMetricsTest, Assembly-CSharp
+        m_MethodName: RotateMetrica
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -39152,10 +39220,10 @@ RectTransform:
   - {fileID: 658277432}
   m_Father: {fileID: 1735370278}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 1920, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1031301190
 MonoBehaviour:
@@ -39194,7 +39262,7 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1031301188}
-  m_CullTransparentMesh: 1
+  m_CullTransparentMesh: 0
 --- !u!1 &1034264798
 GameObject:
   m_ObjectHideFlags: 0
@@ -48691,9 +48759,9 @@ RectTransform:
   - {fileID: 1552039631}
   m_Father: {fileID: 1672244125}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 464.07953, y: -44.1}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 74.698975, y: 88.2}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!114 &1294417310
@@ -59909,9 +59977,9 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 131457175}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 288.2825, y: -15}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1618602492
@@ -65474,9 +65542,9 @@ RectTransform:
   - {fileID: 107161764}
   m_Father: {fileID: 1672244125}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 59.332058, y: -44.1}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 74.699, y: 88.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1774641638
@@ -66382,7 +66450,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.000019073, y: 310.664}
+  m_AnchoredPosition: {x: -0.000019073, y: 281.96}
   m_SizeDelta: {x: 231.597, y: 54.32}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1794202180
@@ -66556,6 +66624,18 @@ MonoBehaviour:
       - m_Target: {fileID: 1796572959}
         m_TargetAssemblyTypeName: ShopSlot, Assembly-CSharp
         m_MethodName: BuyItem
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 218696919}
+        m_TargetAssemblyTypeName: MyMetricsTest, Assembly-CSharp
+        m_MethodName: SpeedMetrica
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -79201,6 +79281,7 @@ SceneRoots:
   - {fileID: 1908418769}
   - {fileID: 2040766789}
   - {fileID: 189909536}
+  - {fileID: 218696920}
   - {fileID: 1900946347}
   - {fileID: 750748822}
   - {fileID: 1978635183}
