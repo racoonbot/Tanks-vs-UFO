@@ -21,8 +21,8 @@ public class ShowPoints : MonoBehaviour
         wallet.OnLevelMoneyChange -= UpdateInGamePoints;
     }
 
-    public void UpdateInGamePoints(int levelMoney)
+    public void UpdateInGamePoints(int totalMoney)
     {
-        text.text = $"{levelMoney}\n";
+        text.text = $"{totalMoney}\n";
     }
 }
