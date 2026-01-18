@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PauseMenu : MonoBehaviour
@@ -10,6 +7,8 @@ public class PauseMenu : MonoBehaviour
     private void Start()
     {
         pauseMenuUI.SetActive(false);
+        // Обычно при старте игры курсор должен быть скрыт
+        LockCursor();
     }
 
     void Update()
@@ -18,27 +17,38 @@ public class PauseMenu : MonoBehaviour
         {
             if (Time.timeScale == 1)
             {
-                Time.timeScale = 0;
-                pauseMenuUI.SetActive(true);
-                UnlockCursor();
+                Pause();
             }
             else
             {
-                Time.timeScale = 1;
-                pauseMenuUI.SetActive(false);
-                LockCursor();
+                Resume();
             }
         }
     }
-    private void UnlockCursor() // Разблокируем мыша
+
+    public void Resume() // Продолжить игру
+    {
+        Time.timeScale = 1;
+        pauseMenuUI.SetActive(false);
+        LockCursor();
+    }
+
+    public void Pause() 
+    {
+        Time.timeScale = 0;
+        pauseMenuUI.SetActive(true);
+        UnlockCursor();
+    }
+
+    private void UnlockCursor()
     {
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;                  
     }
-    private void LockCursor() // Блокируем мыша
+
+    private void LockCursor()
     {
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;                  
+        Cursor.lockState = CursorLockMode.Locked; 
+        Cursor.visible = false;                   
     }
-   
 }

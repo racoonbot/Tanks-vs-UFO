@@ -1,6 +1,6 @@
 using UnityEngine;
 using YG;
-using YG.Utils.LB; // Нужно для работы с LBData и LBPlayerData
+using YG.Utils.LB;
 
 public class LeaderBoard : MonoBehaviour
 {
