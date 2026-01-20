@@ -17,14 +17,14 @@ public class ShowControl : MonoBehaviour
     {
         Time.timeScale = 0;
         controlHelpUI.SetActive(true);
-        UnlockCursor();
+       UnlockCursor();
     }
 
     public void HideHelp()
     {
         Time.timeScale = 1;
         controlHelpUI.SetActive(false);
-        LockCursor();
+       // LockCursor();
     }
 
     private void UnlockCursor() // Разблокируем мышь

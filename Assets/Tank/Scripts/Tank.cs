@@ -30,23 +30,29 @@ public class Tank : MonoBehaviour
     {
         float currentForce = attributes.maxSpeed; 
 
-        float v = Input.GetAxis("Vertical");
-        float h = Input.GetAxis("Horizontal");
-        float tH = Input.GetAxis("Mouse X");
+       // float v = Input.GetAxis("Vertical");
+       // float h = Input.GetAxis("Horizontal");
+       // float tH = Input.GetAxis("Mouse X");
 
-        
-        if (YG2.envir.isMobile || YG2.envir.isTablet)
-        {
+       float v = 0;
+       float h= 0;
+       float tH= 0;
+       
+      //  if (YG2.envir.isMobile || YG2.envir.isTablet)
+       // {
             if (moveJoystick != null)
             {
                 v = moveJoystick.Vertical;
                 h = moveJoystick.Horizontal;
+               v = Mathf.RoundToInt(v);
+               h = Mathf.RoundToInt(h);
             }
             if (turretJoystick != null)
             {
                 tH = turretJoystick.Horizontal;
+                Debug.Log("tH"+ tH );
             }
-        }
+      // }
         if (v > 0)
         {
             isForwardDirection = true;

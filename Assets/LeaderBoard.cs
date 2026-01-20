@@ -17,7 +17,7 @@ public class LeaderBoard : MonoBehaviour
         tankHealth = FindObjectOfType<TankHealth>();
         wallet = FindObjectOfType<Wallet>();
         
-        YG2.onGetLeaderboard += OnLeaderboardDataReceived;
+        YG2.onGetLeaderboard += OnLeaderboardDataReceived; // 1
         if (tankHealth != null)
         {
             tankHealth.OnDeathPlayer += SaveMyScore;
@@ -26,7 +26,7 @@ public class LeaderBoard : MonoBehaviour
 
     private void OnDisable()
     {
-        YG2.onGetLeaderboard -= OnLeaderboardDataReceived;
+        YG2.onGetLeaderboard -= OnLeaderboardDataReceived; // 1
         
         if (tankHealth != null)
         {
@@ -38,9 +38,18 @@ public class LeaderBoard : MonoBehaviour
         pendingScoreToSave = wallet.totalMoney;
         isCheckingScore = true;
         YG2.GetLeaderboard(LeaderboardName);
+        // 3 строки сверху это 1
+         
+        //ниже 6 строк это 2
+        int recordMoney = PlayerPrefs.GetInt("recordMoney", 0);
+        if (recordMoney < wallet.totalMoney)
+        {
+            PlayerPrefs.SetInt("recordMoney", wallet.totalMoney);
+            YG2.SetLeaderboard(LeaderboardName, wallet.totalMoney);
+        }
     }
 
-    private void OnLeaderboardDataReceived(LBData data)
+    private void OnLeaderboardDataReceived(LBData data) // 1
     {
         if (!isCheckingScore || data.technoName != LeaderboardName) return;
 
@@ -50,7 +59,7 @@ public class LeaderBoard : MonoBehaviour
         {
             foreach (var entry in data.players)
             {
-                if (entry.name == YG2.player.id)
+                if (entry.uniqueID == YG2.player.id)
                 {
                     oldRecord = entry.score; 
                     break; 

@@ -26,7 +26,7 @@ public class Tank_Turret : MonoBehaviour
 
     void FixedUpdate() 
     {
-        
+        return;
 
         float mouseInput = Input.GetAxis("Mouse X");
         
