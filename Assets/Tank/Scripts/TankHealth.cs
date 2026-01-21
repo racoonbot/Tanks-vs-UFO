@@ -10,31 +10,33 @@ public class TankHealth : MonoBehaviour
     public float health;
     private TankAttributes attributes;
     public AudioSource audioSource;
-    
+
     private float lastDamageTime;
-    public float damageCooldown = 0.4f;
-    
-    
-    
+    public float damageCooldown = 0.5f;
+
+
+    [Header("Бонус за отсутствие урона")] public float timeForBonus = 5f;
+    public bool isBonusActive = false;
+    // ------------------------
+
     public Action OnDeathPlayer;
 
     private void Start()
     {
         attributes = FindObjectOfType<TankAttributes>();
-        health = attributes.maxHealth;
+        if (attributes != null)
+            health = attributes.maxHealth;
+
+        lastDamageTime = Time.time;
     }
 
     private void Update()
     {
-        if (health <= 0)
-        {
-            Die();
-        }
+        CheckNoDamageBonus();
     }
 
     private void OnTriggerEnter(Collider other)
     {
-    
         if (other.GetComponent<Bullets>())
         {
             TakeDamage();
@@ -43,22 +45,52 @@ public class TankHealth : MonoBehaviour
 
     public void TakeDamage()
     {
-        if (Time.time > lastDamageTime + damageCooldown) {
+        if (Time.time > lastDamageTime + damageCooldown)
+        {
             audioSource.Play();
-            health --;
+            health--;
             lastDamageTime = Time.time;
+            isBonusActive = false;
+
+            if (health <= 0)
+            {
+                Die();
+            }
         }
     }
 
+    private void CheckNoDamageBonus()
+    {
+        if (Time.time - lastDamageTime > timeForBonus)
+        {
+            if (!isBonusActive)
+            {
+                isBonusActive = true;
+                Debug.Log("БОНУС АКТИВИРОВАН! (Скорость стрельбы увеличена)");
+            }
+        }
+        else
+        {
+            if (isBonusActive)
+            {
+                isBonusActive = false;
+              
+            }
+        }
+    }
+    // -------------------
+
     public void Heal(int healAmount)
     {
-        health +=  healAmount;
+        health += healAmount;
     }
 
     public void Die()
     {
         OnDeathPlayer?.Invoke();
-        MusicPlayer.instance.StopAllMusic();
-        Destroy(player.gameObject);
+        if (MusicPlayer.instance != null) MusicPlayer.instance.StopAllMusic();
+
+        if (player != null) Destroy(player.gameObject);
+        else Destroy(gameObject);
     }
 }

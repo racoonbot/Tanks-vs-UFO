@@ -28,4 +28,5 @@ public class BulletSpawn : MonoBehaviour
             shotCounter.isShooted = false;
         }
     }
+  
 }

@@ -10589,6 +10589,23 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 915ac35a5aca31d4c9575633be0f6b82, type: 3}
+--- !u!1 &280528610 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5512517093136981404, guid: 2c8466122dc2c5748899f46747870bfd, type: 3}
+  m_PrefabInstance: {fileID: 285831005221059571}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &280528612
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 280528610}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec185118f1cc00b4cbe7fb6a78e8955f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &281565201 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2497435268426526566, guid: 9b2e1ea347f77fb4b936e3d12b09c0be, type: 3}
@@ -78909,6 +78926,10 @@ PrefabInstance:
       propertyPath: audioSource
       value: 
       objectReference: {fileID: 623865432}
+    - target: {fileID: 5434073614878800290, guid: 2c8466122dc2c5748899f46747870bfd, type: 3}
+      propertyPath: timeForBonus
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 5904520216751734375, guid: 2c8466122dc2c5748899f46747870bfd, type: 3}
       propertyPath: pauseMenu
       value: 
@@ -79002,6 +79023,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1725232969228564403, guid: 2c8466122dc2c5748899f46747870bfd, type: 3}
       insertIndex: -1
       addedObject: {fileID: 872686892}
+    - targetCorrespondingSourceObject: {fileID: 5512517093136981404, guid: 2c8466122dc2c5748899f46747870bfd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 280528612}
   m_SourcePrefab: {fileID: 100100000, guid: 2c8466122dc2c5748899f46747870bfd, type: 3}
 --- !u!1001 &1454952693622641363
 PrefabInstance:
