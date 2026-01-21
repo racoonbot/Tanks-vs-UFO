@@ -14,6 +14,8 @@ public class TankHealth : MonoBehaviour
     private float lastDamageTime;
     public float damageCooldown = 0.4f;
     
+    
+    
     public Action OnDeathPlayer;
 
     private void Start()
@@ -56,6 +58,7 @@ public class TankHealth : MonoBehaviour
     public void Die()
     {
         OnDeathPlayer?.Invoke();
+        MusicPlayer.instance.StopAllMusic();
         Destroy(player.gameObject);
     }
 }

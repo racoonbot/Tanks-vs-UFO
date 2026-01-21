@@ -4,12 +4,11 @@ using Random = UnityEngine.Random;
 
 public class SpawnEnemy : MonoBehaviour
 {
-    public List<GameObject> prefabs = new List<GameObject>();
+    public List<GameObject> prefabs = new List<GameObject>(); // 0: Зеленый, 1: Желтый, 2: Красный
     public List<GameObject> Enemies = new List<GameObject>(); 
     
     public LevelManager levelManager;
     public Wallet wallet;
-
 
     public int MaxCount; 
 
@@ -20,11 +19,10 @@ public class SpawnEnemy : MonoBehaviour
 
     void Start()
     {
-        levelManager = FindObjectOfType<LevelManager>();
-
+        if(levelManager == null) levelManager = FindObjectOfType<LevelManager>();
+        
         StartWave();
     }
-
 
     public void StartWave()
     {
@@ -39,19 +37,46 @@ public class SpawnEnemy : MonoBehaviour
 
     private void SpawnAllEnemies()
     {
-
         Enemies.RemoveAll(item => item == null); 
 
-        for (int i = 0; i < MaxCount; i++)
+        int currentLevel = levelManager.level;
+        int spawnedCount = 0;
+
+        // --- 1. Гарантированный спавн (Hardcoded logic) ---
+
+        // Начиная с 6-го уровня: хотя бы 1 Красный (prefabs[2])
+        if (currentLevel >= 6 && spawnedCount < MaxCount)
         {
-            CreateEnemy();
+            CreateEnemy(prefabs[2]);
+            spawnedCount++;
+        }
+
+        // Начиная с 4-го уровня: хотя бы 1 Желтый (prefabs[1])
+        // (Логика "и один желтый, и один красный" для 6 уровня тут тоже работает, 
+        // так как if (currentLevel >= 4) сработает и для 6 уровня тоже)
+        if (currentLevel >= 4 && spawnedCount < MaxCount)
+        {
+            CreateEnemy(prefabs[1]);
+            spawnedCount++;
+        }
+
+        // --- 2. Заполнение остатка по весам (Random logic) ---
+
+        // Спавним остальных, пока не достигнем MaxCount
+        while (spawnedCount < MaxCount)
+        {
+            GameObject randomPrefab = GetWeightedEnemyPrefab();
+            CreateEnemy(randomPrefab);
+            spawnedCount++;
         }
     }
 
-    private void CreateEnemy()
+    // Изменили метод: теперь он принимает префаб как аргумент
+    private void CreateEnemy(GameObject prefabToSpawn)
     {
-        GameObject newEnemy = Instantiate(GetEnemyPrefab(), GetRandomSpawnPosition(), Quaternion.identity);
+        GameObject newEnemy = Instantiate(prefabToSpawn, GetRandomSpawnPosition(), Quaternion.identity);
         Enemies.Add(newEnemy);
+        
         EnemyBase e = newEnemy.GetComponentInChildren<EnemyBase>();
         if (e != null && wallet != null)
         {
@@ -79,27 +104,25 @@ public class SpawnEnemy : MonoBehaviour
         return new Vector3(x, 1f, z);
     }
 
-    private GameObject GetEnemyPrefab()
+    // Переименовали для ясности, логика осталась прежней
+    private GameObject GetWeightedEnemyPrefab()
     {
         int level = levelManager.level;
 
-        // 1. Зеленый (с 1 уровня): Плавно падает со 100 до 20 к 20-му уровню.
-        // Коэффициент 4.2 примерно дает 20 на 20-м уровне.
+        // 1. Зеленый
         int simpleChance = Mathf.Max(100 - (level * 4), 20); 
 
-        // 2. Желтый (с 4 уровня): Растет с 0 до 40 к 20-му уровню.
+        // 2. Желтый
         int attackChance = 0;
         if (level >= 4)
         {
-            // Шаг 2.5 дает 40 очков за 16 уровней (с 4 по 20)
             attackChance = Mathf.Min((level - 3) * 3, 40);
         }
 
-        // 3. Красный (с 8 уровня): Растет с 0 до 40 к 20-му уровню.
+        // 3. Красный
         int moveAttackChance = 0;
         if (level >= 8)
         {
-            // Шаг 3.3 дает 40 очков за 12 уровней (с 8 по 20)
             moveAttackChance = Mathf.Min((level - 7) * 4, 40);
         }
 
@@ -107,11 +130,11 @@ public class SpawnEnemy : MonoBehaviour
         int randomValue = UnityEngine.Random.Range(0, totalChance);
 
         if (randomValue < simpleChance) 
-            return prefabs[0];
+            return prefabs[0]; // Зеленый
 
         if (randomValue < simpleChance + attackChance) 
-            return prefabs[1];
+            return prefabs[1]; // Желтый
     
-        return prefabs[2];
+        return prefabs[2]; // Красный
     }
 }

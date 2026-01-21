@@ -13,6 +13,7 @@ public class MusicPlayer : MonoBehaviour
             instance = this;
             DontDestroyOnLoad(gameObject);
             SceneManager.sceneLoaded += OnSceneLoaded;
+           
         }
         else
         {
@@ -40,10 +41,9 @@ public class MusicPlayer : MonoBehaviour
         }
     }
 
-    private void PlayMusicSafe(int index)
+    public void PlayMusicSafe(int index)
     {
         if (audioSources == null || index < 0 || index >= audioSources.Length) return;
-        // Остановить все и запустить нужный
         for (int i = 0; i < audioSources.Length; i++)
         {
             if (audioSources[i] == null) continue;
@@ -54,6 +54,18 @@ public class MusicPlayer : MonoBehaviour
             else
             {
                 if (audioSources[i].isPlaying) audioSources[i].Stop();
+            }
+        }
+    }
+    public void StopAllMusic()
+    {
+        if (audioSources == null) return;
+
+        for (int i = 0; i < audioSources.Length; i++)
+        {
+            if (audioSources[i] != null && audioSources[i].isPlaying)
+            {
+                audioSources[i].Stop();
             }
         }
     }

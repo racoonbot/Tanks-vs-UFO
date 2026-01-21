@@ -2,19 +2,18 @@ using UnityEngine;
 
 public class TankWheel : MonoBehaviour
 {
-    public float rotationSpeed = 100f; // Скорость вращения
-
+    public float rotationSpeed = 100f;
+    public Joystick moveJoystick;
     void Update()
     {
-        // Получаем направление движения автомобиля (скорость)
-        float movement = Input.GetAxis("Vertical"); // Используем входные данные
 
-        // Условие вращения колес
-        if (movement > 0) // Двигается вперед
+        float movementKeyboard = Input.GetAxis("Vertical"); 
+        float movementJoystick = moveJoystick.Vertical;
+        if (movementKeyboard > 0 || movementJoystick > 0 ) 
         {
             RotateWheel(-rotationSpeed);
         }
-        else if (movement < 0) // Двигается назад
+        else if (movementKeyboard < 0 ||  movementJoystick < 0 ) 
         {
             RotateWheel(rotationSpeed);
         }
@@ -22,7 +21,6 @@ public class TankWheel : MonoBehaviour
 
     void RotateWheel(float rotationAmount)
     {
-        // Вращение колеса вокруг оси Y
         transform.Rotate(rotationAmount, 0f * Time.deltaTime, 0f);
     }
   

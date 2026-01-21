@@ -78889,6 +78889,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 384639358109926806, guid: 2c8466122dc2c5748899f46747870bfd, type: 3}
+      propertyPath: moveJoystick
+      value: 
+      objectReference: {fileID: 410780940}
+    - target: {fileID: 1272611138273818475, guid: 2c8466122dc2c5748899f46747870bfd, type: 3}
+      propertyPath: moveJoystick
+      value: 
+      objectReference: {fileID: 410780940}
+    - target: {fileID: 1293434094370853514, guid: 2c8466122dc2c5748899f46747870bfd, type: 3}
+      propertyPath: moveJoystick
+      value: 
+      objectReference: {fileID: 410780940}
+    - target: {fileID: 3142272020638187976, guid: 2c8466122dc2c5748899f46747870bfd, type: 3}
+      propertyPath: moveJoystick
+      value: 
+      objectReference: {fileID: 410780940}
     - target: {fileID: 5434073614878800290, guid: 2c8466122dc2c5748899f46747870bfd, type: 3}
       propertyPath: audioSource
       value: 
