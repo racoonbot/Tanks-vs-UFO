@@ -5,54 +5,57 @@ using YG; // Добавляем для доступа к YG2.envir
 
 public class Tank : MonoBehaviour
 {
-    private TankAttributes attributes; 
+    private TankAttributes attributes;
     public float rotationSpeed = 5f;
     public Rigidbody rb;
     private bool isForwardDirection;
     public float currentSpeed;
 
-    [Header("Настройки Джойстиков")]
-    public Joystick moveJoystick;    
-    public Joystick turretJoystick;  
-    
-    [Header("Башня")]
-    public Transform turretTransform; 
-    public float turretRotationSpeed = 50f;
+    [Header("Настройки Джойстиков")] public Joystick moveJoystick;
+    public Joystick turretJoystick;
+
+    [Header("Башня")] public Transform turretTransform;
+    // public float turretRotationSpeed;
 
     void Awake()
     {
         attributes = FindObjectOfType<TankAttributes>();
         rb = GetComponent<Rigidbody>();
     }
-    void Start() { }
+
+    void Start()
+    {
+    }
 
     void FixedUpdate()
     {
-        float currentForce = attributes.maxSpeed; 
+        float currentForce = attributes.maxSpeed;
 
-       // float v = Input.GetAxis("Vertical");
-       // float h = Input.GetAxis("Horizontal");
-       // float tH = Input.GetAxis("Mouse X");
+        // float v = Input.GetAxis("Vertical");
+        // float h = Input.GetAxis("Horizontal");
+        // float tH = Input.GetAxis("Mouse X");
 
-       float v = 0;
-       float h= 0;
-       float tH= 0;
-       
-      //  if (YG2.envir.isMobile || YG2.envir.isTablet)
+        float v = 0;
+        float h = 0;
+        float tH = 0;
+
+        //if (YG2.envir.isMobile || YG2.envir.isTablet)
        // {
             if (moveJoystick != null)
             {
                 v = moveJoystick.Vertical;
                 h = moveJoystick.Horizontal;
-               v = Mathf.RoundToInt(v);
-               h = Mathf.RoundToInt(h);
+                v = Mathf.RoundToInt(v);
+                h = Mathf.RoundToInt(h);
             }
+
             if (turretJoystick != null)
             {
                 tH = turretJoystick.Horizontal;
-                Debug.Log("tH"+ tH );
+                Debug.Log("tH" + tH);
             }
-      // }
+       // }
+
         if (v > 0)
         {
             isForwardDirection = true;
@@ -63,7 +66,7 @@ public class Tank : MonoBehaviour
             isForwardDirection = false;
             rb.AddForce(-transform.forward * currentForce * Time.fixedDeltaTime, ForceMode.Acceleration);
         }
-        
+
         if (h > 0)
         {
             if (isForwardDirection)
@@ -82,7 +85,7 @@ public class Tank : MonoBehaviour
         // --- ЛОГИКА ПОВОРОТА БАШНИ ---
         if (turretTransform != null && Mathf.Abs(tH) > 0.05f)
         {
-            turretTransform.Rotate(0f, tH * turretRotationSpeed * Time.fixedDeltaTime, 0f);
+            turretTransform.Rotate(0f, tH * attributes.turretRotationSpeed * Time.fixedDeltaTime, 0f);
         }
 
         currentSpeed = rb.velocity.magnitude;

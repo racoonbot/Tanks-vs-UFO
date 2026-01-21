@@ -3,8 +3,7 @@ using YG;
 
 public class InputSwitcher : MonoBehaviour
 {
-    [Header("Джойстик для мобилок")]
-    public GameObject mobileJoystick; 
+    [Header("Джойстик для мобилок")] public GameObject mobileJoystick;
 
     private void Start()
     {
@@ -13,7 +12,7 @@ public class InputSwitcher : MonoBehaviour
             ApplyControlSettings();
         }
     }
-    
+
     private void OnEnable() => YG2.onGetSDKData += ApplyControlSettings;
     private void OnDisable() => YG2.onGetSDKData -= ApplyControlSettings;
 
@@ -22,13 +21,13 @@ public class InputSwitcher : MonoBehaviour
         bool isTouchDevice = YG2.envir.isMobile || YG2.envir.isTablet;
         if (mobileJoystick != null)
         {
-//mobileJoystick.SetActive(isTouchDevice);
+//            mobileJoystick.SetActive(isTouchDevice);
         }
+
         if (isTouchDevice)
         {
-            Cursor.visible = false; 
+            Cursor.visible = false;
             Cursor.lockState = CursorLockMode.None;
         }
-       
     }
 }

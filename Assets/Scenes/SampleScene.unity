@@ -56185,6 +56185,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 915ac35a5aca31d4c9575633be0f6b82, type: 3}
+--- !u!4 &1505702888 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4724118487713174759, guid: 2c8466122dc2c5748899f46747870bfd, type: 3}
+  m_PrefabInstance: {fileID: 285831005221059571}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1506844330
 GameObject:
   m_ObjectHideFlags: 0
@@ -78900,6 +78905,10 @@ PrefabInstance:
       propertyPath: turretJoystick
       value: 
       objectReference: {fileID: 2133794686}
+    - target: {fileID: 5904520216751734375, guid: 2c8466122dc2c5748899f46747870bfd, type: 3}
+      propertyPath: turretTransform
+      value: 
+      objectReference: {fileID: 1505702888}
     - target: {fileID: 6303694051078238376, guid: 2c8466122dc2c5748899f46747870bfd, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -78954,11 +78963,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9215775968107532862, guid: 2c8466122dc2c5748899f46747870bfd, type: 3}
       propertyPath: speedLimit
-      value: 600
+      value: 800
       objectReference: {fileID: 0}
     - target: {fileID: 9215775968107532862, guid: 2c8466122dc2c5748899f46747870bfd, type: 3}
       propertyPath: healthLimit
-      value: 50
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 9215775968107532862, guid: 2c8466122dc2c5748899f46747870bfd, type: 3}
       propertyPath: turretRotationSpeed
@@ -78966,7 +78975,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9215775968107532862, guid: 2c8466122dc2c5748899f46747870bfd, type: 3}
       propertyPath: turretRotationSpeedLimit
-      value: 120
+      value: 150
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1583799448271227351, guid: 2c8466122dc2c5748899f46747870bfd, type: 3}
