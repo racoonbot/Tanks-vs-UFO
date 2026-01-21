@@ -9,7 +9,12 @@ public abstract class EnemyBase : MonoBehaviour
     public Action OnDeathEnemy;
     private SpawnEnemy spawner;
 
+    [Header("Настройки Случайного Движения")]
+    public float randomAccuracy = 3f; // Насколько сильно враг может "мазать" мимо цели (радиус)
+    public float changeDirectionInterval = 2f; // Как часто меняется случайная точка (в секундах)
     
+    private Vector3 currentRandomOffset; // Текущее смещение
+    private float randomTimer; // Таймер
     
     
     public virtual string NickName => "Неизвестный";
@@ -96,6 +101,7 @@ public abstract class EnemyBase : MonoBehaviour
         {
             if (canMove && !radar.isDodging)
             {
+                CalculateRandomOffset();
                 UpdateDirection();
                 UpdateDistance();
             }
@@ -237,33 +243,77 @@ public abstract class EnemyBase : MonoBehaviour
 
     public void UpdateDirection()
     {
-        targetPos = target.transform.position;
-        float distance = Vector3.Distance(transform.position, targetPos);
+        // Теперь целевая позиция - это позиция игрока + случайное смещение
+        targetPos = target.transform.position + currentRandomOffset;
+        
+        // Для расчета дистанции лучше использовать "чистую" позицию цели, 
+        // чтобы враг не тупил с переключением атаки/отступления, 
+        // но для движения используем targetPos со смещением.
+        
         if (isAttacking)
         {
-            transform.position = Vector3.MoveTowards(transform.position, targetPos, MaxSpeed * Time.deltaTime);
+            // Двигаемся к точке со смещением
+            // Используем MoveTowards, но игнорируем Y, чтобы враг не взлетал/не уходил под землю
+            Vector3 targetPositionFlat = new Vector3(targetPos.x, transform.position.y, targetPos.z);
+            
+            transform.position = Vector3.MoveTowards(transform.position, targetPositionFlat, MaxSpeed * Time.deltaTime);
+            
+            // Опционально: поворот лицом к цели
+            transform.LookAt(targetPositionFlat);
         }
         else
         {
-            if (target.rb.velocity.magnitude > 0.1)
+            // Логика отступления
+            // При отступлении тоже можно использовать смещение, чтобы он убегал не по прямой
+            
+            // Нужно проверить скорость игрока, как у вас было (предполагаем, что у target есть rb)
+            Rigidbody targetRb = target.GetComponent<Rigidbody>(); // Лучше закэшировать это в Start
+            if (targetRb != null && targetRb.velocity.magnitude > 0.1f)
             {
+                // Вектор ОТ игрока (с учетом смещения, чтобы убегать немного зигзагом)
                 Vector3 retreatDirection = (transform.position - targetPos).normalized;
+                
+                // Убираем влияние по вертикали
+                retreatDirection.y = 0; 
+                
                 transform.position += retreatDirection * MaxSpeed * Time.deltaTime;
+                
+                // Опционально: смотреть, куда бежишь (от игрока)
+                Quaternion lookRotation = Quaternion.LookRotation(retreatDirection);
+                transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5f);
             }
         }
     }
 
     public void UpdateDistance()
     {
-        targetPos = target.transform.position;
-        float distance = Vector3.Distance(transform.position, targetPos);
-        if (distance < retreatDistance)
+        // Здесь важно считать дистанцию ДО РЕАЛЬНОГО игрока, без смещения,
+        // иначе логика переключения состояний будет неточной.
+        float trueDistance = Vector3.Distance(transform.position, target.transform.position);
+        
+        if (trueDistance < retreatDistance)
         {
             isAttacking = false;
         }
         else
         {
             isAttacking = true;
+        }
+    }
+    private void CalculateRandomOffset()
+    {
+        randomTimer -= Time.deltaTime;
+
+        if (randomTimer <= 0)
+        {
+            // Генерируем случайную точку внутри круга радиусом randomAccuracy
+            // Используем insideUnitCircle (X, Y), но перекладываем на X, Z для 3D мира
+            Vector2 randomCircle = Random.insideUnitCircle * randomAccuracy;
+            
+            currentRandomOffset = new Vector3(randomCircle.x, 0, randomCircle.y);
+
+            // Сбрасываем таймер + добавляем немного рандома во время (от 70% до 130% от базы)
+            randomTimer = changeDirectionInterval * Random.Range(0.7f, 1.3f);
         }
     }
 
@@ -296,8 +346,5 @@ public abstract class EnemyBase : MonoBehaviour
 
         Destroy(parent);
     }
-
-    public virtual void SendMessages()  {}
-  
 
 }

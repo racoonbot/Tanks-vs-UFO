@@ -31,30 +31,43 @@ public class Tank : MonoBehaviour
     {
         float currentForce = attributes.maxSpeed;
 
-        // float v = Input.GetAxis("Vertical");
-        // float h = Input.GetAxis("Horizontal");
-        // float tH = Input.GetAxis("Mouse X");
+        // 1. Считываем ввод с клавиатуры (WASD / Стрелки)
+        float v = Input.GetAxis("Vertical");
+        float h = Input.GetAxis("Horizontal");
+        
+        // Считываем мышь для башни (опционально, если нужно управление мышью на ПК)
+        // Если хотите поворот башни на клавиши Q и E, замените "Mouse X" на свои оси или кнопки.
+        float tH = Input.GetAxis("Mouse X"); 
 
-        float v = 0;
-        float h = 0;
-        float tH = 0;
-
-        //if (YG2.envir.isMobile || YG2.envir.isTablet)
-       // {
-            if (moveJoystick != null)
+        // 2. Если ввод с клавиатуры равен 0, пытаемся считать Джойстики
+        // (Это позволяет играть и на ПК, и на телефоне без смены кода)
+        
+        if (moveJoystick != null)
+        {
+            // Если игрок не жмет кнопки на клавиатуре (v == 0), берем значение с джойстика
+            if (Mathf.Abs(v) < 0.01f) 
             {
                 v = moveJoystick.Vertical;
-                h = moveJoystick.Horizontal;
-                v = Mathf.RoundToInt(v);
-                h = Mathf.RoundToInt(h);
+                // v = Mathf.RoundToInt(v); // Раскомментируйте, если нужно резкое движение без плавного разгона
             }
 
-            if (turretJoystick != null)
+            if (Mathf.Abs(h) < 0.01f) 
+            {
+                h = moveJoystick.Horizontal;
+                // h = Mathf.RoundToInt(h); // То же самое для поворота
+            }
+        }
+
+        if (turretJoystick != null)
+        {
+            // Если мышь не двигается, берем значение с джойстика башни
+            if (Mathf.Abs(tH) < 0.01f)
             {
                 tH = turretJoystick.Horizontal;
-                Debug.Log("tH" + tH);
             }
-       // }
+        }
+
+        // --- ДАЛЕЕ ВАША ФИЗИКА БЕЗ ИЗМЕНЕНИЙ ---
 
         if (v > 0)
         {

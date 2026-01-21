@@ -21,7 +21,7 @@ public class InputSwitcher : MonoBehaviour
         bool isTouchDevice = YG2.envir.isMobile || YG2.envir.isTablet;
         if (mobileJoystick != null)
         {
-//            mobileJoystick.SetActive(isTouchDevice);
+          mobileJoystick.SetActive(isTouchDevice);
         }
 
         if (isTouchDevice)
