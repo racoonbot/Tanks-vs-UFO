@@ -6,7 +6,7 @@ public class ShotCounter : MonoBehaviour
 {
     public float ShotInterval = 2f; 
     public bool isShooted = false;
-    public float ShotMultiplier = 4f;
+    public float ShotMultiplier = 2f;
     private float startInterval; 
     public TankHealth tankHealth; 
 
