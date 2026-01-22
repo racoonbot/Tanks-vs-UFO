@@ -1,10 +1,9 @@
-using System.Collections;
 using UnityEngine;
 
 public class BustHeal : Loot
 {
     public int minAmount = 1;
-    public int maxAmount = 10;
+    public int maxAmount = 11;
 
     protected override void ActivateBust()
     {
@@ -14,13 +13,13 @@ public class BustHeal : Loot
     private void GainHealth()
     {
         TankHealth tankHealth = FindObjectOfType<TankHealth>();
+        TankAttributes tankAttributes = FindObjectOfType<TankAttributes>();
 
-        if (tankHealth != null)
+        if (tankHealth != null && tankAttributes != null)
         {
-            tankHealth.Heal(RandomHealAmount());
-  
+            int healAmount = RandomHealAmount();
+            tankHealth.health = Mathf.Min(tankHealth.health + healAmount, tankAttributes.maxHealth);
         }
-       
     }
 
     private int RandomHealAmount()
