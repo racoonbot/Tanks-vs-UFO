@@ -25512,7 +25512,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.3604375, y: 0.86200005}
   m_AnchorMax: {x: 0.63756263, y: 0.9760001}
-  m_AnchoredPosition: {x: 0.000030517578, y: -63.815613}
+  m_AnchoredPosition: {x: 0, y: -63.815613}
   m_SizeDelta: {x: -0.0001, y: -15.0717}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &658277433
@@ -79134,7 +79134,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2288622178242916594, guid: 2c8466122dc2c5748899f46747870bfd, type: 3}
       propertyPath: ShotMultiplier
-      value: 1.3
+      value: 1.2
       objectReference: {fileID: 0}
     - target: {fileID: 3142272020638187976, guid: 2c8466122dc2c5748899f46747870bfd, type: 3}
       propertyPath: moveJoystick
@@ -79150,11 +79150,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5434073614878800290, guid: 2c8466122dc2c5748899f46747870bfd, type: 3}
       propertyPath: maxBonusLevel
-      value: 12
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5434073614878800290, guid: 2c8466122dc2c5748899f46747870bfd, type: 3}
       propertyPath: damageCooldown
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5798025777033577767, guid: 2c8466122dc2c5748899f46747870bfd, type: 3}
+      propertyPath: waveLevel
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5904520216751734375, guid: 2c8466122dc2c5748899f46747870bfd, type: 3}
       propertyPath: pauseMenu
@@ -79216,6 +79220,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 9145416976672140021, guid: 2c8466122dc2c5748899f46747870bfd, type: 3}
+      propertyPath: ShotInterval
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9215775968107532862, guid: 2c8466122dc2c5748899f46747870bfd, type: 3}
       propertyPath: maxSpeed
       value: 250
@@ -79226,11 +79234,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9215775968107532862, guid: 2c8466122dc2c5748899f46747870bfd, type: 3}
       propertyPath: speedLimit
-      value: 800
+      value: 900
       objectReference: {fileID: 0}
     - target: {fileID: 9215775968107532862, guid: 2c8466122dc2c5748899f46747870bfd, type: 3}
       propertyPath: healthLimit
-      value: 100
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 9215775968107532862, guid: 2c8466122dc2c5748899f46747870bfd, type: 3}
       propertyPath: turretRotationSpeed
@@ -79238,10 +79246,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9215775968107532862, guid: 2c8466122dc2c5748899f46747870bfd, type: 3}
       propertyPath: turretRotationSpeedLimit
-      value: 150
+      value: 200
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1583799448271227351, guid: 2c8466122dc2c5748899f46747870bfd, type: 3}
+    - {fileID: 5165456602984421437, guid: 2c8466122dc2c5748899f46747870bfd, type: 3}
     m_RemovedGameObjects:
     - {fileID: 8915061843649010496, guid: 2c8466122dc2c5748899f46747870bfd, type: 3}
     m_AddedGameObjects: []

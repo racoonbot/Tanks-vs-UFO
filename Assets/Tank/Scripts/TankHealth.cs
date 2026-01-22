@@ -14,7 +14,7 @@ public class TankHealth : MonoBehaviour
     [Header("Накопительный бонус")] 
     public float timeForBonus = 3; 
     public int bonusLevel = 0;
-    public int maxBonusLevel = 5; 
+    public int maxBonusLevel; 
     
     public Action OnDeathPlayer;
 
