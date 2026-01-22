@@ -1,7 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class TankHealth : MonoBehaviour
@@ -14,11 +11,11 @@ public class TankHealth : MonoBehaviour
     private float lastDamageTime;
     public float damageCooldown = 0.5f;
 
-
-    [Header("Бонус за отсутствие урона")] public float timeForBonus = 5f;
-    public bool isBonusActive = false;
-    // ------------------------
-
+    [Header("Накопительный бонус")] 
+    public float timeForBonus = 3; 
+    public int bonusLevel = 0;
+    public int maxBonusLevel = 5; 
+    
     public Action OnDeathPlayer;
 
     private void Start()
@@ -32,14 +29,21 @@ public class TankHealth : MonoBehaviour
 
     private void Update()
     {
-        CheckNoDamageBonus();
+        CalculateBonusLevel();
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void CalculateBonusLevel()
     {
-        if (other.GetComponent<Bullets>())
+        float timeWithoutDamage = Time.time - lastDamageTime;
+        if (timeWithoutDamage < timeForBonus)
         {
-            TakeDamage();
+            bonusLevel = 0;
+        }
+        else
+        {
+            bonusLevel = (int)(timeWithoutDamage / timeForBonus);
+            if (bonusLevel > maxBonusLevel) 
+                bonusLevel = maxBonusLevel;
         }
     }
 
@@ -49,37 +53,20 @@ public class TankHealth : MonoBehaviour
         {
             audioSource.Play();
             health--;
-            lastDamageTime = Time.time;
-            isBonusActive = false;
-
+            lastDamageTime = Time.time; 
+            
             if (health <= 0)
             {
                 Die();
             }
         }
     }
-
-    private void CheckNoDamageBonus()
+    
+    private void OnTriggerEnter(Collider other)
     {
-        if (Time.time - lastDamageTime > timeForBonus)
-        {
-            if (!isBonusActive)
-            {
-                isBonusActive = true;
-                Debug.Log("БОНУС АКТИВИРОВАН! (Скорость стрельбы увеличена)");
-            }
-        }
-        else
-        {
-            if (isBonusActive)
-            {
-                isBonusActive = false;
-              
-            }
-        }
+        if (other.GetComponent<Bullets>()) TakeDamage();
     }
-    // -------------------
-
+    
     public void Heal(int healAmount)
     {
         health += healAmount;
@@ -89,7 +76,6 @@ public class TankHealth : MonoBehaviour
     {
         OnDeathPlayer?.Invoke();
         if (MusicPlayer.instance != null) MusicPlayer.instance.StopAllMusic();
-
         if (player != null) Destroy(player.gameObject);
         else Destroy(gameObject);
     }
