@@ -3,7 +3,8 @@ using UnityEngine;
 
 public class BustHeal : Loot
 {
-    public int healAmount = 1; 
+    public int minAmount = 1;
+    public int maxAmount = 10;
 
     protected override void ActivateBust()
     {
@@ -16,9 +17,14 @@ public class BustHeal : Loot
 
         if (tankHealth != null)
         {
-            tankHealth.Heal(healAmount);
+            tankHealth.Heal(RandomHealAmount());
   
         }
        
+    }
+
+    private int RandomHealAmount()
+    {
+        return Random.Range(minAmount, maxAmount);
     }
 }

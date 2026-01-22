@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class LevelManager : MonoBehaviour
@@ -6,8 +7,10 @@ public class LevelManager : MonoBehaviour
     private SpawnEnemy spawner;
     private LootSpawner lootSpawner;
     public int level = 1;
-    public bool levelIncreased; 
+    public bool levelIncreased;
 
+   
+    
     private ShowMoney showMoney;
     public ShowNumLevel showLevel;
     private GameData gameData;
@@ -18,16 +21,20 @@ public class LevelManager : MonoBehaviour
 
     private void Start()
     {
+        
+            
         showMoney = FindObjectOfType<ShowMoney>();
         spawner = FindObjectOfType<SpawnEnemy>();
         canvas = FindObjectOfType<ShowCanvas>();
         gameData = FindObjectOfType<GameData>();
         lootSpawner =  FindObjectOfType<LootSpawner>();
+        
 
         if (canvas != null && showMoney != null && gameData != null && lootSpawner != null)
         {
             OnLevelIncreased += canvas.ActivateCanvas;
             OnLevelIncreased += showMoney.UpdateText;
+            OnLevelIncreased += DestroyAllEnemyBullets;
             OnLevelStarted += showLevel.UpdateText;
             OnLevelStarted += gameData.SaveData;
             OnLevelStarted += lootSpawner.LootSpawn;
@@ -57,6 +64,7 @@ public class LevelManager : MonoBehaviour
     {
         if (canvas != null && showMoney != null)
         {
+            OnLevelIncreased -= DestroyAllEnemyBullets;
             OnLevelIncreased -= canvas.ActivateCanvas;
             OnLevelIncreased -= showMoney.UpdateText;
             OnLevelStarted -= showLevel.UpdateText;
@@ -64,6 +72,18 @@ public class LevelManager : MonoBehaviour
             OnLevelStarted -= lootSpawner.LootSpawn;
         }
     }
+    
+    public void DestroyAllEnemyBullets()
+    {
+        Bullets[] allBullets = FindObjectsOfType<Bullets>();
+
+        foreach (var bullet in allBullets)
+        {
+            Destroy(bullet.gameObject);
+        }
+    }
+    
+    
     public void NextLevel()
     {
         OnLevelStarted?.Invoke(); 

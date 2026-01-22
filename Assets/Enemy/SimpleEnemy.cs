@@ -7,6 +7,7 @@ public class SimpleEnemy : EnemyBase
     public Transform SpawnPoint;
     public override string NickName => "Зеленый";
     public override Color MyColor => Color.green;
+    
 
     private void OnDestroy()
     {

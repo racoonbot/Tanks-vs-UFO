@@ -28,7 +28,7 @@ public class Tank_Turret : MonoBehaviour
     {
         return;
 
-        float mouseInput = Input.GetAxis("Mouse X");
+        /*float mouseInput = Input.GetAxis("Mouse X");
         
         
         if (mouseInput != 0)
@@ -47,6 +47,6 @@ public class Tank_Turret : MonoBehaviour
         {
             float rotationAmount = attributes.turretRotationSpeed * Time.fixedDeltaTime; 
             rb.MoveRotation(rb.rotation * Quaternion.Euler(0f, rotationAmount, 0f));
-        }
+        }*/
     }
 }

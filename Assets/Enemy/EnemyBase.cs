@@ -16,12 +16,14 @@ public abstract class EnemyBase : MonoBehaviour
     private Vector3 currentRandomOffset; // Текущее смещение
     private float randomTimer; // Таймер
     
+   
+    
     
     public virtual string NickName => "Неизвестный";
     public virtual Color MyColor => Color.white;
-    
-    
-    
+
+    public float minRandomSpeed;
+    public float maxRandomSpeed;
     
     public int reward;
 
@@ -41,6 +43,8 @@ public abstract class EnemyBase : MonoBehaviour
     public BlinkEnemy blink;
 
     public float MaxSpeed;
+    
+    
 
     public Sounds audioSource;
 
@@ -75,6 +79,8 @@ public abstract class EnemyBase : MonoBehaviour
         OnDeathEnemy += DestroyEnemy;
     }
 
+    
+    
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -130,6 +136,10 @@ public abstract class EnemyBase : MonoBehaviour
         }
     }
 
+    private float MaxSpeedRandomizer()
+    {
+        return Random.Range(minRandomSpeed, maxRandomSpeed);
+    }
 
     private void PreventOverlap() // чтобы мобы отталкивались друг от друга
     {
@@ -215,7 +225,8 @@ public abstract class EnemyBase : MonoBehaviour
         // 4. Создаем пулю и задаем направление
         Vector3 direction = (leadPosition - bulletSpawn.position).normalized;
         GameObject newBullet = Instantiate(bullet, bulletSpawn.position, Quaternion.identity);
-    
+       
+        
         Rigidbody bulletRb = newBullet.GetComponent<Rigidbody>();
         if (bulletRb != null)
         {
@@ -223,6 +234,8 @@ public abstract class EnemyBase : MonoBehaviour
             bulletRb.velocity = direction * bulletSpeed;
         }
     }
+
+  
 
     private Vector3 RandomDirection()
     {
@@ -256,7 +269,7 @@ public abstract class EnemyBase : MonoBehaviour
             // Используем MoveTowards, но игнорируем Y, чтобы враг не взлетал/не уходил под землю
             Vector3 targetPositionFlat = new Vector3(targetPos.x, transform.position.y, targetPos.z);
             
-            transform.position = Vector3.MoveTowards(transform.position, targetPositionFlat, MaxSpeed * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, targetPositionFlat, MaxSpeedRandomizer() * Time.deltaTime);
             
             // Опционально: поворот лицом к цели
             transform.LookAt(targetPositionFlat);
