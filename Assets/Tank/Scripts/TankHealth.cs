@@ -61,6 +61,15 @@ public class TankHealth : MonoBehaviour
             }
         }
     }
+   
+    public float GetBonusProgress() // ДЛЯ UI полоски бонуса
+    {
+        float timeToMaxLevel = timeForBonus * maxBonusLevel;
+        float timeSinceDamage = Time.time - lastDamageTime;
+        float totalProgress = timeSinceDamage / timeToMaxLevel;
+        return Mathf.Clamp01(totalProgress);
+    }
+    
     
     private void OnTriggerEnter(Collider other)
     {
