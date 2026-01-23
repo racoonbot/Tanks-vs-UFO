@@ -1,3 +1,3 @@
-﻿Build path: P:/UnityProjects/Tanks-vs-UFO/BUILDS/TestAll
-Build number: 9
+﻿Build path: P:/UnityProjects/Tanks-vs-UFO/BUILDS/LocalTest
+Build number: 10
 PluginYG version: 2.007
