@@ -21,10 +21,9 @@ public class LevelLoader : MonoBehaviour
 
     public void StartNewGame() // Запускает гигру с начала
     {
-        Debug.Log("Кнопка нажата! Метод работает.");
-        YG2.MetricaSend("StartNewGame");
-
         LockCursor();
+
+        YG2.MetricaSend("StartNewGame");
 
         PlayerPrefs.DeleteKey("Level");
         PlayerPrefs.DeleteKey("LevelMoney");
@@ -45,15 +44,17 @@ public class LevelLoader : MonoBehaviour
         SceneManager.LoadScene(1);
     }
 
-    private void UnlockCursor() // Разблокируем мыша
+    private void UnlockCursor() 
     {
+        Debug.Log("UnlockCursor");
         Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
+        Cursor.visible = true;                 
     }
 
-    private void LockCursor() // Блокируем мыша
+    private void LockCursor() 
     {
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
+        Debug.Log("LockCursor");
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;       
     }
 }
