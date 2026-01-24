@@ -21,7 +21,7 @@ public class LevelLoader : MonoBehaviour
 
     public void StartNewGame() // Запускает гигру с начала
     {
-        LockCursor();
+        //LockCursor();
 
         YG2.MetricaSend("StartNewGame");
 

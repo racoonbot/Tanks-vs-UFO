@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using YG;
 
 public class TankHealth : MonoBehaviour
 {
@@ -71,9 +72,12 @@ public class TankHealth : MonoBehaviour
     }
     
     
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other) // более современный и быстрый метод TryGetComponent. Он работает чуть быстрее и пишет меньше мусора в память.
     {
-        if (other.GetComponent<Bullets>()) TakeDamage();
+        if (other.TryGetComponent(out Bullets bullet) || other.TryGetComponent(out EnemyBase enemy))
+        {
+            TakeDamage();
+        }
     }
     
     public void Heal(int healAmount)
@@ -84,6 +88,7 @@ public class TankHealth : MonoBehaviour
     public void Die()
     {
         OnDeathPlayer?.Invoke();
+        YG2.MetricaSend("PlayerDead");
         if (MusicPlayer.instance != null) MusicPlayer.instance.StopAllMusic();
         if (player != null) Destroy(player.gameObject);
         else Destroy(gameObject);

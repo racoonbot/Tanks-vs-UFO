@@ -24,6 +24,10 @@ public class BulletDestroyer : MonoBehaviour
         Destroy(gameObject); 
     }
 
-   
-    
+    private void OnTriggerEnter(Collider other)
+    {
+        Debug.Log("Пуля Уночтожена пулей");
+        if (other.TryGetComponent(out Bullets bullet))
+            DestroySelf();
+    }
 }

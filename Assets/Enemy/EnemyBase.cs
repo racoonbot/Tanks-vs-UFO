@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using YG;
 using Random = UnityEngine.Random;
 
 public abstract class EnemyBase : MonoBehaviour
@@ -356,7 +357,7 @@ public abstract class EnemyBase : MonoBehaviour
         {
             spawner.Enemies.Remove(parent);
         }
-
+        YG2.MetricaSend("DestroyEnemy");
         Destroy(parent);
     }
 
