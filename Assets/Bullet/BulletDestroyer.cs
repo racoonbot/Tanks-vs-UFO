@@ -14,6 +14,7 @@ public class BulletDestroyer : MonoBehaviour
 
     private void OnDisable()
     {
+        
         OnGlobalDestruction -= DestroySelf;
 
     }

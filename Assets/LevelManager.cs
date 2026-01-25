@@ -56,6 +56,7 @@ public class LevelManager : MonoBehaviour
     private void WinLevel()
     {
         levelIncreased = true; 
+        Time.timeScale = 0;
         level++;              
         OnLevelIncreased?.Invoke(); 
     }
@@ -86,10 +87,11 @@ public class LevelManager : MonoBehaviour
     
     public void NextLevel()
     {
+        LockCursor();
+        Time.timeScale = 1f;
         OnLevelStarted?.Invoke(); 
         canvas.DeactivateCanvas();
         spawner.StartWave(); 
-        LockCursor();
     }
 
     public void ResetLevel()
