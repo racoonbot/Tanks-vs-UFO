@@ -87,7 +87,7 @@ public class LevelManager : MonoBehaviour
     
     public void NextLevel()
     {
-        LockCursor();
+        //LockCursor();
         Time.timeScale = 1f;
         OnLevelStarted?.Invoke(); 
         canvas.DeactivateCanvas();
