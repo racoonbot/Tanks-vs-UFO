@@ -42,7 +42,6 @@ public class TankAttributes : MonoBehaviour
                 {
                     maxHealth += amount;
                     PlayerPrefs.SetFloat("Value_MaxHealth", maxHealth);
-                    Debug.Log($"💾 СОХРАНЯЮ Здоровье: {maxHealth}");
                 }
                 else
                 {

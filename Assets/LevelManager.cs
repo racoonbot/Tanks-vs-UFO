@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using YG;
 
 public class LevelManager : MonoBehaviour
 {
@@ -9,26 +10,23 @@ public class LevelManager : MonoBehaviour
     public int level = 1;
     public bool levelIncreased;
 
-   
-    
+
     private ShowMoney showMoney;
     public ShowNumLevel showLevel;
     private GameData gameData;
     private ShowCanvas canvas;
 
-    public event Action OnLevelIncreased; 
-    public event Action OnLevelStarted;  
+    public event Action OnLevelIncreased;
+    public event Action OnLevelStarted;
 
     private void Start()
     {
-        
-            
         showMoney = FindObjectOfType<ShowMoney>();
         spawner = FindObjectOfType<SpawnEnemy>();
         canvas = FindObjectOfType<ShowCanvas>();
         gameData = FindObjectOfType<GameData>();
-        lootSpawner =  FindObjectOfType<LootSpawner>();
-        
+        lootSpawner = FindObjectOfType<LootSpawner>();
+
 
         if (canvas != null && showMoney != null && gameData != null && lootSpawner != null)
         {
@@ -55,10 +53,10 @@ public class LevelManager : MonoBehaviour
 
     private void WinLevel()
     {
-        levelIncreased = true; 
+        levelIncreased = true;
         Time.timeScale = 0;
-        level++;              
-        OnLevelIncreased?.Invoke(); 
+        level++;
+        OnLevelIncreased?.Invoke();
     }
 
     private void OnDisable()
@@ -73,7 +71,7 @@ public class LevelManager : MonoBehaviour
             OnLevelStarted -= lootSpawner.LootSpawn;
         }
     }
-    
+
     public void DestroyAllEnemyBullets()
     {
         Bullets[] allBullets = FindObjectsOfType<Bullets>();
@@ -83,27 +81,34 @@ public class LevelManager : MonoBehaviour
             Destroy(bullet.gameObject);
         }
     }
-    
-    
+
+
     public void NextLevel()
     {
-        //LockCursor();
+        if (YG2.envir.deviceType == "desktop")
+        {
+            LockCursor();
+        }
         Time.timeScale = 1f;
-        OnLevelStarted?.Invoke(); 
+        OnLevelStarted?.Invoke();
         canvas.DeactivateCanvas();
-        spawner.StartWave(); 
+        spawner.StartWave();
     }
 
     public void ResetLevel()
     {
-        LockCursor();
+        if (YG2.envir.deviceType == "desktop")
+        {
+            LockCursor();
+        }
         gameData.LoadData();
         canvas.DeactivateCanvas();
         spawner.StartWave();
     }
-    private void LockCursor() 
+
+    private void LockCursor()
     {
-        Cursor.lockState = CursorLockMode.Locked; 
-        Cursor.visible = false; 
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 }

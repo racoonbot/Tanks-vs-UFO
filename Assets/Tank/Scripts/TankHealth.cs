@@ -19,6 +19,11 @@ public class TankHealth : MonoBehaviour
     
     public Action OnDeathPlayer;
 
+    private void Awake()
+    {
+        LockCursor();
+    }
+
     private void Start()
     {
         attributes = FindObjectOfType<TankAttributes>();
@@ -92,5 +97,10 @@ public class TankHealth : MonoBehaviour
         if (MusicPlayer.instance != null) MusicPlayer.instance.StopAllMusic();
         if (player != null) Destroy(player.gameObject);
         else Destroy(gameObject);
+    }
+    private void LockCursor() 
+    {
+        Cursor.lockState = CursorLockMode.Locked; 
+        Cursor.visible = false; 
     }
 }

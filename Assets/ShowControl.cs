@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using YG;
 
 public class ShowControl : MonoBehaviour
 {
@@ -17,14 +18,18 @@ public class ShowControl : MonoBehaviour
     {
         Time.timeScale = 0;
         controlHelpUI.SetActive(true);
-       UnlockCursor();
+         UnlockCursor();
     }
 
     public void HideHelp()
     {
+        if (YG2.envir.deviceType == "desktop")
+        {
+            LockCursor();
+        }
         Time.timeScale = 1;
         controlHelpUI.SetActive(false);
-       // LockCursor();
+        
     }
 
     private void UnlockCursor() // Разблокируем мышь
@@ -35,9 +40,7 @@ public class ShowControl : MonoBehaviour
 
     private void LockCursor() // Блокируем мышь
     {
-        // ВНИМАНИЕ: Я исправил этот метод. 
-        // Раньше тут было None и visible = true, как в UnlockCursor.
-        Cursor.lockState = CursorLockMode.Locked; // Теперь курсор заблокирован в центре
-        Cursor.visible = false;                   // И скрыт
+        Cursor.lockState = CursorLockMode.Locked; 
+        Cursor.visible = false;                  
     }
 }

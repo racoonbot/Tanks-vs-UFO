@@ -10,7 +10,10 @@ public class LevelLoader : MonoBehaviour
     public void LoadLevel() // рестарт уровня 
     {
         SceneManager.LoadScene(1);
-        LockCursor();
+        if (YG2.envir.deviceType == "desktop")
+        {
+            LockCursor();
+        }
     }
 
     public void LoadStartScene() //Запускает главное меню (стартовое)
@@ -21,8 +24,11 @@ public class LevelLoader : MonoBehaviour
 
     public void StartNewGame() // Запускает гигру с начала
     {
-        //LockCursor();
 
+        if (YG2.envir.deviceType == "desktop")
+        {
+            LockCursor();
+        }
         YG2.MetricaSend("StartNewGame");
 
         PlayerPrefs.DeleteKey("Level");
@@ -46,14 +52,12 @@ public class LevelLoader : MonoBehaviour
 
     private void UnlockCursor() 
     {
-        Debug.Log("UnlockCursor");
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;                 
     }
 
     private void LockCursor() 
     {
-        Debug.Log("LockCursor");
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;       
     }
