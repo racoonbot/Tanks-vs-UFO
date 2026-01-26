@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using YG;
 
 public class MovingAttackEnemy : EnemyBase
 {
     public ParticleSystem particles;
     public Transform SpawnPoint;
-    public override string NickName => "Красный";
+    public override string NickName => YG2.lang == "ru" ? "Красный" : "Red";
     public override Color MyColor => Color.red;
 
     private void OnDestroy()

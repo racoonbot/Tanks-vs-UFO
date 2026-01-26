@@ -1,11 +1,12 @@
 using System.Collections;
 using UnityEngine;
+using YG;
 
 public class SimpleEnemy : EnemyBase
 {
     public ParticleSystem particles;
     public Transform SpawnPoint;
-    public override string NickName => "Зеленый";
+    public override string NickName => YG2.lang == "ru" ? "Зеленый" : "Green";
     public override Color MyColor => Color.green;
     
 

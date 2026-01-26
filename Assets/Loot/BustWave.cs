@@ -25,14 +25,14 @@ public class BustWave : Loot
 
     private void WaveShot()
     {
-        int bulletsCount = 8;
+        int bulletsCount = 16; 
         float angleStep = 360f / bulletsCount;
-        float explosionBulletSpeed = 15f;
+        float explosionBulletSpeed = 22f; 
 
         for (int i = 0; i < bulletsCount; i++)
         {
             float angle = i * angleStep;
-            Vector3 direction = Quaternion.Euler(0, angle, 0) * Vector3.forward;
+            Vector3 direction = Quaternion.Euler(0f, angle, 0f) * Vector3.forward;
             GameObject newBullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
             Rigidbody rbBullet = newBullet.GetComponent<Rigidbody>();
             if (rbBullet != null)
@@ -42,4 +42,5 @@ public class BustWave : Loot
             }
         }
     }
+
 }

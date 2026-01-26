@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using YG;
 
 public class ShowFinalMoney : MonoBehaviour
 {
@@ -29,7 +30,8 @@ public class ShowFinalMoney : MonoBehaviour
 
     private void UpdateText()
     {
-
-        finalMoneyText.text = $"Монет заработано:" + wallet.totalMoney.ToString();
+        finalMoneyText.text = (YG2.lang == "ru")
+            ? "Монет заработано: " + wallet.totalMoney.ToString()
+            : "Total Money: " + wallet.totalMoney.ToString();
     }
 }
