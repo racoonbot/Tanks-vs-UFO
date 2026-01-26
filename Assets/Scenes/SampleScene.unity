@@ -17924,8 +17924,8 @@ MonoBehaviour:
       de: 
       hi: 
   text: 
-  ru: 
-  en: 
+  ru: "\u041D\u043E\u0432\u044B\u0439 \u0442\u0435\u043A\u0441\u0442"
+  en: New Text
   tr: 
   az: 
   be: 
@@ -51906,6 +51906,7 @@ GameObject:
   - component: {fileID: 1352994318}
   - component: {fileID: 1352994317}
   - component: {fileID: 1352994316}
+  - component: {fileID: 1352994321}
   m_Layer: 5
   m_Name: Scroll View
   m_TagString: Untagged
@@ -51958,6 +51959,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   generator: {fileID: 1352994316}
+  enGenerator: {fileID: 1352994321}
   contentContainer: {fileID: 1226491502}
   messagePrefab: {fileID: 5160588536306163383, guid: f3e00c9e7ed32ba46a9876b1f8c53e81, type: 3}
   scrollRect: {fileID: 1352994318}
@@ -52029,6 +52031,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1352994314}
   m_CullTransparentMesh: 1
+--- !u!114 &1352994321
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1352994314}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd7651095f429e64182a124a0971ae24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1357018770
 PrefabInstance:
   m_ObjectHideFlags: 0

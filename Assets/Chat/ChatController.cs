@@ -2,6 +2,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using YG;
+
 
 public class ChatController : MonoBehaviour
 {
@@ -9,6 +11,7 @@ public class ChatController : MonoBehaviour
 
     [Header("Ссылки")]
     public ChatMessageGenerator generator;
+    public EnChatMessageGenerator enGenerator;
     public Transform contentContainer;
     public GameObject messagePrefab;
     public ScrollRect scrollRect;
@@ -24,10 +27,24 @@ public class ChatController : MonoBehaviour
 
     public void ShowEnemyHitMessage(string nickName, Color color)
     {
-        string text = generator.Generate(nickName, color);
+        string text = "";
+        if (YG2.lang == "ru" && generator != null)
+        {
+            text = generator.Generate(nickName, color);
+        }
+        else  if (YG2.lang == "en" && generator != null)
+        {
+            text = enGenerator.Generate(nickName, color);
+        }
+        else
+        {
+            text = enGenerator.Generate(nickName, color);
+        }
+        
         if (string.IsNullOrEmpty(text)) return;
         AddMessageToChat(text);
     }
+    
     private void AddMessageToChat(string text)
     {
         GameObject newMsg = Instantiate(messagePrefab, contentContainer);
