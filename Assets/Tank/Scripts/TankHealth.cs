@@ -21,7 +21,7 @@ public class TankHealth : MonoBehaviour
 
     private void Awake()
     {
-        LockCursor();
+       // LockCursor(); Убрал пока  паботает из HideHelp
     }
 
     private void Start()
@@ -97,10 +97,5 @@ public class TankHealth : MonoBehaviour
         if (MusicPlayer.instance != null) MusicPlayer.instance.StopAllMusic();
         if (player != null) Destroy(player.gameObject);
         else Destroy(gameObject);
-    }
-    private void LockCursor() 
-    {
-        Cursor.lockState = CursorLockMode.Locked; 
-        Cursor.visible = false; 
     }
 }

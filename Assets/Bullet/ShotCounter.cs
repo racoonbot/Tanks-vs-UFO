@@ -34,8 +34,6 @@ public class ShotCounter : MonoBehaviour
         {
             float currentMultiplier = Mathf.Pow(ShotMultiplier, tankHealth.bonusLevel);
             ShotInterval = startInterval / currentMultiplier;
-            
-            Debug.Log($"БОНУС УР.{tankHealth.bonusLevel}! Скорость x{currentMultiplier}. Интервал: {ShotInterval}");
         }
         else
         {

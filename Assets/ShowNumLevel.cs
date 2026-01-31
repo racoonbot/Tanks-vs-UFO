@@ -19,15 +19,15 @@ public class ShowNumLevel : MonoBehaviour
     {
         if (YG2.lang == "en")
         {
-            text.text = $"Level {levelManager.level}";
+            text.text = $"Level  {levelManager.level}";
         }
         else if (YG2.lang == "ru")
         {
-            text.text = $"Уровень {levelManager.level}";
+            text.text = $"Уровень  {levelManager.level}";
         }
         else
         {
-            text.text = $"Level {levelManager.level}";
+            text.text = $"Level  {levelManager.level}";
         }
     }
 }

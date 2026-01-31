@@ -49,7 +49,6 @@ public class BulletSpawn : MonoBehaviour
         }
         if (currentLevel > 0 && currentLevel % waveLevel == 0 && currentLevel > lastWaveShotLevel)
         {
-            Debug.Log($"!!! WaveShot на уровне {currentLevel} !!! Объект: {gameObject.name} (ID: {GetInstanceID()})");
             WaveShot();
             
             lastWaveShotLevel = currentLevel;

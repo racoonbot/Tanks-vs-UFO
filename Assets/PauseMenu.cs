@@ -8,7 +8,7 @@ public class PauseMenu : MonoBehaviour
     {
         pauseMenuUI.SetActive(false);
         // Обычно при старте игры курсор должен быть скрыт
-        LockCursor();
+        LevelManager.LockCursor(this);
     }
 
     void Update()
@@ -30,25 +30,13 @@ public class PauseMenu : MonoBehaviour
     {
         Time.timeScale = 1;
         pauseMenuUI.SetActive(false);
-        LockCursor();
+        LevelManager.LockCursor(this);
     }
 
     public void Pause() 
     {
         Time.timeScale = 0;
         pauseMenuUI.SetActive(true);
-        UnlockCursor();
-    }
-
-    private void UnlockCursor()
-    {
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;                  
-    }
-
-    private void LockCursor()
-    {
-        Cursor.lockState = CursorLockMode.Locked; 
-        Cursor.visible = false;                   
+        LevelManager.UnlockCursor(this);
     }
 }

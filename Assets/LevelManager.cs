@@ -43,6 +43,7 @@ public class LevelManager : MonoBehaviour
     {
         if (spawner.Enemies.Count == 0 && !levelIncreased)
         {
+            Debug.Log("WinLevel");
             WinLevel();
         }
         else if (spawner.Enemies.Count > 0)
@@ -53,6 +54,7 @@ public class LevelManager : MonoBehaviour
 
     private void WinLevel()
     {
+        UnlockCursor(this); 
         levelIncreased = true;
         Time.timeScale = 0;
         level++;
@@ -83,32 +85,41 @@ public class LevelManager : MonoBehaviour
     }
 
 
-    public void NextLevel()
+    public void NextLevel() 
     {
-        if (YG2.envir.deviceType == "desktop")
-        {
-            LockCursor();
-        }
+        LockCursor(this); // как будто не работает здес
         Time.timeScale = 1f;
         OnLevelStarted?.Invoke();
         canvas.DeactivateCanvas();
         spawner.StartWave();
     }
 
-    public void ResetLevel()
+    public void ResetLevel() //не используется
     {
-        if (YG2.envir.deviceType == "desktop")
-        {
-            LockCursor();
-        }
+        LockCursor(this);
+        
         gameData.LoadData();
         canvas.DeactivateCanvas();
         spawner.StartWave();
     }
 
-    private void LockCursor()
+    public static void LockCursor(object sender)
     {
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        if (YG2.envir.deviceType == "desktop")
+        {
+            Debug.Log("LockCursor из sender: " + sender);
+            Cursor.lockState = CursorLockMode.Locked;
+            Debug.Log("Cursor.lockState"  + Cursor.lockState);
+            Cursor.visible = false;
+        }
+    }
+    public static void UnlockCursor(object sender) 
+    {
+        if (YG2.envir.deviceType == "desktop")
+        {
+            Debug.Log("UnlockCursor из sender:" + sender);
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+        }
     }
 }

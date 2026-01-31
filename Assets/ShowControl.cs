@@ -18,29 +18,14 @@ public class ShowControl : MonoBehaviour
     {
         Time.timeScale = 0;
         controlHelpUI.SetActive(true);
-         UnlockCursor();
+        LevelManager.UnlockCursor(this);
     }
 
     public void HideHelp()
     {
-        if (YG2.envir.deviceType == "desktop")
-        {
-            LockCursor();
-        }
+        LevelManager.LockCursor(this);
         Time.timeScale = 1;
         controlHelpUI.SetActive(false);
         
-    }
-
-    private void UnlockCursor() // Разблокируем мышь
-    {
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
-    }
-
-    private void LockCursor() // Блокируем мышь
-    {
-        Cursor.lockState = CursorLockMode.Locked; 
-        Cursor.visible = false;                  
     }
 }

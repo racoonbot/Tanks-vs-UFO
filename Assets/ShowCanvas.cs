@@ -9,7 +9,7 @@ public class ShowCanvas : MonoBehaviour
 
     public void ActivateCanvas()
     {
-        UnlockCursor(); 
+        LevelManager.UnlockCursor(this);
         if (canvas != null)
 
             canvas.SetActive(true);
@@ -17,20 +17,10 @@ public class ShowCanvas : MonoBehaviour
 
     public void DeactivateCanvas()
     {
-        LockCursor();
+        LevelManager.LockCursor(this);
         if (canvas != null)
         {
             canvas.SetActive(false);
         }
-    }
-    private void UnlockCursor() // Разблокируем мыша
-    {
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;                  
-    }
-    private void LockCursor() // Блокируем мыша
-    {
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;                  
     }
 }

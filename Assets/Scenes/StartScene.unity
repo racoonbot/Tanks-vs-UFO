@@ -4606,6 +4606,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ruSprite: {fileID: 1019228329, guid: 5c034fcc27121d64381a6394e23be31b, type: 3}
   enSprite: {fileID: 21300000, guid: 0302bd84f7f92a745ab8deae06c02f28, type: 3}
+  isLanguageStartMenu: 0
 --- !u!1 &1117754451
 GameObject:
   m_ObjectHideFlags: 0
@@ -6273,6 +6274,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ruSprite: {fileID: 21300000, guid: ef63a85cc66643248aef535cd1325578, type: 3}
   enSprite: {fileID: 21300000, guid: e5c31f15e9b158e4a9e03469887137f9, type: 3}
+  isLanguageStartMenu: 1
 --- !u!1 &1654258698
 GameObject:
   m_ObjectHideFlags: 0
@@ -7930,6 +7932,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ruSprite: {fileID: 88182851, guid: 3e55b6aca97f59a4fbcffd931ca9c9e0, type: 3}
   enSprite: {fileID: -1105844983, guid: 9def2aac2707e294abb486c46f1b6c30, type: 3}
+  isLanguageStartMenu: 1
 --- !u!114 &1808516394
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8391,6 +8394,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ruSprite: {fileID: -1412643824, guid: 3e55b6aca97f59a4fbcffd931ca9c9e0, type: 3}
   enSprite: {fileID: -1334190611, guid: 9def2aac2707e294abb486c46f1b6c30, type: 3}
+  isLanguageStartMenu: 1
 --- !u!114 &2009422425
 MonoBehaviour:
   m_ObjectHideFlags: 0

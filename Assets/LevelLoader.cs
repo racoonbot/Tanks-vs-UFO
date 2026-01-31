@@ -7,28 +7,25 @@ using SceneManager = UnityEngine.SceneManagement.SceneManager;
 
 public class LevelLoader : MonoBehaviour
 {
-    public void LoadLevel() // рестарт уровня 
+    public void LoadLevel() // рестарт уровня  не  используется кнопка
     {
         SceneManager.LoadScene(1);
-        if (YG2.envir.deviceType == "desktop")
-        {
-            LockCursor();
-        }
+        LevelManager.LockCursor(this);
     }
 
     public void LoadStartScene() //Запускает главное меню (стартовое)
     {
         SceneManager.LoadScene(0);
-        UnlockCursor();
+        LevelManager.UnlockCursor(this);
     }
 
     public void StartNewGame() // Запускает гигру с начала
     {
-
-        if (YG2.envir.deviceType == "desktop")
+        Time.timeScale = 1;
+        /*if (YG2.envir.deviceType == "desktop")  брал пока работет из HideHelp
         {
             LockCursor();
-        }
+        }*/
         YG2.MetricaSend("StartNewGame");
 
         PlayerPrefs.DeleteKey("Level");
@@ -48,17 +45,5 @@ public class LevelLoader : MonoBehaviour
 
 
         SceneManager.LoadScene(1);
-    }
-
-    private void UnlockCursor() 
-    {
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;                 
-    }
-
-    private void LockCursor() 
-    {
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;       
     }
 }

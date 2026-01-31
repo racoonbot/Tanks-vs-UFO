@@ -27,17 +27,6 @@ public class GameOverScreen : MonoBehaviour
     {
         gameOverScreen.gameObject.SetActive(true);
         inGameUi.gameObject.SetActive(false);
-        UnlockCursor();
-    }
-    
-    private void UnlockCursor() // Разблокируем мыша
-    {
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;                  
-    }
-    private void LockCursor() // Блокируем мыша
-    {
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;                  
+        LevelManager.UnlockCursor(this);
     }
 }
