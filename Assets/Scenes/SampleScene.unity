@@ -8924,6 +8924,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ruSprite: {fileID: 1019228329, guid: 5c034fcc27121d64381a6394e23be31b, type: 3}
   enSprite: {fileID: 21300000, guid: 0302bd84f7f92a745ab8deae06c02f28, type: 3}
+  isLanguageStartMenu: 0
 --- !u!1 &205047805
 GameObject:
   m_ObjectHideFlags: 0
@@ -32148,6 +32149,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ruSprite: {fileID: -554259638, guid: 39c43b03f50f4654b91e155a638b9a27, type: 3}
   enSprite: {fileID: 2126119683, guid: 9def2aac2707e294abb486c46f1b6c30, type: 3}
+  isLanguageStartMenu: 0
 --- !u!1001 &771927872
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -37149,7 +37151,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &934031303
 RectTransform:
   m_ObjectHideFlags: 0
@@ -37157,9 +37159,9 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 934031302}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 5.62, y: 5.62, z: 5.62}
+  m_LocalScale: {x: 7.24, y: 7.24, z: 7.24}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1736314017}
@@ -37167,8 +37169,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: 0.0050011, y: -0.00040054}
+  m_SizeDelta: {x: 114.28, y: 64.372}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &934031304
 MonoBehaviour:
@@ -37190,7 +37192,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: f0e88d49301d64844b7ea1217d3ed2fe, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2f876d63ee624814eaf445858149d3c0, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -38454,7 +38456,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 457392341}
   - {fileID: 153097721}
@@ -42169,6 +42171,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1080776861}
+  - component: {fileID: 1080776862}
   m_Layer: 5
   m_Name: AttibutesUI
   m_TagString: Untagged
@@ -42197,6 +42200,18 @@ RectTransform:
   m_AnchoredPosition: {x: -79.30002, y: -27.800049}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 1, y: 1}
+--- !u!114 &1080776862
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1080776860}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15bcb58f2034fc84886e69616ecee683, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1082610705
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -61718,6 +61733,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ruSprite: {fileID: 372555252, guid: 39c43b03f50f4654b91e155a638b9a27, type: 3}
   enSprite: {fileID: 21300000, guid: 0302bd84f7f92a745ab8deae06c02f28, type: 3}
+  isLanguageStartMenu: 0
 --- !u!1001 &1619347985
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -62244,6 +62260,10 @@ PrefabInstance:
     - target: {fileID: 2800458375223459002, guid: 8d32d4e1703cdf5498ce2a1eba7fe3c0, type: 3}
       propertyPath: m_Name
       value: Joy
+      objectReference: {fileID: 0}
+    - target: {fileID: 2800458375223459002, guid: 8d32d4e1703cdf5498ce2a1eba7fe3c0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4940882746719458841, guid: 8d32d4e1703cdf5498ce2a1eba7fe3c0, type: 3}
       propertyPath: m_UiScaleMode
@@ -66390,7 +66410,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.36999893, y: -23.79}
+  m_AnchoredPosition: {x: 0.0000038146973, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &1736314018
@@ -66440,6 +66460,18 @@ MonoBehaviour:
       - m_Target: {fileID: 2040766798}
         m_TargetAssemblyTypeName: ShowControl, Assembly-CSharp
         m_MethodName: HideHelp
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1080776862}
+        m_TargetAssemblyTypeName: HideAttributerUi, Assembly-CSharp
+        m_MethodName: ShowUi
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -77208,8 +77240,8 @@ RectTransform:
   - {fileID: 1080776861}
   - {fileID: 444048660}
   - {fileID: 1352994315}
-  - {fileID: 934031303}
   - {fileID: 960589554}
+  - {fileID: 934031303}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}

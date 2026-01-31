@@ -11,8 +11,8 @@ public abstract class EnemyBase : MonoBehaviour
     private SpawnEnemy spawner;
 
     [Header("Настройки Случайного Движения")]
-    public float randomAccuracy = 3f; // Насколько сильно враг может "мазать" мимо цели (радиус)
-    public float changeDirectionInterval = 2f; // Как часто меняется случайная точка (в секундах)
+    public float randomAccuracy = 5f; // Насколько сильно враг может "мазать" мимо цели (радиус)
+    public float changeDirectionInterval = 5f; // Как часто меняется случайная точка (в секундах)
     
     private Vector3 currentRandomOffset; // Текущее смещение
     private float randomTimer; // Таймер
@@ -327,7 +327,7 @@ public abstract class EnemyBase : MonoBehaviour
             currentRandomOffset = new Vector3(randomCircle.x, 0, randomCircle.y);
 
             // Сбрасываем таймер + добавляем немного рандома во время (от 70% до 130% от базы)
-            randomTimer = changeDirectionInterval * Random.Range(0.7f, 1.3f);
+            randomTimer = changeDirectionInterval * Random.Range(0.5f, 1.5f);
         }
     }
 
