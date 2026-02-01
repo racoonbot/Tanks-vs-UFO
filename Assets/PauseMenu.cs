@@ -3,6 +3,7 @@ using UnityEngine;
 public class PauseMenu : MonoBehaviour
 {
     public GameObject pauseMenuUI;
+    public GameObject inGameUi;
 
     private void Start()
     {
@@ -29,6 +30,7 @@ public class PauseMenu : MonoBehaviour
     public void Resume() // Продолжить игру
     {
         Time.timeScale = 1;
+        inGameUi.SetActive(true);
         pauseMenuUI.SetActive(false);
         LevelManager.LockCursor(this);
     }
@@ -36,6 +38,7 @@ public class PauseMenu : MonoBehaviour
     public void Pause() 
     {
         Time.timeScale = 0;
+        inGameUi.SetActive(false);
         pauseMenuUI.SetActive(true);
         LevelManager.UnlockCursor(this);
     }
