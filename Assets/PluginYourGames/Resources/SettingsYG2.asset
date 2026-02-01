@@ -317,7 +317,7 @@ MonoBehaviour:
     loadSceneIfSDKLate: 0
     loadSceneIndex: 0
     initDelaySimulation: 0
-    buildNumber: 20
+    buildNumber: 21
   Simulation:
     device: 0
     language: en
@@ -327,7 +327,7 @@ MonoBehaviour:
     testFailAds: 0
   Templates:
     logoImageFormat: 0
-    backgroundImgFormat: 0
+    backgroundImgFormat: 4
     gradientBackgroundByLoadGame:
       radial: 0
       angleInclination: 140
@@ -341,9 +341,9 @@ MonoBehaviour:
       height: 24
       color1: {r: 0.25, g: 0.6392, b: 1, a: 1}
       color2: {r: 1, g: 0.831, b: 0.149, a: 0.7}
-    fixedAspectRatio: 0
+    fixedAspectRatio: 1
     aspectRatio: 16/9
-    disableForMobile: 1
+    disableForMobile: 0
     fillBackground: 0
     imageBackground: 0
     imageName: background.jpg
