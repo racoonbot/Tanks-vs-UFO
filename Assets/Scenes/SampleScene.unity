@@ -62280,7 +62280,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2800458375223459002, guid: 8d32d4e1703cdf5498ce2a1eba7fe3c0, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4940882746719458841, guid: 8d32d4e1703cdf5498ce2a1eba7fe3c0, type: 3}
       propertyPath: m_UiScaleMode
@@ -81148,6 +81148,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 410780940}
     - target: {fileID: 5904520216751734375, guid: 2c8466122dc2c5748899f46747870bfd, type: 3}
+      propertyPath: rotationSpeed
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 5904520216751734375, guid: 2c8466122dc2c5748899f46747870bfd, type: 3}
       propertyPath: turretJoystick
       value: 
       objectReference: {fileID: 2133794686}
@@ -81221,7 +81225,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9215775968107532862, guid: 2c8466122dc2c5748899f46747870bfd, type: 3}
       propertyPath: turretRotationSpeed
-      value: 15
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 9215775968107532862, guid: 2c8466122dc2c5748899f46747870bfd, type: 3}
       propertyPath: turretRotationSpeedLimit

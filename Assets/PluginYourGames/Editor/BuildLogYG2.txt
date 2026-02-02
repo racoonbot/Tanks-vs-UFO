@@ -1,3 +1,3 @@
-﻿Build path: P:/UnityProjects/BUILDS/NewButtons
-Build number: 22
+﻿Build path: P:/UnityProjects/BUILDS/123131231231232
+Build number: 24
 PluginYG version: 2.007

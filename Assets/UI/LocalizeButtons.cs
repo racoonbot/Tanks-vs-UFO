@@ -18,10 +18,21 @@ public class LocalizeButtons : MonoBehaviour
 
     private void OnEnable()
     {
+
+        YG2.onCorrectLang -= ApplyLanguage;
         YG2.onCorrectLang += ApplyLanguage;
+    }
+
+    private void Start()
+    {
         if (YG2.isSDKEnabled)
         {
             ApplyLanguage(YG2.lang);
+            return;
+        }
+        if (isLanguageStartMenu)
+        {
+            Invoke(nameof(ApplyLangIfReady), 0.1f);
         }
     }
 
@@ -30,11 +41,19 @@ public class LocalizeButtons : MonoBehaviour
         YG2.onCorrectLang -= ApplyLanguage;
     }
 
+    private void ApplyLangIfReady()
+    {
+        if (YG2.isSDKEnabled)
+            ApplyLanguage(YG2.lang);
+        else
+         
+            Invoke(nameof(ApplyLangIfReady), 0.2f);
+    }
+
     private void ApplyLanguage(string lang)
     {
         if (imageComponent == null) return;
         if (string.IsNullOrEmpty(lang)) lang = "en";
-
         lang = lang.ToLowerInvariant();
 
         if (lang == "ru")
@@ -42,7 +61,7 @@ public class LocalizeButtons : MonoBehaviour
             if (ruSprite != null && imageComponent.sprite != ruSprite)
                 imageComponent.sprite = ruSprite;
         }
-        else // default -> english
+        else
         {
             if (enSprite != null && imageComponent.sprite != enSprite)
                 imageComponent.sprite = enSprite;
