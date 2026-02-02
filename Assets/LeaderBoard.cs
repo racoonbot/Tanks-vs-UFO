@@ -1,80 +1,78 @@
 using UnityEngine;
 using YG;
-using YG.Utils.LB;
 
 public class LeaderBoard : MonoBehaviour
 {
     private TankHealth tankHealth;
     private Wallet wallet;
 
-    private int pendingScoreToSave;
-    private bool isCheckingScore;
-
     private const string LeaderboardName = "testlb";
 
-    private void Start()
+    private void Awake()
     {
         tankHealth = FindObjectOfType<TankHealth>();
         wallet = FindObjectOfType<Wallet>();
-        
-        /*
-        YG2.onGetLeaderboard += OnLeaderboardDataReceived; // 1*/
+    }
+
+    private void OnEnable()
+    {
         if (tankHealth != null)
         {
+            tankHealth.OnDeathPlayer -= SaveMyScore;
             tankHealth.OnDeathPlayer += SaveMyScore;
         }
+        else
+        {
+            Debug.LogWarning("LeaderBoard: TankHealth not found.");
+        }
+
+        if (wallet == null)
+            Debug.LogWarning("LeaderBoard: Wallet not found.");
     }
 
     private void OnDisable()
     {
-        /*YG2.onGetLeaderboard -= OnLeaderboardDataReceived; // 1*/
-        
         if (tankHealth != null)
         {
             tankHealth.OnDeathPlayer -= SaveMyScore;
         }
     }
+
     private void SaveMyScore()
     {
+        if (wallet == null)
+        {
+            Debug.LogError("LeaderBoard: Cannot save score — wallet is null.");
+            return;
+        }
+
+        int currentMoney = wallet.totalMoney;
         int recordMoney = PlayerPrefs.GetInt("recordMoney", 0);
-        if (recordMoney < wallet.totalMoney)
+
+        if (currentMoney <= 0)
         {
-            PlayerPrefs.SetInt("recordMoney", wallet.totalMoney);
-            YG2.SetLeaderboard(LeaderboardName, wallet.totalMoney);
+            Debug.Log("LeaderBoard: currentMoney is zero or negative, skipping save.");
+            return;
         }
-        
-        /*
-        pendingScoreToSave = wallet.totalMoney;
-        isCheckingScore = true;
-        YG2.GetLeaderboard(LeaderboardName);
-        // 3 строки сверху это 1
-        */
-         
-        //ниже 6 строк это 2
-       
-    }
 
-    /*private void OnLeaderboardDataReceived(LBData data) // 1
-    {
-        if (!isCheckingScore || data.technoName != LeaderboardName) return;
-
-        isCheckingScore = false; 
-        int oldRecord = 0;
-        if (data.players != null)
+        if (recordMoney < currentMoney)
         {
-            foreach (var entry in data.players)
+            PlayerPrefs.SetInt("recordMoney", currentMoney);
+            PlayerPrefs.Save();
+
+            if (YG2.isSDKEnabled)
             {
-                if (entry.uniqueID == YG2.player.id)
-                {
-                    oldRecord = entry.score; 
-                    break; 
-                }
+                YG2.SetLeaderboard(LeaderboardName, currentMoney);
+                Debug.Log($"LeaderBoard: New local record {currentMoney} saved and sent to leaderboard '{LeaderboardName}'.");
             }
-        }*/
-
-        /*if (pendingScoreToSave > oldRecord)
-        {
-            YG2.SetLeaderboard(LeaderboardName, pendingScoreToSave);
+            else
+            {
+                Debug.LogWarning($"LeaderBoard: SDK not ready. Local record {currentMoney} saved, but not sent to YG.");
+            }
         }
-    }*/
+        else
+        {
+            Debug.Log($"LeaderBoard: Current money ({currentMoney}) is not greater than record ({recordMoney}).");
+        }
+    }
 }
