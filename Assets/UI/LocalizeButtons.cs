@@ -1,8 +1,6 @@
-using System;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
-using YG; 
+using YG;
 
 public class LocalizeButtons : MonoBehaviour
 {
@@ -17,15 +15,6 @@ public class LocalizeButtons : MonoBehaviour
     {
         imageComponent = GetComponent<Image>();
     }
-
-    private void Update()
-    {
-        if (isLanguageStartMenu)
-        {
-            OnEnable();
-        }
-    }
-    
 
     private void OnEnable()
     {
@@ -43,13 +32,20 @@ public class LocalizeButtons : MonoBehaviour
 
     private void ApplyLanguage(string lang)
     {
-        if (lang == "ru" && imageComponent.sprite != ruSprite)
+        if (imageComponent == null) return;
+        if (string.IsNullOrEmpty(lang)) lang = "en";
+
+        lang = lang.ToLowerInvariant();
+
+        if (lang == "ru")
         {
-            if (ruSprite != null) imageComponent.sprite = ruSprite;
+            if (ruSprite != null && imageComponent.sprite != ruSprite)
+                imageComponent.sprite = ruSprite;
         }
-        else if(imageComponent.sprite != enSprite)
+        else // default -> english
         {
-            if (enSprite != null) imageComponent.sprite = enSprite;
+            if (enSprite != null && imageComponent.sprite != enSprite)
+                imageComponent.sprite = enSprite;
         }
     }
 }

@@ -37146,13 +37146,14 @@ GameObject:
   - component: {fileID: 934031303}
   - component: {fileID: 934031305}
   - component: {fileID: 934031304}
+  - component: {fileID: 934031306}
   m_Layer: 5
   m_Name: Control
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &934031303
 RectTransform:
   m_ObjectHideFlags: 0
@@ -37211,6 +37212,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 934031302}
   m_CullTransparentMesh: 1
+--- !u!114 &934031306
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 934031302}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 296f5f99a28d3c54ba2a4e6276fc71db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ruSprite: {fileID: 21300000, guid: 2f876d63ee624814eaf445858149d3c0, type: 3}
+  enSprite: {fileID: 21300000, guid: 2f4edfc7207b80b4bb258bcb2714bac7, type: 3}
+  isLanguageStartMenu: 0
 --- !u!1 &935057846
 GameObject:
   m_ObjectHideFlags: 0

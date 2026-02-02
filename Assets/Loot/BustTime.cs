@@ -20,13 +20,13 @@ public class BustTime : Loot
             EnemyBase enemy = enemyObj.GetComponentInChildren<EnemyBase>();
             if (enemy == null) continue;
 
-            Debug.Log($"Найдено {spawner.Enemies.Count} врагов");
+            /*Debug.Log($"Найдено {spawner.Enemies.Count} врагов");
             Debug.Log($"Враг {enemy.NickName}");
-            Debug.Log($"Скорость ДО {enemy.currentSpeed}");
+            Debug.Log($"Скорость ДО {enemy.currentSpeed}");*/
 
             enemy.StopMovementImmediateTemporary();
             
-            Debug.Log($"Скорость ПОСЛЕ {enemy.currentSpeed}");
+            /*Debug.Log($"Скорость ПОСЛЕ {enemy.currentSpeed}");*/
         }
 
         // Ждём длительность эффекта
