@@ -43,7 +43,6 @@ public class SpawnEnemy : MonoBehaviour
         int spawnedCount = 0;
 
         // --- 1. Гарантированный спавн (Hardcoded logic) ---
-
         // Начиная с 6-го уровня: хотя бы 1 Красный (prefabs[2])
         if (currentLevel >= 6 && spawnedCount < MaxCount)
         {

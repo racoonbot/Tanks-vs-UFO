@@ -25,6 +25,12 @@ public abstract class EnemyBase : MonoBehaviour
 
     public float minRandomSpeed;
     public float maxRandomSpeed;
+    private float savedSpeed;           // для восстановления скорости //MAXMAXMAX
+    private bool savedCanMove;          // для восстановления флага canMove
+    private bool savedIsKinematic;
+    
+    
+    
     
     public int reward;
 
@@ -44,6 +50,9 @@ public abstract class EnemyBase : MonoBehaviour
     public BlinkEnemy blink;
 
     public float MaxSpeed;
+
+    // Текущее фактическое значение скорости врага (включая рандомизацию и временные эффекты)
+    public float currentSpeed; //MAXMAXMAX
     
     
 
@@ -92,6 +101,9 @@ public abstract class EnemyBase : MonoBehaviour
         bulletSpeed += level * 0.3f; 
         MaxSpeed += level * 0.1f;
     
+        // Инициализируем currentSpeed начальному значению MaxSpeed (или рандомному в пределах)
+        currentSpeed = MaxSpeed; //MAXMAXMAX
+    
         // Замедляем темп стрельбы всей толпы, чтобы не было стены пуль
         
         currentShotPeriod += level * 0.1f; 
@@ -136,10 +148,55 @@ public abstract class EnemyBase : MonoBehaviour
             TakeDamage(TakeDamageAmount);
         }
     }
+    
+    
+    public void StopMovementImmediateTemporary()
+    {
+        // Сохраняем состояния
+        savedSpeed = currentSpeed; //MAXMAXMAX
+        savedCanMove = canMove;
+        savedIsKinematic = rb != null ? rb.isKinematic : false;
+
+        // Останавливаем
+        canMove = false;
+        isAttacking = false;
+        currentSpeed = 0f; //MAXMAXMAX
+
+        if (rb != null)
+        {
+            rb.velocity = Vector3.zero;
+            rb.angularVelocity = Vector3.zero;
+            rb.isKinematic = true; // блокируем физику, чтобы ничего не двигало
+        }
+    }
+
+    public void ResumeMovementFromStop()
+    {
+        // Восстанавливаем сохранённые значения
+        currentSpeed = savedSpeed; //MAXMAXMAX
+        canMove = savedCanMove;
+        isAttacking = true; // или определить по логике (можно оставить предыдущее значение, если сохраняли)
+
+        if (rb != null)
+        {
+            rb.isKinematic = savedIsKinematic;
+            if (!rb.isKinematic)
+            {
+                // гарантируем отсутствие остаточной скорости
+                rb.velocity = Vector3.zero;
+                rb.angularVelocity = Vector3.zero;
+            }
+        }
+    }
+    
+    
+    
 
     private float MaxSpeedRandomizer()
     {
-        return Random.Range(minRandomSpeed, maxRandomSpeed);
+        // Вычисляем рандомную скорость и сохраняем в currentSpeed //MAXMAXMAX
+        currentSpeed = Random.Range(minRandomSpeed, maxRandomSpeed); //MAXMAXMAX
+        return currentSpeed; //MAXMAXMAX
     }
 
     private void PreventOverlap() // чтобы мобы отталкивались друг от друга
@@ -159,8 +216,9 @@ public abstract class EnemyBase : MonoBehaviour
                         Vector3 direction = (transform.position - otherMob.transform.position).normalized;
                         Vector3 targetPosition = transform.position + direction;
                         // Перемещаем этот моб в сторону от другого
+                        // Используем currentSpeed вместо MaxSpeed для согласованности //MAXMAXMAX
                         transform.position =
-                            Vector3.Lerp(transform.position, targetPosition, MaxSpeed * Time.deltaTime);
+                            Vector3.Lerp(transform.position, targetPosition, currentSpeed * Time.deltaTime); //MAXMAXMAX
                     }
                 }
             }
@@ -197,10 +255,11 @@ public abstract class EnemyBase : MonoBehaviour
             Vector3 targetPosition = transform.position + pushDirection * wallRepelForce;
 
             // Плавное, но сильное перемещение
+            // Умножаем на currentSpeed для согласованности //MAXMAXMAX
             transform.position = Vector3.Lerp(
                 transform.position,
                 targetPosition,
-                MaxSpeed * 2 * Time.deltaTime // Умножаем скорость на 2 для резкости
+                currentSpeed * 2 * Time.deltaTime //MAXMAXMAX
             );
         }
     }
@@ -270,7 +329,10 @@ public abstract class EnemyBase : MonoBehaviour
             // Используем MoveTowards, но игнорируем Y, чтобы враг не взлетал/не уходил под землю
             Vector3 targetPositionFlat = new Vector3(targetPos.x, transform.position.y, targetPos.z);
             
-            transform.position = Vector3.MoveTowards(transform.position, targetPositionFlat, MaxSpeedRandomizer() * Time.deltaTime);
+            // Используем currentSpeed для движения (вместо MaxSpeedRandomizer напрямую) //MAXMAXMAX
+            // Обновляем currentSpeed каждый раз, чтобы учесть рандомизацию скорости перед движением
+            currentSpeed = MaxSpeedRandomizer(); //MAXMAXMAX
+            transform.position = Vector3.MoveTowards(transform.position, targetPositionFlat, currentSpeed * Time.deltaTime); //MAXMAXMAX
             
             // Опционально: поворот лицом к цели
             transform.LookAt(targetPositionFlat);
@@ -289,8 +351,10 @@ public abstract class EnemyBase : MonoBehaviour
                 
                 // Убираем влияние по вертикали
                 retreatDirection.y = 0; 
-                
-                transform.position += retreatDirection * MaxSpeed * Time.deltaTime;
+
+                // Используем currentSpeed при отступлении (закладываем быстрый бег назад = MaxSpeed) //MAXMAXMAX
+                // Можно также рандомизировать: currentSpeed = MaxSpeedRandomizer();
+                transform.position += retreatDirection * currentSpeed * Time.deltaTime; //MAXMAXMAX
                 
                 // Опционально: смотреть, куда бежишь (от игрока)
                 Quaternion lookRotation = Quaternion.LookRotation(retreatDirection);
@@ -326,7 +390,7 @@ public abstract class EnemyBase : MonoBehaviour
             
             currentRandomOffset = new Vector3(randomCircle.x, 0, randomCircle.y);
 
-            // Сбрасываем таймер + добавляем немного рандома во время (от 70% до 130% от базы)
+            // Сбрасываем таймер + добавляем немного рандома во времени (от 50% до 150% от базы)
             randomTimer = changeDirectionInterval * Random.Range(0.5f, 1.5f);
         }
     }

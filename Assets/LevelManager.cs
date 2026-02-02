@@ -107,7 +107,7 @@ public class LevelManager : MonoBehaviour
     {
         if (YG2.envir.deviceType == "desktop")
         {
-            Debug.Log("LockCursor из sender: " + sender);
+           // Debug.Log("LockCursor из sender: " + sender);
             Cursor.lockState = CursorLockMode.Locked;
             Debug.Log("Cursor.lockState"  + Cursor.lockState);
             Cursor.visible = false;
@@ -117,7 +117,7 @@ public class LevelManager : MonoBehaviour
     {
         if (YG2.envir.deviceType == "desktop")
         {
-            Debug.Log("UnlockCursor из sender:" + sender);
+           // Debug.Log("UnlockCursor из sender:" + sender);
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
         }

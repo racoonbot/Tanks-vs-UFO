@@ -18,7 +18,6 @@ public class BulletDestroyer : MonoBehaviour
     private void DestroySelf()
     {
         Destroy(gameObject);
-        Debug.Log("Destroy self");
     }
 
     private void OnTriggerEnter(Collider other)
