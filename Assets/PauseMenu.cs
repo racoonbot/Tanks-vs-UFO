@@ -8,7 +8,6 @@ public class PauseMenu : MonoBehaviour
     private void Start()
     {
         pauseMenuUI.SetActive(false);
-        // Обычно при старте игры курсор должен быть скрыт
         LevelManager.LockCursor(this);
     }
 
