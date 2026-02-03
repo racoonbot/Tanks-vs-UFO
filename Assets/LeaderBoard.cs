@@ -2,79 +2,63 @@ using UnityEngine;
 using YG;
 using YG.Utils.LB;
 
-public class LeaderBoard : MonoBehaviour
+public class LeaderBoardSync : MonoBehaviour
 {
-    private TankHealth tankHealth;
-    private Wallet wallet;
-
-    private int pendingScoreToSave;
-    private bool isCheckingScore;
-
+    private const string PlayerPrefKey = "recordMoney";
     private const string LeaderboardName = "testlb";
+    private bool waitingForServer;
 
     private void Start()
     {
-        tankHealth = FindObjectOfType<TankHealth>();
-        wallet = FindObjectOfType<Wallet>();
-        
-        /*
-        YG2.onGetLeaderboard += OnLeaderboardDataReceived; // 1*/
-        if (tankHealth != null)
+        Debug.Log("[LeaderBoardSync] Start()");
+        if (!PlayerPrefs.HasKey(PlayerPrefKey))
         {
-            tankHealth.OnDeathPlayer += SaveMyScore;
+            Debug.Log("[LeaderBoardSync] No local record found — requesting server leaderboard");
+            YG2.onGetLeaderboard += OnLeaderboardDataReceived;
+            waitingForServer = true;
+            YG2.GetLeaderboard(LeaderboardName);
+        }
+        else
+        {
+            Debug.Log("[LeaderBoardSync] Local record exists: " + PlayerPrefs.GetInt(PlayerPrefKey));
         }
     }
 
-    private void OnDisable()
+    private void OnDestroy()
     {
-        /*YG2.onGetLeaderboard -= OnLeaderboardDataReceived; // 1*/
-        
-        if (tankHealth != null)
-        {
-            tankHealth.OnDeathPlayer -= SaveMyScore;
-        }
-    }
-    private void SaveMyScore()
-    {
-        int recordMoney = PlayerPrefs.GetInt("recordMoney", 0);
-        if (recordMoney < wallet.totalMoney)
-        {
-            PlayerPrefs.SetInt("recordMoney", wallet.totalMoney);
-            YG2.SetLeaderboard(LeaderboardName, wallet.totalMoney);
-        }
-        
-        /*
-        pendingScoreToSave = wallet.totalMoney;
-        isCheckingScore = true;
-        YG2.GetLeaderboard(LeaderboardName);
-        // 3 строки сверху это 1
-        */
-         
-        //ниже 6 строк это 2
-       
+        if (waitingForServer)
+            YG2.onGetLeaderboard -= OnLeaderboardDataReceived;
     }
 
-    /*private void OnLeaderboardDataReceived(LBData data) // 1
+    private void OnLeaderboardDataReceived(LBData data)
     {
-        if (!isCheckingScore || data.technoName != LeaderboardName) return;
+        Debug.Log("[LeaderBoardSync] OnLeaderboardDataReceived()");
+        if (!waitingForServer) return;
+        waitingForServer = false;
+        YG2.onGetLeaderboard -= OnLeaderboardDataReceived;
 
-        isCheckingScore = false; 
-        int oldRecord = 0;
+        if (data == null)
+        {
+            Debug.LogWarning("[LeaderBoardSync] Received null leaderboard data");
+            return;
+        }
+
+        int serverRecordForPlayer = 0;
         if (data.players != null)
         {
             foreach (var entry in data.players)
             {
-                if (entry.uniqueID == YG2.player.id)
+                if (entry.uniqueID == (YG2.player != null ? YG2.player.id : null))
                 {
-                    oldRecord = entry.score; 
-                    break; 
+                    serverRecordForPlayer = entry.score;
+                    break;
                 }
             }
-        }*/
-
-        /*if (pendingScoreToSave > oldRecord)
-        {
-            YG2.SetLeaderboard(LeaderboardName, pendingScoreToSave);
         }
-    }*/
+
+        Debug.Log($"[LeaderBoardSync] Server record for player = {serverRecordForPlayer}");
+        PlayerPrefs.SetInt(PlayerPrefKey, serverRecordForPlayer);
+        PlayerPrefs.Save();
+        Debug.Log("[LeaderBoardSync] Saved server record into PlayerPrefs");
+    }
 }
