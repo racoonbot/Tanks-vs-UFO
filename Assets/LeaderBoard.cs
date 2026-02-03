@@ -1,65 +1,80 @@
 using UnityEngine;
 using YG;
+using YG.Utils.LB;
 
 public class LeaderBoard : MonoBehaviour
 {
     private TankHealth tankHealth;
     private Wallet wallet;
 
+    private int pendingScoreToSave;
+    private bool isCheckingScore;
+
     private const string LeaderboardName = "testlb";
-    private const string PlayerPrefKey = "recordMoney";
 
     private void Start()
     {
-        Debug.Log("[LeaderBoard] Start()");
         tankHealth = FindObjectOfType<TankHealth>();
         wallet = FindObjectOfType<Wallet>();
-        Debug.Log($"[LeaderBoard] Found tankHealth={(tankHealth!=null)}, wallet={(wallet!=null)}");
-
+        
+        /*
+        YG2.onGetLeaderboard += OnLeaderboardDataReceived; // 1*/
         if (tankHealth != null)
         {
             tankHealth.OnDeathPlayer += SaveMyScore;
-            Debug.Log("[LeaderBoard] Subscribed to tankHealth.OnDeathPlayer");
         }
     }
 
     private void OnDisable()
     {
-        Debug.Log("[LeaderBoard] OnDisable()");
+        /*YG2.onGetLeaderboard -= OnLeaderboardDataReceived; // 1*/
+        
         if (tankHealth != null)
         {
             tankHealth.OnDeathPlayer -= SaveMyScore;
-            Debug.Log("[LeaderBoard] Unsubscribed from tankHealth.OnDeathPlayer");
         }
     }
-
     private void SaveMyScore()
     {
-        Debug.Log("[LeaderBoard] SaveMyScore() called");
-        if (wallet == null)
+        int recordMoney = PlayerPrefs.GetInt("recordMoney", 0);
+        if (recordMoney < wallet.totalMoney)
         {
-            Debug.LogWarning("[LeaderBoard] wallet is null — aborting SaveMyScore");
-            return;
+            PlayerPrefs.SetInt("recordMoney", wallet.totalMoney);
+            YG2.SetLeaderboard(LeaderboardName, wallet.totalMoney);
         }
-
-        int current = wallet.totalMoney;
-        int localRecord = PlayerPrefs.GetInt(PlayerPrefKey, 0);
-        Debug.Log($"[LeaderBoard] current={current}, localRecord={localRecord}");
-
-        if (current > localRecord)
-        {
-            PlayerPrefs.SetInt(PlayerPrefKey, current);
-            PlayerPrefs.Save();
-            Debug.Log($"[LeaderBoard] Updated PlayerPrefs {PlayerPrefKey} -> {current}");
-
-            // Убедимся, что YG2 готов (опционально) — если YG2.player == null, всё равно попытаемся отправить
-            Debug.Log($"[LeaderBoard] Sending to YG2. YG2.player != null: {(YG2.player!=null)}");
-            YG2.SetLeaderboard(LeaderboardName, current);
-            Debug.Log("[LeaderBoard] YG2.SetLeaderboard called");
-        }
-        else
-        {
-            Debug.Log("[LeaderBoard] Current score is not higher than local record — not sending");
-        }
+        
+        /*
+        pendingScoreToSave = wallet.totalMoney;
+        isCheckingScore = true;
+        YG2.GetLeaderboard(LeaderboardName);
+        // 3 строки сверху это 1
+        */
+         
+        //ниже 6 строк это 2
+       
     }
+
+    /*private void OnLeaderboardDataReceived(LBData data) // 1
+    {
+        if (!isCheckingScore || data.technoName != LeaderboardName) return;
+
+        isCheckingScore = false; 
+        int oldRecord = 0;
+        if (data.players != null)
+        {
+            foreach (var entry in data.players)
+            {
+                if (entry.uniqueID == YG2.player.id)
+                {
+                    oldRecord = entry.score; 
+                    break; 
+                }
+            }
+        }*/
+
+        /*if (pendingScoreToSave > oldRecord)
+        {
+            YG2.SetLeaderboard(LeaderboardName, pendingScoreToSave);
+        }
+    }*/
 }
