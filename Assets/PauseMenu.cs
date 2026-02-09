@@ -4,6 +4,7 @@ public class PauseMenu : MonoBehaviour
 {
     public GameObject pauseMenuUI;
     public GameObject inGameUi;
+    public GameObject ControlHelpUi;
 
     private void Start()
     {
@@ -13,7 +14,7 @@ public class PauseMenu : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) && !ControlHelpUi.activeSelf )
         {
             if (Time.timeScale == 1)
             {
@@ -28,17 +29,24 @@ public class PauseMenu : MonoBehaviour
 
     public void Resume() // Продолжить игру
     {
+        Debug.Log(" Resume");
         Time.timeScale = 1;
         inGameUi.SetActive(true);
         pauseMenuUI.SetActive(false);
         LevelManager.LockCursor(this);
     }
 
-    public void Pause() 
+    public void Pause()
     {
+        if (pauseMenuUI != null)
+        {
+            pauseMenuUI.SetActive(true);
+            Debug.Log(" Pause");
+        }
         Time.timeScale = 0;
         inGameUi.SetActive(false);
-        pauseMenuUI.SetActive(true);
         LevelManager.UnlockCursor(this);
     }
+
+
 }

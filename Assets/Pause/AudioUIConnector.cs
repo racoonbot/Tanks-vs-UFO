@@ -14,9 +14,5 @@ public class AudioUIConnector : MonoBehaviour
         {
             AudioSettings.instance.RegisterSliders(sceneMusicSlider, sceneSoundsSlider);
         }
-        else
-        {
-            Debug.LogWarning("AudioSettings не найден! Запустите игру с Главного Меню.");
-        }
-    }
+     }
 }

@@ -10,17 +10,11 @@ public class LeaderBoardSync : MonoBehaviour
 
     private void Start()
     {
-        Debug.Log("[LeaderBoardSync] Start()");
         if (!PlayerPrefs.HasKey(PlayerPrefKey))
         {
-            Debug.Log("[LeaderBoardSync] No local record found — requesting server leaderboard");
             YG2.onGetLeaderboard += OnLeaderboardDataReceived;
             waitingForServer = true;
             YG2.GetLeaderboard(LeaderboardName);
-        }
-        else
-        {
-            Debug.Log("[LeaderBoardSync] Local record exists: " + PlayerPrefs.GetInt(PlayerPrefKey));
         }
     }
 
@@ -32,14 +26,12 @@ public class LeaderBoardSync : MonoBehaviour
 
     private void OnLeaderboardDataReceived(LBData data)
     {
-        Debug.Log("[LeaderBoardSync] OnLeaderboardDataReceived()");
         if (!waitingForServer) return;
         waitingForServer = false;
         YG2.onGetLeaderboard -= OnLeaderboardDataReceived;
 
         if (data == null)
         {
-            Debug.LogWarning("[LeaderBoardSync] Received null leaderboard data");
             return;
         }
 
@@ -55,10 +47,7 @@ public class LeaderBoardSync : MonoBehaviour
                 }
             }
         }
-
-        Debug.Log($"[LeaderBoardSync] Server record for player = {serverRecordForPlayer}");
         PlayerPrefs.SetInt(PlayerPrefKey, serverRecordForPlayer);
         PlayerPrefs.Save();
-        Debug.Log("[LeaderBoardSync] Saved server record into PlayerPrefs");
     }
 }
