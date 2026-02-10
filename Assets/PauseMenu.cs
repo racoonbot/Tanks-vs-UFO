@@ -40,8 +40,8 @@ public class PauseMenu : MonoBehaviour
     {
         if (pauseMenuUI != null)
         {
-            pauseMenuUI.SetActive(true);
             Debug.Log(" Pause");
+            pauseMenuUI.SetActive(true);
         }
         Time.timeScale = 0;
         inGameUi.SetActive(false);
