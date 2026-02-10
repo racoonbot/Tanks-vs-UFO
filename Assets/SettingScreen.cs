@@ -9,7 +9,7 @@ public class SettingScreen : MonoBehaviour
 
     private void Start()
     {
-        settingScreen.SetActive(false);
+       // settingScreen.SetActive(false);
     }
 
     public void ShowSettings()
