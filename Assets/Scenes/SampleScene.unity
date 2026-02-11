@@ -26016,7 +26016,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: New Text
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a3b3a37f32c4be046a1721b91f9742ce, type: 2}
   m_sharedMaterial: {fileID: -8038190590303388081, guid: a3b3a37f32c4be046a1721b91f9742ce, type: 2}
@@ -26225,8 +26225,8 @@ MonoBehaviour:
       de: 
       hi: 
   text: 
-  ru: "\u041D\u043E\u0432\u044B\u0439 \u0442\u0435\u043A\u0441\u0442"
-  en: New Text
+  ru: 
+  en: 
   tr: 
   az: 
   be: 
@@ -26767,7 +26767,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: New Text
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a3b3a37f32c4be046a1721b91f9742ce, type: 2}
   m_sharedMaterial: {fileID: -8038190590303388081, guid: a3b3a37f32c4be046a1721b91f9742ce, type: 2}
@@ -57271,6 +57271,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   level: 1
   levelIncreased: 0
+  TankMovingSound: {fileID: 1511693246}
   showLevel: {fileID: 2040766795}
 --- !u!114 &1493030099
 MonoBehaviour:
@@ -57747,7 +57748,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 24300002, guid: 5c3a89efdb4cfa34aada5c41f9891245, type: 2}
   m_audioClip: {fileID: 8300000, guid: 3cc41bc3b320db9448da2d4e1a85466d, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.425
   m_Pitch: 1
   Loop: 0
   Mute: 0

@@ -10,6 +10,7 @@ public class LevelManager : MonoBehaviour
     public int level = 1;
     public bool levelIncreased;
 
+    public GameObject TankMovingSound;
 
     private ShowMoney showMoney;
     public ShowNumLevel showLevel;
@@ -21,6 +22,7 @@ public class LevelManager : MonoBehaviour
 
     private void Start()
     {
+        TankMovingSound.SetActive(true);
         showMoney = FindObjectOfType<ShowMoney>();
         spawner = FindObjectOfType<SpawnEnemy>();
         canvas = FindObjectOfType<ShowCanvas>();
@@ -31,8 +33,8 @@ public class LevelManager : MonoBehaviour
         if (canvas != null && showMoney != null && gameData != null && lootSpawner != null)
         {
             OnLevelIncreased += canvas.ActivateCanvas;
-            OnLevelIncreased += showMoney.UpdateText;
             OnLevelIncreased += DestroyAllEnemyBullets;
+            OnLevelIncreased += showMoney.UpdateText;
             OnLevelStarted += showLevel.UpdateText;
             OnLevelStarted += gameData.SaveData;
             OnLevelStarted += lootSpawner.LootSpawn;
@@ -59,6 +61,7 @@ public class LevelManager : MonoBehaviour
         Time.timeScale = 0;
         level++;
         OnLevelIncreased?.Invoke();
+        TankMovingSound.SetActive(false);
     }
 
     private void OnDisable()
@@ -87,6 +90,7 @@ public class LevelManager : MonoBehaviour
 
     public void NextLevel() 
     {
+        TankMovingSound.SetActive(true);
         LockCursor(this); // как будто не работает здес
         Time.timeScale = 1f;
         OnLevelStarted?.Invoke();
