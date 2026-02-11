@@ -5,6 +5,8 @@ public class PauseMenu : MonoBehaviour
     public GameObject pauseMenuUI;
     public GameObject inGameUi;
     public GameObject ControlHelpUi;
+    public GameObject EndLevelUi;
+    public GameObject GameoverUi;
 
     private void Start()
     {
@@ -14,7 +16,7 @@ public class PauseMenu : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape) && !ControlHelpUi.activeSelf )
+        if (Input.GetKeyDown(KeyCode.Escape) && !ControlHelpUi.activeSelf && !EndLevelUi.activeSelf && !GameoverUi.activeSelf)
         {
             if (Time.timeScale == 1)
             {

@@ -12,7 +12,7 @@ public class TankHealth : MonoBehaviour
     public AudioSource audioSource;
 
     private float lastDamageTime;
-    public float damageCooldown = 0.5f;
+    public float damageCooldown = 0.2f;
 
     [Header("Накопительный бонус")]
     public float timeForBonus = 3;

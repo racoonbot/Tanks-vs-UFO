@@ -57287,6 +57287,8 @@ MonoBehaviour:
   pauseMenuUI: {fileID: 1858814173}
   inGameUi: {fileID: 2040766785}
   ControlHelpUi: {fileID: 934031302}
+  EndLevelUi: {fileID: 50112233}
+  GameoverUi: {fileID: 1735370274}
 --- !u!1 &1498388078
 GameObject:
   m_ObjectHideFlags: 0
