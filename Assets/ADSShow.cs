@@ -3,7 +3,7 @@ using YG;
 
 public class ADSShow : MonoBehaviour
 {
-    private LevelManager levelManager;
+    /*private LevelManager levelManager;
     private bool adAlreadyShown = false; 
 
     void Start()
@@ -25,7 +25,7 @@ public class ADSShow : MonoBehaviour
         {
             adAlreadyShown = false; 
         }
-    }
+    }*/
 
     public void ShowAds()
     {

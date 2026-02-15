@@ -17,6 +17,8 @@ public class LevelManager : MonoBehaviour
     private GameData gameData;
     private ShowCanvas canvas;
 
+    private ADSShow _adsShow;
+
     public event Action OnLevelIncreased;
     public event Action OnLevelStarted;
 
@@ -28,7 +30,7 @@ public class LevelManager : MonoBehaviour
         canvas = FindObjectOfType<ShowCanvas>();
         gameData = FindObjectOfType<GameData>();
         lootSpawner = FindObjectOfType<LootSpawner>();
-
+        _adsShow = FindObjectOfType<ADSShow>();
 
         if (canvas != null && showMoney != null && gameData != null && lootSpawner != null)
         {
@@ -90,6 +92,7 @@ public class LevelManager : MonoBehaviour
 
     public void NextLevel() 
     {
+        _adsShow.ShowAds();
         TankMovingSound.SetActive(true);
         LockCursor(this); // как будто не работает здес
         Time.timeScale = 1f;
