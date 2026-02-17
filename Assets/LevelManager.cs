@@ -94,14 +94,14 @@ public class LevelManager : MonoBehaviour
     {
         _adsShow.ShowAds();
         TankMovingSound.SetActive(true);
-        LockCursor(this); // как будто не работает здес
+        LockCursor(this); 
         Time.timeScale = 1f;
         OnLevelStarted?.Invoke();
         canvas.DeactivateCanvas();
         spawner.StartWave();
     }
 
-    public void ResetLevel() //не используется
+    public void ResetLevel() 
     {
         LockCursor(this);
         

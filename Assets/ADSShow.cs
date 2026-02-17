@@ -29,7 +29,7 @@ public class ADSShow : MonoBehaviour
 
     public void ShowAds()
     {
-        Debug.Log("Показываем рекламу");
+        //Debug.Log("Показываем рекламу");
         YG2.InterstitialAdvShow();
     }
 }
