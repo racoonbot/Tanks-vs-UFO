@@ -15146,7 +15146,7 @@ MonoBehaviour:
   m_fontWeight: 400
   m_enableAutoSizing: 1
   m_fontSizeMin: 10.33
-  m_fontSizeMax: 72
+  m_fontSizeMax: 15.2
   m_fontStyle: 0
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
@@ -34153,6 +34153,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 833674851}
   m_CullTransparentMesh: 1
+--- !u!114 &833718233 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4229387607868218993, guid: 399ef0805a16bc54faa75a5a49f7d8de, type: 3}
+  m_PrefabInstance: {fileID: 1248465586}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &834194436
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -79630,7 +79641,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tankAttributes: {fileID: 1229186006}
   tankRigidbody: {fileID: 872686887}
-  text: {fileID: 343675721}
+  text: {fileID: 902066658}
 --- !u!114 &2040766791
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -79686,7 +79697,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tank: {fileID: 872686889}
-  text: {fileID: 902066658}
+  text: {fileID: 833718233}
 --- !u!114 &2040766795
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -83638,11 +83649,11 @@ PrefabInstance:
       objectReference: {fileID: 872686888}
     - target: {fileID: 2288622178242916594, guid: 2c8466122dc2c5748899f46747870bfd, type: 3}
       propertyPath: ShotInterval
-      value: 2
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2288622178242916594, guid: 2c8466122dc2c5748899f46747870bfd, type: 3}
       propertyPath: ShotMultiplier
-      value: 1.2
+      value: 1.1
       objectReference: {fileID: 0}
     - target: {fileID: 3142272020638187976, guid: 2c8466122dc2c5748899f46747870bfd, type: 3}
       propertyPath: moveJoystick
@@ -83733,8 +83744,16 @@ PrefabInstance:
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 9145416976672140021, guid: 2c8466122dc2c5748899f46747870bfd, type: 3}
+      propertyPath: tankHealth
+      value: 
+      objectReference: {fileID: 872686888}
+    - target: {fileID: 9145416976672140021, guid: 2c8466122dc2c5748899f46747870bfd, type: 3}
       propertyPath: ShotInterval
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9145416976672140021, guid: 2c8466122dc2c5748899f46747870bfd, type: 3}
+      propertyPath: ShotMultiplier
+      value: 1.2
       objectReference: {fileID: 0}
     - target: {fileID: 9215775968107532862, guid: 2c8466122dc2c5748899f46747870bfd, type: 3}
       propertyPath: maxSpeed
@@ -83762,7 +83781,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1583799448271227351, guid: 2c8466122dc2c5748899f46747870bfd, type: 3}
-    - {fileID: 5165456602984421437, guid: 2c8466122dc2c5748899f46747870bfd, type: 3}
     m_RemovedGameObjects:
     - {fileID: 8915061843649010496, guid: 2c8466122dc2c5748899f46747870bfd, type: 3}
     m_AddedGameObjects: []

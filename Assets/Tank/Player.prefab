@@ -358,7 +358,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6097045720677224355}
-  - component: {fileID: 5165456602984421437}
   - component: {fileID: 2288622178242916594}
   m_Layer: 6
   m_Name: BulletSpawn
@@ -382,21 +381,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4308702984791256074}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5165456602984421437
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5512517093136981404}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 00f216a371832f44ba0ef482ae968251, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 6946249191291192640, guid: c5195b2536fba7247b8aa52d3ff07b39, type: 3}
-  bulletSpawnPoint: {fileID: 6097045720677224355}
-  shotCounter: {fileID: 0}
 --- !u!114 &2288622178242916594
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -411,6 +395,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ShotInterval: 1
   isShooted: 0
+  ShotMultiplier: 2
+  tankHealth: {fileID: 0}
 --- !u!1 &5921913738803147117
 GameObject:
   m_ObjectHideFlags: 0
@@ -459,6 +445,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 6946249191291192640, guid: c5195b2536fba7247b8aa52d3ff07b39, type: 3}
   bulletSpawnPoint: {fileID: 7947949512960542460}
   shotCounter: {fileID: 0}
+  waveLevel: 0
 --- !u!114 &7561433232841972104
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -473,6 +460,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ShotInterval: 1
   isShooted: 0
+  ShotMultiplier: 2
+  tankHealth: {fileID: 0}
 --- !u!1 &6304043724242036057
 GameObject:
   m_ObjectHideFlags: 0
@@ -521,6 +510,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e74f78064368a14097b3b59d09511f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speedLimit: 0
+  healthLimit: 0
+  turretRotationSpeedLimit: 0
   maxSpeed: 250
   maxHealth: 30
   turretRotationSpeed: 20
@@ -1006,6 +998,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 6946249191291192640, guid: c5195b2536fba7247b8aa52d3ff07b39, type: 3}
   bulletSpawnPoint: {fileID: 6097045720677224355}
   shotCounter: {fileID: 9145416976672140021}
+  waveLevel: 0
 --- !u!114 &9145416976672140021
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1020,6 +1013,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ShotInterval: 2
   isShooted: 0
+  ShotMultiplier: 2
+  tankHealth: {fileID: 0}
 --- !u!1 &1483019807954299947 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3308724752575992159, guid: 997823ade0e2fc249a876fa159f69cc3, type: 3}
@@ -1038,6 +1033,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationSpeed: 100
+  moveJoystick: {fileID: 0}
 --- !u!1 &1725232969228564403 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3354916976622783175, guid: 997823ade0e2fc249a876fa159f69cc3, type: 3}
@@ -1058,6 +1054,9 @@ MonoBehaviour:
   rotationSpeed: 50
   rb: {fileID: 3714004030438240428}
   currentSpeed: 0
+  moveJoystick: {fileID: 0}
+  turretJoystick: {fileID: 0}
+  turretTransform: {fileID: 0}
 --- !u!114 &5434073614878800290
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1072,7 +1071,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 6304043724242036057}
   health: 100
+  audioSource: {fileID: 0}
   damageCooldown: 0.4
+  timeForBonus: 3
+  bonusLevel: 0
+  maxBonusLevel: 0
+  hurtFlashDuration: 0.1
+  hurtColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!54 &3714004030438240428
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1139,6 +1144,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationSpeed: 100
+  moveJoystick: {fileID: 0}
 --- !u!4 &4308702984791256074 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 195303505891398014, guid: 997823ade0e2fc249a876fa159f69cc3, type: 3}
@@ -1162,6 +1168,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationSpeed: 100
+  moveJoystick: {fileID: 0}
 --- !u!4 &7348501492661726076 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6666825145793500680, guid: 997823ade0e2fc249a876fa159f69cc3, type: 3}
@@ -1185,3 +1192,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationSpeed: 100
+  moveJoystick: {fileID: 0}
