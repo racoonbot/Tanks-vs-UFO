@@ -126,10 +126,10 @@ TextureImporter:
       name: UPD_Gemini_Generated_Image_tqjzxztqjzxztqjz_0
       rect:
         serializedVersion: 2
-        x: 119
-        y: 853
-        width: 848
-        height: 646
+        x: 196
+        y: 959
+        width: 738
+        height: 484
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -147,10 +147,10 @@ TextureImporter:
       name: UPD_Gemini_Generated_Image_tqjzxztqjzxztqjz_1
       rect:
         serializedVersion: 2
-        x: 1125
-        y: 860
-        width: 637
-        height: 632
+        x: 1171
+        y: 980
+        width: 532
+        height: 413
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -168,10 +168,10 @@ TextureImporter:
       name: UPD_Gemini_Generated_Image_tqjzxztqjzxztqjz_2
       rect:
         serializedVersion: 2
-        x: 2096
-        y: 875
-        width: 502
-        height: 589
+        x: 2148
+        y: 980
+        width: 399
+        height: 376
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -189,10 +189,10 @@ TextureImporter:
       name: UPD_Gemini_Generated_Image_tqjzxztqjzxztqjz_3
       rect:
         serializedVersion: 2
-        x: 43
-        y: 147
-        width: 983
-        height: 622
+        x: 153
+        y: 196
+        width: 717
+        height: 478
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -210,10 +210,10 @@ TextureImporter:
       name: UPD_Gemini_Generated_Image_tqjzxztqjzxztqjz_4
       rect:
         serializedVersion: 2
-        x: 1107
-        y: 116
-        width: 605
-        height: 662
+        x: 294
+        y: 300
+        width: 596
+        height: 374
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -231,10 +231,10 @@ TextureImporter:
       name: UPD_Gemini_Generated_Image_tqjzxztqjzxztqjz_5
       rect:
         serializedVersion: 2
-        x: 2035
-        y: 116
-        width: 634
-        height: 686
+        x: 1174
+        y: 207
+        width: 481
+        height: 469
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -244,6 +244,27 @@ TextureImporter:
       bones: []
       spriteID: eac284e03fb1cb2489ae8b3606cae479
       internalID: 107436869
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UPD_Gemini_Generated_Image_tqjzxztqjzxztqjz_6
+      rect:
+        serializedVersion: 2
+        x: 2135
+        y: 207
+        width: 447
+        height: 456
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e1b24441f8579254690c7918d7563d6c
+      internalID: -1604907014
       vertices: []
       indices: 
       edges: []
@@ -289,6 +310,7 @@ TextureImporter:
       UPD_Gemini_Generated_Image_tqjzxztqjzxztqjz_3: -1250350475
       UPD_Gemini_Generated_Image_tqjzxztqjzxztqjz_4: -1737567563
       UPD_Gemini_Generated_Image_tqjzxztqjzxztqjz_5: 107436869
+      UPD_Gemini_Generated_Image_tqjzxztqjzxztqjz_6: -1604907014
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
