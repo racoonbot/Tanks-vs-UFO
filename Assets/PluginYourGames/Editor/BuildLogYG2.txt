@@ -1,3 +1,3 @@
-﻿Build path: D:/UNITY/Tanks-vs-UFO/Builds/Rework1
-Build number: 33
+﻿Build path: P:/UnityProjects/BUILDS/Rework180226
+Build number: 34
 PluginYG version: 2.008

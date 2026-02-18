@@ -29,7 +29,7 @@ public class TankAttributes : MonoBehaviour
 
     private void Start()
     {
-        ApplyFlagsSettings(); //TODO флаг макс здоровья нужно тестить
+        ApplyFlagsSettings();
         LoadStats();
     }
 
