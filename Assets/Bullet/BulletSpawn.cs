@@ -9,7 +9,7 @@ public class BulletSpawn : MonoBehaviour
     public ShotCounter shotCounter;
     private TankHealth tankHealth;
     public int waveLevel;
-
+    public AudioSource audioSource;
     private int lastWaveShotLevel = 0; 
 
     void Start()
@@ -57,6 +57,7 @@ public class BulletSpawn : MonoBehaviour
 
     private void WaveShot()
     {
+        audioSource.Play();
         int bulletsCount = 8;
         float angleStep = 360f / bulletsCount;
         float explosionBulletSpeed = 15f;
