@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using YG.Insides;
 using YG.Utils.LB;
 using System.Collections.Generic;
+using TMPro;
 
 #if Localization_yg
 using YG.Utils.Lang;
@@ -39,7 +40,7 @@ namespace YG
 #if UNITY_EDITOR
         [Tooltip(Langs.t_entriesText)]
 #endif
-        public Text entriesText;
+        public TextMeshProUGUI entriesText;
 #if UNITY_EDITOR
         [Tooltip(Langs.t_advanced)]
 #endif
