@@ -7,7 +7,8 @@ public class PauseMenu : MonoBehaviour
     public GameObject ControlHelpUi;
     public GameObject EndLevelUi;
     public GameObject GameoverUi;
-
+    [SerializeField] private ShowNumLevel showNumLevel;
+    
     private void Start()
     {
         pauseMenuUI.SetActive(false);
@@ -29,11 +30,14 @@ public class PauseMenu : MonoBehaviour
         }
     }
 
-    public void Resume() // Продолжить игру
+    public void Resume() 
     {
-        Debug.Log(" Resume");
+        Debug.Log("Resume Game");
         Time.timeScale = 1;
+    
         inGameUi.SetActive(true);
+        if (showNumLevel != null) 
+            showNumLevel.UpdateText();
         pauseMenuUI.SetActive(false);
         LevelManager.LockCursor(this);
     }

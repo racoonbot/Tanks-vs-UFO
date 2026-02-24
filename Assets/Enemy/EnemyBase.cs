@@ -11,8 +11,8 @@ public abstract class EnemyBase : MonoBehaviour
     private SpawnEnemy spawner;
 
     [Header("Настройки Случайного Движения")]
-    public float randomAccuracy = 5f; // Насколько сильно враг может "мазать" мимо цели (радиус)
-    public float changeDirectionInterval = 5f; // Как часто меняется случайная точка (в секундах)
+    public float randomAccuracy = 3f; // Насколько сильно враг может "мазать" мимо цели (радиус)
+    public float changeDirectionInterval = 2f; // Как часто меняется случайная точка (в секундах)
     
     private Vector3 currentRandomOffset; // Текущее смещение
     private float randomTimer; // Таймер
@@ -95,22 +95,39 @@ public abstract class EnemyBase : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         target = FindObjectOfType<Tank>();
+    
+        // Получаем уровень и текущее количество врагов в сцене
         int level = FindObjectOfType<LevelManager>().level;
+        allMobs = new List<EnemyBase>(FindObjectsOfType<EnemyBase>());
+        int enemyCount = allMobs.Count;
 
-        // Смягченное масштабирование
+        // 1. Скорость пули и врага (оставляем твое масштабирование)
         bulletSpeed += level * 0.3f; 
         MaxSpeed += level * 0.1f;
-    
-        // Инициализируем currentSpeed начальному значению MaxSpeed (или рандомному в пределах)
-        currentSpeed = MaxSpeed; //MAXMAXMAX
-    
-        // Замедляем темп стрельбы всей толпы, чтобы не было стены пуль
-        
-        currentShotPeriod += level * 0.1f; 
-        shotPeriod = Random.Range(0f, currentShotPeriod);
+        currentSpeed = MaxSpeed;
 
+        // 2. Настройка темпа стрельбы (АГРЕССИВНАЯ ЛОГИКА)
+    
+        // Базовое время между выстрелами (например, изначально 4 секунды)
+        // С каждым уровнем уменьшаем задержку на 0.2 сек
+        float baseShotPeriod = 4.0f - (level * 0.2f);
+
+        // Добавляем поправку на количество врагов:
+        // Чем больше врагов, тем БОЛЬШЕ задержка (чтобы не было стены пуль), 
+        // но мы сделаем этот коэффициент очень мягким (0.05 сек на врага)
+        float crowdFactor = enemyCount * 0.05f;
+
+        // Итоговый период: База - БонусУровня + ШтрафТолпы
+        currentShotPeriod = baseShotPeriod + crowdFactor;
+
+        // Ограничитель: враг не может стрелять чаще, чем раз в 1.2 секунды (настрой под себя)
+        if (currentShotPeriod < 1.2f) currentShotPeriod = 1.2f;
+
+        // Первый выстрел делаем рандомным, чтобы враги не стреляли одновременно
+        shotPeriod = Random.Range(0.2f, currentShotPeriod);
+
+        // 3. Дистанция отступления (без изменений)
         retreatDistance = Random.Range(3f, 10f);
-        allMobs = new List<EnemyBase>(FindObjectsOfType<EnemyBase>());
     }
 
     void Update()

@@ -12,9 +12,19 @@ public class BustSpeed : Loot
 
         if (attributes != null)
         {
-            attributes.maxSpeed *= speedMultiplayer;
+            float originalSpeed = attributes.maxSpeed;
+            float newSpeed = attributes.maxSpeed * speedMultiplayer;
+            if (newSpeed > attributes.speedLimit)
+            {
+                attributes.maxSpeed = attributes.speedLimit;
+            }
+            else
+            {
+                attributes.maxSpeed = newSpeed;
+            }
+
             yield return new WaitForSeconds(boostDuration);
-            attributes.maxSpeed /= speedMultiplayer;
+            attributes.maxSpeed = originalSpeed;
         }
 
         isBoosted = false;

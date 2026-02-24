@@ -122,7 +122,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   boostDuration: 3
   isBoosted: 0
-  speedMultiplayer: 3
+  speedMultiplayer: 1.5
 --- !u!114 &1001845287238286808
 MonoBehaviour:
   m_ObjectHideFlags: 0
