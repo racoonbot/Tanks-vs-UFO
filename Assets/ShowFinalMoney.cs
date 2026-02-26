@@ -30,8 +30,8 @@ public class ShowFinalMoney : MonoBehaviour
 
     private void UpdateText()
     {
-        finalMoneyText.text = (YG2.lang == "ru")
-            ? "Монет заработано: " + wallet.totalMoney.ToString()
-            : "Total Money: " + wallet.totalMoney.ToString();
+        string label = (YG2.lang == "ru") ? "Монет заработано: " : "Total Money: ";
+        finalMoneyText.text = label + wallet.totalMoney.ToString();
     }
+
 }
