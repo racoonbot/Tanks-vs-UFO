@@ -3012,7 +3012,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &50112234
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8117,7 +8117,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 1340917032, guid: 6b6b2706e5816c54b9a9d0d4bb86eb3c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0302bd84f7f92a745ab8deae06c02f28, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -25319,7 +25319,6 @@ GameObject:
   - component: {fileID: 651088391}
   - component: {fileID: 651088393}
   - component: {fileID: 651088392}
-  - component: {fileID: 651088394}
   m_Layer: 5
   m_Name: NumberOfLevel (1)
   m_TagString: Untagged
@@ -25393,7 +25392,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 27.15
+  m_fontSize: 27.1
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -25443,18 +25442,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 651088390}
   m_CullTransparentMesh: 1
---- !u!114 &651088394
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 651088390}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f34f36451b093ee4c83ad4aa5459d2ac, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &652498696
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -25963,7 +25950,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u0417\u0430\u0440\u0430\u0431\u043E\u0442\u0430\u043D\u043E \u043C\u043E\u043D\u0435\u0442"
+  m_text: Total coins earned
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a3b3a37f32c4be046a1721b91f9742ce, type: 2}
   m_sharedMaterial: {fileID: -8038190590303388081, guid: a3b3a37f32c4be046a1721b91f9742ce, type: 2}
@@ -25990,7 +25977,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 39.55
+  m_fontSize: 36.5
   m_fontSizeBase: 21.8
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -26049,9 +26036,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 658277431}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f34f36451b093ee4c83ad4aa5459d2ac, type: 3}
+  m_Script: {fileID: 11500000, guid: daf654ec0330adf418358d7d3880d1b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  finalMoneyText: {fileID: 658277433}
+  wallet: {fileID: 737112323}
+  _tankHealth: {fileID: 872686888}
 --- !u!1 &658302295
 GameObject:
   m_ObjectHideFlags: 0
@@ -36382,10 +36372,10 @@ RectTransform:
   - {fileID: 886538292}
   m_Father: {fileID: 1672244125}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 400.7416, y: -73.455}
+  m_SizeDelta: {x: 143.73665, y: 146.91}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &919352638
 MonoBehaviour:
@@ -50360,10 +50350,10 @@ RectTransform:
   - {fileID: 1552039631}
   m_Father: {fileID: 1672244125}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 71.868324, y: -73.455}
+  m_SizeDelta: {x: 143.73665, y: 146.91}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1294417310
 MonoBehaviour:
@@ -56892,10 +56882,10 @@ RectTransform:
   - {fileID: 336322610}
   m_Father: {fileID: 1672244125}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 236.30505, y: -73.455}
+  m_SizeDelta: {x: 143.73665, y: 146.91}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1480348893
 MonoBehaviour:
@@ -66387,7 +66377,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1735370275
 MonoBehaviour:
   m_ObjectHideFlags: 0
