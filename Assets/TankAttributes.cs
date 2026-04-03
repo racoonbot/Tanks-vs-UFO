@@ -1,6 +1,6 @@
 using UnityEngine;
 using System;
-using YG;
+using YG; // Если используешь свою заглушку, убедись что она в проекте
 
 public enum StatType
 {
@@ -11,26 +11,25 @@ public enum StatType
 
 public class TankAttributes : MonoBehaviour
 {
-    public float speedLimit;
-    public float healthLimit;
-    public float turretRotationSpeedLimit;
+    [Header("Лимиты (Максимально возможные)")]
+    public float speedLimit = 20f;
+    public float healthLimit = 100f;
+    public float turretRotationSpeedLimit = 150f;
 
+    [Header("Текущие значения (Начальные)")]
+    public float maxSpeed = 5f;
+    public float maxHealth = 50f;
+    public float turretRotationSpeed = 40f;
+    public int damage = 10;
 
     public Action<StatType> OnMaximumLevelReached;
 
-
-    public float maxSpeed;
-    public float maxHealth;
-    private string flagMaxHealth = YG2.GetFlag("PlayerMaxHealth"); /// <summary>
-                                                                   /// Flag
-                                                                   /// </summary>
-    public float turretRotationSpeed;
-    public int damage;
-
     private void Start()
     {
-        ApplyFlagsSettings();
+        // Порядок важен: сначала грузим то, что сохранили, 
+        // потом проверяем флаги (если они есть)
         LoadStats();
+        ApplyFlagsSettings();
     }
 
     public void ApplyUpgrade(UpgradeType type, float amount)
@@ -43,12 +42,7 @@ public class TankAttributes : MonoBehaviour
                     maxHealth += amount;
                     PlayerPrefs.SetFloat("Value_MaxHealth", maxHealth);
                 }
-                else
-                {
-                    OnMaximumLevelReached?.Invoke(StatType.Health);
-                }
-
-
+                else OnMaximumLevelReached?.Invoke(StatType.Health);
                 break;
 
             case UpgradeType.TowerRotation:
@@ -56,13 +50,8 @@ public class TankAttributes : MonoBehaviour
                 {
                     turretRotationSpeed += amount;
                     PlayerPrefs.SetFloat("Value_TowerRotation", turretRotationSpeed);
-                    
                 }
-                else
-                {
-                    OnMaximumLevelReached?.Invoke(StatType.Rotation);
-                }
-
+                else OnMaximumLevelReached?.Invoke(StatType.Rotation);
                 break;
 
             case UpgradeType.MaxSpeed:
@@ -70,54 +59,36 @@ public class TankAttributes : MonoBehaviour
                 {
                     maxSpeed += amount;
                     PlayerPrefs.SetFloat("Value_MaxSpeed", maxSpeed);
-                   
                 }
-                else
-                {
-                    OnMaximumLevelReached?.Invoke(StatType.Speed);
-                }
-
+                else OnMaximumLevelReached?.Invoke(StatType.Speed);
                 break;
         }
-
         PlayerPrefs.Save();
     }
 
     private void LoadStats()
     {
-        if (PlayerPrefs.HasKey("Value_MaxHealth"))
-        {
-            float savedHealth = PlayerPrefs.GetFloat("Value_MaxHealth");
-           
-            maxHealth = savedHealth;
-        }
-        else
-        {
-            return;
-        }
-
-        if (PlayerPrefs.HasKey("Value_MaxSpeed"))
-        {
-            maxSpeed = PlayerPrefs.GetFloat("Value_MaxSpeed");
-        }
-
-        if (PlayerPrefs.HasKey("Value_TowerRotation"))
-        {
-            turretRotationSpeed = PlayerPrefs.GetFloat("Value_TowerRotation");
-        }
+        // Используем GetFloat с параметром по умолчанию. 
+        // Если ключа нет в PlayerPrefs, он возьмет текущее значение из Инспектора.
+        
+        maxHealth = PlayerPrefs.GetFloat("Value_MaxHealth", maxHealth);
+        maxSpeed = PlayerPrefs.GetFloat("Value_MaxSpeed", maxSpeed);
+        turretRotationSpeed = PlayerPrefs.GetFloat("Value_TowerRotation", turretRotationSpeed);
+        
+        Debug.Log($"[Stats] Загружено: Скорость поворота = {turretRotationSpeed}");
     }
+
     private void ApplyFlagsSettings()
     {
-        string valueStr = YG2.GetFlag("PlayerMaxHealth");
-    
-        if (!string.IsNullOrEmpty(valueStr))
+        // Проверяем флаги только если YG2 инициализирован (в твоем случае - через заглушку)
+        try 
         {
-            if (int.TryParse(valueStr, out int result)) 
+            string valueStr = YG2.GetFlag("PlayerMaxHealth");
+            if (!string.IsNullOrEmpty(valueStr) && int.TryParse(valueStr, out int result)) 
             {
                 maxHealth = result;
             }
         }
-        
-        
+        catch { /* Игнорируем ошибки если YG2 недоступен */ }
     }
 }
