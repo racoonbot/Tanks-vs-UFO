@@ -14,12 +14,12 @@ public class TankWheel : MonoBehaviour
         // Если нажата клавиша "Вперед" (W / Вверх)
         if (movementKeyboard > 0) 
         {
-            RotateWheel(-rotationSpeed);
+            RotateWheel(rotationSpeed);
         }
         // Если нажата клавиша "Назад" (S / Вниз)
         else if (movementKeyboard < 0) 
         {
-            RotateWheel(rotationSpeed);
+            RotateWheel(-rotationSpeed);
         }
     }
 

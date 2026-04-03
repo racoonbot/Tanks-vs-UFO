@@ -741,7 +741,7 @@ RectTransform:
   m_Father: {fileID: 820810838}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -3925,7 +3925,7 @@ RectTransform:
   m_Father: {fileID: 1170466902}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -5077,50 +5077,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 114311759}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &114523633
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 114523635}
-  - component: {fileID: 114523634}
-  m_Layer: 0
-  m_Name: ADS
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &114523634
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 114523633}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b95883c09b3c5ca419049f1120d72432, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!4 &114523635
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 114523633}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 216.05188, y: 168.29227, z: 0.45710135}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &114968133 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1356381714199472493, guid: a5344b98eb8749b48bd7eff8a8c3adae, type: 3}
@@ -8014,7 +7970,6 @@ GameObject:
   - component: {fileID: 201258928}
   - component: {fileID: 201258927}
   - component: {fileID: 201258926}
-  - component: {fileID: 201258929}
   m_Layer: 5
   m_Name: ExitButton
   m_TagString: Untagged
@@ -8135,21 +8090,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 201258924}
   m_CullTransparentMesh: 1
---- !u!114 &201258929
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 201258924}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 296f5f99a28d3c54ba2a4e6276fc71db, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ruSprite: {fileID: 1019228329, guid: 5c034fcc27121d64381a6394e23be31b, type: 3}
-  enSprite: {fileID: 21300000, guid: 0302bd84f7f92a745ab8deae06c02f28, type: 3}
-  isLanguageStartMenu: 0
 --- !u!1 &205047805
 GameObject:
   m_ObjectHideFlags: 0
@@ -8725,50 +8665,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 215528056}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &218696918
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 218696920}
-  - component: {fileID: 218696919}
-  m_Layer: 0
-  m_Name: Ya
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &218696919
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 218696918}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 819af9758c9fb844da776957d2677803, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!4 &218696920
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 218696918}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 585.0912, y: 231.9628, z: 105.007324}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &218793947
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10423,51 +10319,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 276235565}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &276307109
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 276307111}
-  - component: {fileID: 276307110}
-  m_Layer: 0
-  m_Name: InputSwitcher
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &276307110
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 276307109}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 40025a93c0b4ea24299fe40f377a5f8e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mobileJoystick: {fileID: 0}
---- !u!4 &276307111
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 276307109}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1170, y: 488.9344, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &278587923
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17967,7 +17818,7 @@ RectTransform:
   m_Father: {fileID: 1337126207}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -30781,7 +30632,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &750748819
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31062,7 +30913,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 218696919}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: MyMetricsTest, Assembly-CSharp
         m_MethodName: MaxHealthMetrica
         m_Mode: 1
@@ -31474,7 +31325,6 @@ GameObject:
   - component: {fileID: 771655400}
   - component: {fileID: 771655399}
   - component: {fileID: 771655398}
-  - component: {fileID: 771655401}
   m_Layer: 5
   m_Name: NextLevelButton
   m_TagString: Untagged
@@ -31595,21 +31445,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 771655396}
   m_CullTransparentMesh: 1
---- !u!114 &771655401
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 771655396}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 296f5f99a28d3c54ba2a4e6276fc71db, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ruSprite: {fileID: -554259638, guid: 39c43b03f50f4654b91e155a638b9a27, type: 3}
-  enSprite: {fileID: 2126119683, guid: 9def2aac2707e294abb486c46f1b6c30, type: 3}
-  isLanguageStartMenu: 0
 --- !u!1001 &771927872
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -36940,7 +36775,6 @@ GameObject:
   - component: {fileID: 934031303}
   - component: {fileID: 934031305}
   - component: {fileID: 934031304}
-  - component: {fileID: 934031306}
   m_Layer: 5
   m_Name: Control
   m_TagString: Untagged
@@ -36988,7 +36822,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 2f876d63ee624814eaf445858149d3c0, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2f4edfc7207b80b4bb258bcb2714bac7, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -37006,21 +36840,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 934031302}
   m_CullTransparentMesh: 1
---- !u!114 &934031306
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 934031302}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 296f5f99a28d3c54ba2a4e6276fc71db, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ruSprite: {fileID: 21300000, guid: 2f876d63ee624814eaf445858149d3c0, type: 3}
-  enSprite: {fileID: 21300000, guid: 2f4edfc7207b80b4bb258bcb2714bac7, type: 3}
-  isLanguageStartMenu: 0
 --- !u!1 &935057846
 GameObject:
   m_ObjectHideFlags: 0
@@ -61786,7 +61605,6 @@ GameObject:
   - component: {fileID: 1618602494}
   - component: {fileID: 1618602493}
   - component: {fileID: 1618602492}
-  - component: {fileID: 1618602495}
   m_Layer: 5
   m_Name: ExitButton
   m_TagString: Untagged
@@ -61919,21 +61737,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1618602490}
   m_CullTransparentMesh: 1
---- !u!114 &1618602495
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1618602490}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 296f5f99a28d3c54ba2a4e6276fc71db, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ruSprite: {fileID: 372555252, guid: 39c43b03f50f4654b91e155a638b9a27, type: 3}
-  enSprite: {fileID: 21300000, guid: 0302bd84f7f92a745ab8deae06c02f28, type: 3}
-  isLanguageStartMenu: 0
 --- !u!1001 &1619347985
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -68621,7 +68424,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 218696919}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: MyMetricsTest, Assembly-CSharp
         m_MethodName: SpeedMetrica
         m_Mode: 1
@@ -75304,7 +75107,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 218696919}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: MyMetricsTest, Assembly-CSharp
         m_MethodName: RotateMetrica
         m_Mode: 1
@@ -76843,7 +76646,7 @@ RectTransform:
   m_Father: {fileID: 1263814205}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -81165,8 +80968,5 @@ SceneRoots:
   - {fileID: 1908418769}
   - {fileID: 2040766789}
   - {fileID: 189909536}
-  - {fileID: 218696920}
   - {fileID: 1900946347}
   - {fileID: 750748822}
-  - {fileID: 114523635}
-  - {fileID: 276307111}

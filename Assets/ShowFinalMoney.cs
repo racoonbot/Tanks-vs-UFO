@@ -19,19 +19,15 @@ public class ShowFinalMoney : MonoBehaviour
         {
             _tankHealth.OnDeathPlayer += UpdateText;
         }
-       
     }
 
     private void OnDisable()
     {
         _tankHealth.OnDeathPlayer -= UpdateText;
-
     }
 
     private void UpdateText()
     {
-        finalMoneyText.text = (YG2.lang == "ru")
-            ? "Монет заработано: " + wallet.totalMoney.ToString()
-            : "Total Money: " + wallet.totalMoney.ToString();
+        finalMoneyText.text = "Total coins earned: " + wallet.totalMoney.ToString();
     }
 }
