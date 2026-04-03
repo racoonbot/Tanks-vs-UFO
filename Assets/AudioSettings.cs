@@ -10,15 +10,17 @@ public class AudioSettings : MonoBehaviour
     public AudioMixer musicMixer;
     public AudioMixer soundsMixer;
 
-    // Слайдеры делаем приватными или просто скрываем, так как они будут меняться
+    // Слайдеры приватные, так как они подтягиваются через RegisterSliders
     private Slider musicSlider;
     private Slider soundsSlider;
 
+    // Имена параметров в твоих Audio Mixer (Exposed Parameters)
     private string musicParam = "MasterVolume";
     private string soundsParam = "SoundsMaster";
 
     private void Awake()
     {
+        // Паттерн Singleton: объект живет между сценами
         if (instance == null)
         {
             instance = this;
@@ -32,17 +34,17 @@ public class AudioSettings : MonoBehaviour
 
     private void Start()
     {
-        // При старте (в главном меню) применим настройки, даже если слайдеров пока нет
+        // При старте применяем сохраненные значения из PlayerPrefs
         ApplyVolumeSettings();
     }
 
-    // === ЭТОТ МЕТОД ВЫЗЫВАЕТ "СВЯЗНОЙ" ИЗ НОВОЙ СЦЕНЫ ===
+    // === ЭТОТ МЕТОД ВЫЗЫВАЕТ "СВЯЗНОЙ" (AudioUIConnector) ИЗ НОВОЙ СЦЕНЫ ===
     public void RegisterSliders(Slider newMusicSlider, Slider newSoundSlider)
     {
         musicSlider = newMusicSlider;
         soundsSlider = newSoundSlider;
 
-        // Как только получили новые слайдеры, сразу настраиваем их
+        // Настраиваем полученные слайдеры: ставим им значения и подписываем на события
         InitializeSliders();
     }
 
@@ -53,8 +55,8 @@ public class AudioSettings : MonoBehaviour
         {
             float savedMusic = PlayerPrefs.GetFloat("MasterVolume", 1f);
             musicSlider.SetValueWithoutNotify(savedMusic);
-            musicSlider.onValueChanged.RemoveAllListeners(); // Удаляем старые связи
-            musicSlider.onValueChanged.AddListener(OnMusicSliderChanged); // Добавляем новые
+            musicSlider.onValueChanged.RemoveAllListeners(); 
+            musicSlider.onValueChanged.AddListener(OnMusicSliderChanged); 
         }
 
         // 2. Настройка слайдера ЗВУКОВ
@@ -67,7 +69,7 @@ public class AudioSettings : MonoBehaviour
         }
     }
 
-    private void ApplyVolumeSettings()
+    public void ApplyVolumeSettings()
     {
         float savedMusic = PlayerPrefs.GetFloat("MasterVolume", 1f);
         SetMusicVolume(savedMusic);
@@ -76,7 +78,7 @@ public class AudioSettings : MonoBehaviour
         SetSoundsVolume(savedSounds);
     }
 
-    // --- LOGIC ---
+    // --- ЛОГИКА ИЗМЕНЕНИЯ (Вызывается слайдерами) ---
 
     public void OnMusicSliderChanged(float value)
     {
@@ -92,6 +94,7 @@ public class AudioSettings : MonoBehaviour
         PlayerPrefs.Save();
     }
 
+    // Перевод значения слайдера в децибелы для микшера
     private void SetMusicVolume(float sliderValue)
     {
         if (musicMixer != null)

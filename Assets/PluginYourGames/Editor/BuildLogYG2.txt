@@ -1,3 +1,0 @@
-﻿Build path: P:/UnityProjects/BUILDS/NewBalance
-Build number: 37
-PluginYG version: 2.008

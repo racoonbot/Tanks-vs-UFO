@@ -5961,6 +5961,7 @@ MonoBehaviour:
   audioSources:
   - {fileID: 868107070}
   - {fileID: 569194728}
+  mainMixer: {fileID: 24100000, guid: ddc2481f0715e3b4a9747f7cb66f43b9, type: 2}
 --- !u!4 &1023375706
 Transform:
   m_ObjectHideFlags: 0
