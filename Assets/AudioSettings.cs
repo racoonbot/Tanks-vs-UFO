@@ -32,10 +32,22 @@ public class AudioSettings : MonoBehaviour
         }
     }
 
+    // Найди метод Start в твоем AudioSettings.cs и замени его на этот:
     private void Start()
     {
-        // При старте применяем сохраненные значения из PlayerPrefs
+        // 1. Принудительно очищаем старые сохранения громкости для теста
+        // После того как звук появится, эти две строки можно будет удалить
+        PlayerPrefs.DeleteKey("MasterVolume");
+        PlayerPrefs.DeleteKey("SoundsVolume");
+
+        // 2. Устанавливаем значения по умолчанию (1.0 = максимум)
+        PlayerPrefs.SetFloat("MasterVolume", 1f);
+        PlayerPrefs.SetFloat("SoundsVolume", 1f);
+
+        // 3. Применяем настройки к микшерам
         ApplyVolumeSettings();
+    
+        Debug.Log("<color=green>AudioSettings:</color> Громкость принудительно сброшена на МАКСИМУМ для теста.");
     }
 
     // === ЭТОТ МЕТОД ВЫЗЫВАЕТ "СВЯЗНОЙ" (AudioUIConnector) ИЗ НОВОЙ СЦЕНЫ ===
