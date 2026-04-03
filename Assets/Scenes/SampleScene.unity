@@ -80666,11 +80666,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9215775968107532862, guid: 2c8466122dc2c5748899f46747870bfd, type: 3}
       propertyPath: turretRotationSpeed
-      value: 5
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 9215775968107532862, guid: 2c8466122dc2c5748899f46747870bfd, type: 3}
       propertyPath: turretRotationSpeedLimit
-      value: 200
+      value: 400
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1583799448271227351, guid: 2c8466122dc2c5748899f46747870bfd, type: 3}

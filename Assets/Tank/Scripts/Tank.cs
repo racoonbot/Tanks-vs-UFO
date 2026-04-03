@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using YG; // Добавляем для доступа к YG2.envir
+using YG; 
 
 public class Tank : MonoBehaviour
 {
@@ -11,11 +11,13 @@ public class Tank : MonoBehaviour
     private bool isForwardDirection;
     public float currentSpeed;
 
-    [Header("Настройки Джойстиков")] public Joystick moveJoystick;
-    public Joystick turretJoystick;
+    [Header("Настройки Джойстиков")] 
+    public Joystick moveJoystick;
 
-    [Header("Башня")] public Transform turretTransform;
-    // public float turretRotationSpeed;
+    // Ссылка на башню здесь больше не нужна для вращения, 
+    // но ее можно оставить, если она нужна для других целей (например, стрельбы)
+    [Header("Башня")] 
+    public Transform turretTransform;
 
     void Awake()
     {
@@ -23,25 +25,19 @@ public class Tank : MonoBehaviour
         rb = GetComponent<Rigidbody>();
     }
 
-    void Start()
-    {
-    }
-
     void FixedUpdate()
     {
+        if (attributes == null) return;
+
         float currentForce = attributes.maxSpeed;
 
+        // Ввод для движения корпуса
         float v = Input.GetAxis("Vertical");
         float h = Input.GetAxis("Horizontal");
         
-
-        float tH = Input.GetAxis("Mouse X"); 
-
-
-        
+        // Работа с джойстиком только для перемещения корпуса
         if (moveJoystick != null)
         {
-            // Если игрок не жмет кнопки на клавиатуре (v == 0), берем значение с джойстика
             if (Mathf.Abs(v) < 0.01f) 
             {
                 v = moveJoystick.Vertical;
@@ -55,14 +51,7 @@ public class Tank : MonoBehaviour
             }
         }
 
-        if (turretJoystick != null)
-        {
-            if (Mathf.Abs(tH) < 0.01f)
-            {
-                tH = turretJoystick.Horizontal;
-            }
-        }
-
+        // Логика движения вперед/назад
         if (v > 0)
         {
             isForwardDirection = true;
@@ -74,6 +63,7 @@ public class Tank : MonoBehaviour
             rb.AddForce(-transform.forward * currentForce * Time.fixedDeltaTime, ForceMode.Acceleration);
         }
 
+        // Логика поворота корпуса (зависит от направления движения)
         if (h > 0)
         {
             if (isForwardDirection)
@@ -89,11 +79,8 @@ public class Tank : MonoBehaviour
                 rb.MoveRotation(Quaternion.Euler(0f, rotationSpeed * Time.fixedDeltaTime, 0f) * rb.rotation);
         }
 
-        //Башня
-        if (turretTransform != null && Mathf.Abs(tH) > 0.05f)
-        {
-            turretTransform.Rotate(0f, tH * attributes.turretRotationSpeed * Time.fixedDeltaTime, 0f);
-        }
+        // ВЕСЬ БЛОК ВРАЩЕНИЯ БАШНИ УДАЛЕН ОТСЮДА
+        // Теперь за это отвечает отдельный скрипт Tank_Turret
 
         currentSpeed = rb.velocity.magnitude;
     }

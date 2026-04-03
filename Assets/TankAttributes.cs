@@ -29,7 +29,7 @@ public class TankAttributes : MonoBehaviour
         // Порядок важен: сначала грузим то, что сохранили, 
         // потом проверяем флаги (если они есть)
         LoadStats();
-        ApplyFlagsSettings();
+       // ApplyFlagsSettings();
     }
 
     public void ApplyUpgrade(UpgradeType type, float amount)
@@ -78,7 +78,7 @@ public class TankAttributes : MonoBehaviour
         Debug.Log($"[Stats] Загружено: Скорость поворота = {turretRotationSpeed}");
     }
 
-    private void ApplyFlagsSettings()
+    /*private void ApplyFlagsSettings()
     {
         // Проверяем флаги только если YG2 инициализирован (в твоем случае - через заглушку)
         try 
@@ -89,6 +89,6 @@ public class TankAttributes : MonoBehaviour
                 maxHealth = result;
             }
         }
-        catch { /* Игнорируем ошибки если YG2 недоступен */ }
-    }
+        catch { /* Игнорируем ошибки если YG2 недоступен #1# }
+    }*/
 }
