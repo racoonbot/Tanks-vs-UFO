@@ -2,46 +2,46 @@ using UnityEngine;
 
 public class ChatMessageGenerator : MonoBehaviour
 {
-    private string[] phrases = new string[]
-    {
-       // --- Группа 1: Стандартные крики ---
-    "Ай!", "Больно же!", "За что?!", "Ой!", "Прекрати!", 
-    "Отстань!", "Не бей!", "Помогите!", "Мама!", "Спасите!",
-    "Ау!", "Чего пристал?", "Я пустой!", "Ноу!", "Стоп!",
-    "Хватит!", "Уйди!", "Кыш!", "Оставь меня!", "Больно!",
+   private string[] phrases = new string[]
+{
+    // --- Group 1: Standard Shouts ---
+    "Ouch!", "That hurts!", "What for?!", "Oh!", "Stop it!", 
+    "Go away!", "Don't hit me!", "Help!", "Mommy!", "Save me!",
+    "Ow!", "Why you bully me?", "I'm empty!", "No!", "Stop!",
+    "Enough!", "Leave!", "Shoo!", "Leave me alone!", "It hurts!",
 
-    // --- Группа 2: Обвинения в читерстве (классика) ---
-    "Читер!", "ВХ?", "Выруби аим", "Репорт", "Скрипты!",
-    "Я все записал!", "Бан тебе", "Админ, чекни его", "Триггербот?", "Наводка!",
-    "Где разброс?", "Вх офф", "Спалился", "Ну ты и софтер", "VAC уже едет",
-    "Кинул репорт", "Дядя в бане работает", "Читы офф", "Сквозь стены?", "Да как?!",
+    // --- Group 2: Cheating Accusations ---
+    "Cheater!", "Wallhack?", "Turn off aim", "Reported", "Scripts!",
+    "I recorded everything!", "Enjoy your ban", "Admin, check him", "Triggerbot?", "Aim assist!",
+    "Where's the recoil?", "Wallhack off", "Caught you!", "Nice soft, bro", "VAC is coming",
+    "Report sent", "My uncle works at Valve", "Turn off cheats", "Through walls?", "How?!",
 
-    // --- Группа 3: Жалобы на лаги и железо ---
-    "У меня Лагает!", "У меня Пинг 900!", "У меня Фризы...", "У меня пакет лосс", "Мышка села",
-    "Клаву залил", "ФПС просел", "Интернет тупит", "В текстурах застрял", "Телепорты...",
-    "Сервер лагает", "Это не я, это пинг", "Я лагаю!", "Зависло!", "Экран погас",
-    "Кот на клавиатуре", "Мама позвала", "Альт-табнулся", "Глюк!", "Рассинхрон!",
+    // --- Group 3: Lag and Hardware Complaints ---
+    "I'm lagging!", "Ping 900!", "I have freezes...", "Packet loss", "Mouse died",
+    "Spilled drink on keys", "Low FPS", "Internet is trash", "Stuck in textures", "Teleporting...",
+    "Server lag", "It's not me, it's the ping", "I'm laggy!", "Frozen!", "Screen went black",
+    "Cat on keyboard", "Mom called me", "Alt-tabbed", "Glitch!", "Desync!",
 
-    // --- Группа 4: Жалобы на баланс и игру ---
-    "Имба!", "Это нерфить надо!", "Где баланс?", "Что за урон?", "Дисбаланс!",
-    "Пофиксят в патче", "Багоюзер!", "Сломано!", "ОП класс", "Дамаг неадекватный",
-    "Криты одни...", "Рандом!", "Почему я?", "Слишком сильно", "У меня броня картонная",
+    // --- Group 4: Balance and Game Complaints ---
+    "Imba!", "Needs a nerf!", "Where's the balance?", "What's this damage?", "Broken!",
+    "Wait for the patch", "Bug abuser!", "Game is broken!", "OP class", "Insane damage",
+    "Only crits...", "RNG!", "Why me?", "Too strong", "My armor is made of paper",
 
-    // --- Группа 5: Команда и хил ---
-    "Где хил?!", "Хилер спит!", "Тима дно", "Саппорт где?", "Я соло играю",
-    "Ноль помощи", "Танкуйте!", "Снимите его с меня!", "Агро сорвал", "Где пати?",
+    // --- Group 5: Team and Healing ---
+    "Where's the heal?!", "Healer is asleep!", "Trash team", "Where's support?", "I'm playing solo",
+    "Zero help", "Tank it!", "Get him off me!", "Lost aggro", "Where's the party?",
 
-    // --- Группа 6: Сленг и эмоции ---
-    "ГГ ВП", "FF", "Ливаю", "АФК", "ОМГ", 
-    "ЛОЛ", "WTF?", "Кек", "Нуб", "Рак",
-    "Лакер", "На скилле?", "Повезло", "Крыса!", "В спину все могут",
-    "Раз на раз го?", "ПвП или зассал?", "Слабый", "Изи для тебя", "Мда...",
+    // --- Group 6: Slang and Emotions ---
+    "GG WP", "FF", "I'm leaving", "AFK", "OMG", 
+    "LOL", "WTF?", "Kek", "Noob", "Potato",
+    "Lucker", "Skill issue?", "Lucky", "Rat!", "Backstabber",
+    "1v1 me!", "PvP or scared?", "Weak", "Easy for you", "Sigh...",
 
-    // --- Группа 7: Смешное и нелепое ---
-    "Не трогай, это на Новый год!", "Я просто посмотреть!", "У меня дети!", "Дай аптечку!", "Мисклик!",
-    "Руки трясутся", "Глаз зачесался", "Я пацифист!", "Сдаюсь!", "Не по лицу!",
-    "Броня дома осталась", "Я тучки считал", "Не фартануло", "Пощади!", "Гейм Овер"
-    };
+    // --- Group 7: Funny and Ridiculous ---
+    "Don't touch, it's for New Year!", "I'm just looking!", "I have kids!", "Give me a medkit!", "Missclick!",
+    "Hands are shaking", "My eye is itchy", "I'm a pacifist!", "I surrender!", "Not the face!",
+    "Left my armor at home", "I was counting clouds", "Bad luck", "Mercy!", "Game Over"
+};
 
     public string Generate(string nick, Color color)
     {

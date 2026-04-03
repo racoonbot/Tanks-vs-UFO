@@ -7,7 +7,7 @@ public class MovingAttackEnemy : EnemyBase
 {
     public ParticleSystem particles;
     public Transform SpawnPoint;
-    public override string NickName => YG2.lang == "ru" ? "Красный" : "Red";
+    public override string NickName => "Red";
     public override Color MyColor => Color.red;
 
     private void OnDestroy()

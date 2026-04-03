@@ -6,7 +6,7 @@ public class MoveEnemy : EnemyBase
 {
     public ParticleSystem particles;
     public Transform SpawnPoint;
-    public override string NickName => "Желтый";
+    public override string NickName => "Yellow";
     public override Color MyColor => Color.yellow;
     private void OnDestroy()
     {

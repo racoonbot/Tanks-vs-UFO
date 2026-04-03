@@ -6,7 +6,7 @@ public class SimpleEnemy : EnemyBase
 {
     public ParticleSystem particles;
     public Transform SpawnPoint;
-    public override string NickName => YG2.lang == "ru" ? "Зеленый" : "Green";
+    public override string NickName =>  "Green";
     public override Color MyColor => Color.green;
     
 
